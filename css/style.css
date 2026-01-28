@@ -412,6 +412,32 @@ nav {
     color: white;
 }
 
+.service-icon-purple {
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+}
+
+.service-card-link {
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+.service-card-link:hover {
+    border-color: #8b5cf6;
+}
+
+.service-card-link:hover .service-link {
+    color: #8b5cf6;
+}
+
+.service-link {
+    display: block;
+    margin-top: 16px;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+}
+
 .service-card h3 {
     font-size: 1.5rem;
     font-weight: 600;
