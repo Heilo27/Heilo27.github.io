@@ -502,22 +502,22 @@ nav {
 }
 
 .app-icon-pantrychef {
-    background-image: url('../images/icons/pantrychef-icon.png');
+    background: url('../images/icons/pantrychef-icon.png') center/cover no-repeat;
     box-shadow: 0 8px 24px rgba(74, 222, 128, 0.3);
 }
 
 .app-icon-rightrudder {
-    background-image: url('../images/icons/rightrudder-icon.png');
+    background: url('../images/icons/rightrudder-icon.png') center/cover no-repeat;
     box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
 }
 
 .app-icon-capwingman {
-    background-image: url('../images/icons/capwingman-icon.png');
+    background: url('../images/icons/capwingman-icon.png') center/cover no-repeat;
     box-shadow: 0 8px 24px rgba(245, 158, 11, 0.3);
 }
 
 .app-icon-castle {
-    background-image: url('../images/icons/castleofthewinds-icon.png');
+    background: url('../images/icons/castleofthewinds-icon.png') center/cover no-repeat;
     box-shadow: 0 8px 24px rgba(139, 92, 246, 0.3);
 }
 
