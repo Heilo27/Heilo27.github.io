@@ -72,6 +72,14 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- RadioWriter -->
+  <url>
+    <loc>https://heiloprojects.com/radiowriter/</loc>
+    <lastmod>2026-01-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- Legal Pages -->
   <url>
     <loc>https://heiloprojects.com/privacy</loc>

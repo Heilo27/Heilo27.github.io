@@ -547,6 +547,11 @@ nav {
     box-shadow: 0 8px 24px rgba(139, 92, 246, 0.3);
 }
 
+.app-icon-radiowriter {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    box-shadow: 0 8px 24px rgba(239, 68, 68, 0.3);
+}
+
 .app-icon-more {
     background: var(--bg-alt);
     border: 2px dashed var(--border);
