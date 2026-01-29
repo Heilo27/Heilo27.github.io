@@ -1,0 +1,6 @@
+# HeiloProjects - Allow all search engines
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://heiloprojects.com/sitemap.xml
