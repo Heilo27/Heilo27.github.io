@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Therapist Documentation Survey | HeiloProjects</title>
+    <meta name="description" content="Help shape better documentation tools for therapists — share your experience in this 5-minute survey.">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/surveys/survey.css">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <header>
+        <nav aria-label="Main navigation">
+            <a href="/" class="logo"><span class="logo-heilo">Heilo</span><span class="logo-projects">Projects</span></a>
+            <ul class="nav-links"><li><a href="/">Home</a></li></ul>
+        </nav>
+    </header>
+
+    <main id="main">
+        <div class="survey-container" data-survey-id="therapy">
+
+            <!-- ============================================
+                 INTRO
+                 ============================================ -->
+            <div class="survey-section survey-section--intro active">
+                <div class="survey-hero">
+                    <span class="survey-badge">Healthcare Research</span>
+                    <h1>Help Us Build Better Documentation Tools</h1>
+                    <p class="survey-subtitle">You spend hours on clinical notes. We're building something to give you that time back. This 5-minute survey helps us understand your needs.</p>
+                    <div class="survey-meta">
+                        <span>~5 minutes</span>
+                        <span>29 questions</span>
+                        <span>Anonymous</span>
+                    </div>
+                    <button class="cta cta-primary survey-start-btn" type="button">
+                        <span>Start Survey</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ============================================
+                 SECTION 1: About Your Practice
+                 ============================================ -->
+            <div class="survey-section" data-title="Your Practice">
+                <div class="section-intro">
+                    <h2>About Your Practice</h2>
+                    <p>Help us understand your clinical setting.</p>
+                </div>
+
+                <!-- Q1 -->
+                <div class="survey-card" data-required>
+                    <div class="card-header">
+                        <span class="question-badge">Q1</span>
+                        <h3>What best describes your practice setting?</h3>
+                    </div>
+                    <div class="survey-options">
+                        <label class="survey-option">
+                            <input type="radio" name="q1" value="solo-private">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Solo private practice</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q1" value="group-2-10">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Group private practice (2-10 clinicians)</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q1" value="large-group-11-plus">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Large group practice (11+)</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q1" value="community-mental-health">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Community mental health center</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q1" value="hospital-health-system">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Hospital / health system</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q1" value="school-based">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">School-based</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q1" value="telehealth-only">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Telehealth-only practice</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q1" value="other">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Other</span>
+                            <input type="text" name="q1_other" class="other-input" placeholder="Please specify">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="survey-card" data-required>
+                    <div class="card-header">
+                        <span class="question-badge">Q2</span>
+                        <h3>What is your primary license or credential?</h3>
+                    </div>
+                    <div class="survey-options">
+                        <label class="survey-option">
+                            <input type="radio" name="q2" value="lpc-lcpc-lpcc">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">LPC / LCPC / LPCC</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q2" value="lmft">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">LMFT</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q2" value="lcsw-licsw">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">LCSW / LICSW</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q2" value="psyd-phd">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">PsyD / PhD (Psychologist)</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q2" value="psychiatrist">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Psychiatrist (MD/DO)</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q2" value="lmhc">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">LMHC</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q2" value="life-wellness-coach">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Life / Wellness Coach (non-licensed)</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q2" value="intern-associate">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Intern / Associate (pre-licensure)</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q2" value="other">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Other</span>
+                            <input type="text" name="q2_other" class="other-input" placeholder="Please specify">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="survey-card" data-required>
+                    <div class="card-header">
+                        <span class="question-badge">Q3</span>
+                        <h3>How many client sessions do you typically conduct per week?</h3>
+                    </div>
+                    <div class="survey-options">
+                        <label class="survey-option">
+                            <input type="radio" name="q3" value="fewer-than-10">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Fewer than 10</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q3" value="10-19">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">10-19</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q3" value="20-29">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">20-29</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q3" value="30-39">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">30-39</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q3" value="40-plus">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">40+</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="survey-card" data-required>
+                    <div class="card-header">
+                        <span class="question-badge">Q4</span>
+                        <h3>How many years have you been in clinical practice?</h3>
+                    </div>
+                    <div class="survey-options">
+                        <label class="survey-option">
+                            <input type="radio" name="q4" value="less-than-2">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Less than 2 years</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q4" value="2-5">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">2-5 years</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q4" value="6-10">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">6-10 years</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q4" value="11-20">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">11-20 years</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q4" value="20-plus">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">20+ years</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Q5 -->
+                <div class="survey-card" data-required>
+                    <div class="card-header">
+                        <span class="question-badge">Q5</span>
+                        <h3>Which EHR / practice management system do you primarily use?</h3>
+                    </div>
+                    <div class="survey-options">
+                        <label class="survey-option">
+                            <input type="radio" name="q5" value="simplepractice">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">SimplePractice</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q5" value="therapynotes">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">TherapyNotes</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q5" value="jane-app">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Jane App</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q5" value="theranest">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">TheraNest</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q5" value="therasoft">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Therasoft</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q5" value="valant">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Valant</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q5" value="epic-cerner">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Epic / Cerner</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q5" value="paper-no-ehr">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Paper / spreadsheet (no EHR)</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q5" value="other">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Other</span>
+                            <input type="text" name="q5_other" class="other-input" placeholder="Please specify">
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================
+                 SECTION 2: Documentation Experience
+                 ============================================ -->
+            <div class="survey-section" data-title="Documentation">
+                <div class="section-intro">
+                    <h2>Documentation Experience</h2>
+                    <p>Tell us about your current documentation workflow.</p>
+                </div>
+
+                <!-- Q6 -->
+                <div class="survey-card" data-required>
+                    <div class="card-header">
+                        <span class="question-badge">Q6</span>
+                        <h3>On average, how long does it take you to write a single session note?</h3>
+                    </div>
+                    <div class="survey-options">
+                        <label class="survey-option">
+                            <input type="radio" name="q6" value="less-than-5">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Less than 5 minutes</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q6" value="5-10">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">5-10 minutes</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q6" value="11-15">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">11-15 minutes</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q6" value="16-20">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">16-20 minutes</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q6" value="more-than-20">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">More than 20 minutes</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Q7 -->
+                <div class="survey-card" data-required>
+                    <div class="card-header">
+                        <span class="question-badge">Q7</span>
+                        <h3>When do you typically complete your session notes?</h3>
+                    </div>
+                    <div class="survey-options">
+                        <label class="survey-option">
+                            <input type="radio" name="q7" value="immediately-after">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Immediately after each session</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q7" value="end-of-day">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">At the end of the day</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q7" value="within-24-hours">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Within 24 hours</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q7" value="within-a-week">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Within a week</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q7" value="fall-behind">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">I often fall behind (more than a week)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Q8 -->
+                <div class="survey-card" data-required>
+                    <div class="card-header">
+                        <span class="question-badge">Q8</span>
+                        <h3>How many hours per week do you spend on documentation?</h3>
+                    </div>
+                    <div class="survey-options">
+                        <label class="survey-option">
+                            <input type="radio" name="q8" value="less-than-2">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Less than 2 hours</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q8" value="2-4">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">2-4 hours</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q8" value="4-6">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">4-6 hours</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q8" value="6-8">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">6-8 hours</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q8" value="more-than-8">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">More than 8 hours</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Q9 -->
+                <div class="survey-card" data-required data-min-selections="1">
+                    <div class="card-header">
+                        <span class="question-badge">Q9</span>
+                        <h3>Which note format(s) do you use most often?</h3>
+                        <span class="card-hint">Select all that apply</span>
+                    </div>
+                    <div class="survey-options survey-options--multi">
+                        <label class="survey-option">
+                            <input type="checkbox" name="q9" value="soap">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">SOAP (Subjective, Objective, Assessment, Plan)</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q9" value="dap">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">DAP (Data, Assessment, Plan)</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q9" value="birp">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">BIRP (Behavior, Intervention, Response, Plan)</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q9" value="girp">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">GIRP (Goals, Intervention, Response, Plan)</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q9" value="narrative">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Narrative / free-form</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q9" value="ehr-template">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">My EHR's built-in template</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q9" value="other">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Other</span>
+                            <input type="text" name="q9_other" class="other-input" placeholder="Please specify">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Q10 -->
+                <div class="survey-card" data-required data-min-selections="1">
+                    <div class="card-header">
+                        <span class="question-badge">Q10</span>
+                        <h3>What are your biggest frustrations with clinical documentation?</h3>
+                        <span class="card-hint">Select all that apply</span>
+                    </div>
+                    <div class="survey-options survey-options--multi">
+                        <label class="survey-option">
+                            <input type="checkbox" name="q10" value="takes-too-long">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">It takes too long</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q10" value="repetitive-tedious">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">It's repetitive / tedious</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q10" value="fall-behind-batch">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">I fall behind and have to batch-write</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q10" value="lacks-nuance">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Notes don't capture the nuance of sessions</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q10" value="compliance-confusing">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Insurance / compliance requirements are confusing</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q10" value="ehr-clunky">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">My EHR is clunky or slow</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q10" value="hipaa-worry">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">I worry about HIPAA when using digital tools</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q10" value="burnout">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">It contributes to my burnout</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q10" value="forget-details">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">I forget details by the time I write notes</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q10" value="other">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Other</span>
+                            <input type="text" name="q10_other" class="other-input" placeholder="Please specify">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Q11 -->
+                <div class="survey-card" data-required>
+                    <div class="card-header">
+                        <span class="question-badge">Q11</span>
+                        <h3>How much does documentation contribute to your professional stress or burnout?</h3>
+                    </div>
+                    <div class="survey-rating">
+                        <span class="rating-label-left">Not at all</span>
+                        <div class="rating-options">
+                            <label class="rating-option"><input type="radio" name="q11" value="1"><span class="rating-dot">1</span></label>
+                            <label class="rating-option"><input type="radio" name="q11" value="2"><span class="rating-dot">2</span></label>
+                            <label class="rating-option"><input type="radio" name="q11" value="3"><span class="rating-dot">3</span></label>
+                            <label class="rating-option"><input type="radio" name="q11" value="4"><span class="rating-dot">4</span></label>
+                            <label class="rating-option"><input type="radio" name="q11" value="5"><span class="rating-dot">5</span></label>
+                        </div>
+                        <span class="rating-label-right">Primary source</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================
+                 SECTION 3: AI-Assisted Documentation
+                 ============================================ -->
+            <div class="survey-section" data-title="AI Interest">
+                <div class="section-intro">
+                    <h2>AI-Assisted Documentation</h2>
+                    <p>We'd like to understand your comfort with AI tools.</p>
+                </div>
+
+                <!-- Q12 -->
+                <div class="survey-card" data-required>
+                    <div class="card-header">
+                        <span class="question-badge">Q12</span>
+                        <h3>Have you tried any AI or voice-to-note tools for clinical documentation?</h3>
+                    </div>
+                    <div class="survey-options">
+                        <label class="survey-option">
+                            <input type="radio" name="q12" value="currently-using">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Yes, currently using one</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q12" value="tried-stopped">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Yes, tried one but stopped</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q12" value="no-but-interested">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">No, but I've been interested</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q12" value="no-concerns">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">No, and I have concerns</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q12" value="not-sure">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">I'm not sure what that means</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Q12a (conditional) -->
+                <div class="survey-card survey-card--conditional" data-show-when="q12=currently-using,tried-stopped" hidden>
+                    <div class="card-header">
+                        <span class="question-badge">Q12a</span>
+                        <h3>Which tool(s) have you used?</h3>
+                    </div>
+                    <textarea name="q12a" rows="3" placeholder="e.g., Mentalyc, Upheal, Freed, etc."></textarea>
+                </div>
+
+                <!-- Q13 -->
+                <div class="survey-card" data-required>
+                    <div class="card-header">
+                        <span class="question-badge">Q13</span>
+                        <h3>Imagine a tool where you record a 2-3 minute voice summary after each session, and it generates a complete SOAP note for you to review. How interested would you be?</h3>
+                    </div>
+                    <div class="survey-rating">
+                        <span class="rating-label-left">Not interested</span>
+                        <div class="rating-options">
+                            <label class="rating-option"><input type="radio" name="q13" value="1"><span class="rating-dot">1</span></label>
+                            <label class="rating-option"><input type="radio" name="q13" value="2"><span class="rating-dot">2</span></label>
+                            <label class="rating-option"><input type="radio" name="q13" value="3"><span class="rating-dot">3</span></label>
+                            <label class="rating-option"><input type="radio" name="q13" value="4"><span class="rating-dot">4</span></label>
+                            <label class="rating-option"><input type="radio" name="q13" value="5"><span class="rating-dot">5</span></label>
+                        </div>
+                        <span class="rating-label-right">Need this yesterday</span>
+                    </div>
+                </div>
+
+                <!-- Q14 (importance grid) -->
+                <div class="survey-card" data-required data-min-selections="5">
+                    <div class="card-header">
+                        <span class="question-badge">Q14</span>
+                        <h3>What would be most important to you in an AI documentation tool?</h3>
+                        <span class="card-hint">Rate each feature from 1 (least important) to 5 (most important)</span>
+                    </div>
+                    <div class="importance-grid">
+                        <div class="importance-row">
+                            <span class="importance-label">Speed (notes in under 30 seconds)</span>
+                            <div class="importance-dots">
+                                <label><input type="radio" name="q14_speed" value="1"><span class="imp-dot">1</span></label>
+                                <label><input type="radio" name="q14_speed" value="2"><span class="imp-dot">2</span></label>
+                                <label><input type="radio" name="q14_speed" value="3"><span class="imp-dot">3</span></label>
+                                <label><input type="radio" name="q14_speed" value="4"><span class="imp-dot">4</span></label>
+                                <label><input type="radio" name="q14_speed" value="5"><span class="imp-dot">5</span></label>
+                            </div>
+                        </div>
+                        <div class="importance-row">
+                            <span class="importance-label">Accuracy (no hallucinated details)</span>
+                            <div class="importance-dots">
+                                <label><input type="radio" name="q14_accuracy" value="1"><span class="imp-dot">1</span></label>
+                                <label><input type="radio" name="q14_accuracy" value="2"><span class="imp-dot">2</span></label>
+                                <label><input type="radio" name="q14_accuracy" value="3"><span class="imp-dot">3</span></label>
+                                <label><input type="radio" name="q14_accuracy" value="4"><span class="imp-dot">4</span></label>
+                                <label><input type="radio" name="q14_accuracy" value="5"><span class="imp-dot">5</span></label>
+                            </div>
+                        </div>
+                        <div class="importance-row">
+                            <span class="importance-label">Privacy (HIPAA, audio never stored)</span>
+                            <div class="importance-dots">
+                                <label><input type="radio" name="q14_privacy" value="1"><span class="imp-dot">1</span></label>
+                                <label><input type="radio" name="q14_privacy" value="2"><span class="imp-dot">2</span></label>
+                                <label><input type="radio" name="q14_privacy" value="3"><span class="imp-dot">3</span></label>
+                                <label><input type="radio" name="q14_privacy" value="4"><span class="imp-dot">4</span></label>
+                                <label><input type="radio" name="q14_privacy" value="5"><span class="imp-dot">5</span></label>
+                            </div>
+                        </div>
+                        <div class="importance-row">
+                            <span class="importance-label">Customization (matches your voice/style)</span>
+                            <div class="importance-dots">
+                                <label><input type="radio" name="q14_custom" value="1"><span class="imp-dot">1</span></label>
+                                <label><input type="radio" name="q14_custom" value="2"><span class="imp-dot">2</span></label>
+                                <label><input type="radio" name="q14_custom" value="3"><span class="imp-dot">3</span></label>
+                                <label><input type="radio" name="q14_custom" value="4"><span class="imp-dot">4</span></label>
+                                <label><input type="radio" name="q14_custom" value="5"><span class="imp-dot">5</span></label>
+                            </div>
+                        </div>
+                        <div class="importance-row">
+                            <span class="importance-label">EHR integration (direct export)</span>
+                            <div class="importance-dots">
+                                <label><input type="radio" name="q14_ehr" value="1"><span class="imp-dot">1</span></label>
+                                <label><input type="radio" name="q14_ehr" value="2"><span class="imp-dot">2</span></label>
+                                <label><input type="radio" name="q14_ehr" value="3"><span class="imp-dot">3</span></label>
+                                <label><input type="radio" name="q14_ehr" value="4"><span class="imp-dot">4</span></label>
+                                <label><input type="radio" name="q14_ehr" value="5"><span class="imp-dot">5</span></label>
+                            </div>
+                        </div>
+                        <div class="importance-row">
+                            <span class="importance-label">Multiple formats (SOAP, DAP, BIRP...)</span>
+                            <div class="importance-dots">
+                                <label><input type="radio" name="q14_formats" value="1"><span class="imp-dot">1</span></label>
+                                <label><input type="radio" name="q14_formats" value="2"><span class="imp-dot">2</span></label>
+                                <label><input type="radio" name="q14_formats" value="3"><span class="imp-dot">3</span></label>
+                                <label><input type="radio" name="q14_formats" value="4"><span class="imp-dot">4</span></label>
+                                <label><input type="radio" name="q14_formats" value="5"><span class="imp-dot">5</span></label>
+                            </div>
+                        </div>
+                        <div class="importance-row">
+                            <span class="importance-label">Specialty templates (EMDR, DBT...)</span>
+                            <div class="importance-dots">
+                                <label><input type="radio" name="q14_specialty" value="1"><span class="imp-dot">1</span></label>
+                                <label><input type="radio" name="q14_specialty" value="2"><span class="imp-dot">2</span></label>
+                                <label><input type="radio" name="q14_specialty" value="3"><span class="imp-dot">3</span></label>
+                                <label><input type="radio" name="q14_specialty" value="4"><span class="imp-dot">4</span></label>
+                                <label><input type="radio" name="q14_specialty" value="5"><span class="imp-dot">5</span></label>
+                            </div>
+                        </div>
+                        <div class="importance-row">
+                            <span class="importance-label">Affordable pricing</span>
+                            <div class="importance-dots">
+                                <label><input type="radio" name="q14_price" value="1"><span class="imp-dot">1</span></label>
+                                <label><input type="radio" name="q14_price" value="2"><span class="imp-dot">2</span></label>
+                                <label><input type="radio" name="q14_price" value="3"><span class="imp-dot">3</span></label>
+                                <label><input type="radio" name="q14_price" value="4"><span class="imp-dot">4</span></label>
+                                <label><input type="radio" name="q14_price" value="5"><span class="imp-dot">5</span></label>
+                            </div>
+                        </div>
+                        <div class="importance-row">
+                            <span class="importance-label">Works offline / on-device</span>
+                            <div class="importance-dots">
+                                <label><input type="radio" name="q14_offline" value="1"><span class="imp-dot">1</span></label>
+                                <label><input type="radio" name="q14_offline" value="2"><span class="imp-dot">2</span></label>
+                                <label><input type="radio" name="q14_offline" value="3"><span class="imp-dot">3</span></label>
+                                <label><input type="radio" name="q14_offline" value="4"><span class="imp-dot">4</span></label>
+                                <label><input type="radio" name="q14_offline" value="5"><span class="imp-dot">5</span></label>
+                            </div>
+                        </div>
+                        <div class="importance-row">
+                            <span class="importance-label">Simple to use (minimal learning curve)</span>
+                            <div class="importance-dots">
+                                <label><input type="radio" name="q14_simple" value="1"><span class="imp-dot">1</span></label>
+                                <label><input type="radio" name="q14_simple" value="2"><span class="imp-dot">2</span></label>
+                                <label><input type="radio" name="q14_simple" value="3"><span class="imp-dot">3</span></label>
+                                <label><input type="radio" name="q14_simple" value="4"><span class="imp-dot">4</span></label>
+                                <label><input type="radio" name="q14_simple" value="5"><span class="imp-dot">5</span></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================
+                 SECTION 4: Feature Priorities
+                 ============================================ -->
+            <div class="survey-section" data-title="Features">
+                <div class="section-intro">
+                    <h2>Feature Priorities</h2>
+                    <p>Help us prioritize what to build first.</p>
+                </div>
+
+                <!-- Q15 -->
+                <div class="survey-card">
+                    <div class="card-header">
+                        <span class="question-badge">Q15</span>
+                        <h3>Which specialty-specific features would be valuable to you?</h3>
+                        <span class="card-hint">Select all that apply</span>
+                    </div>
+                    <div class="survey-options survey-options--multi">
+                        <label class="survey-option">
+                            <input type="checkbox" name="q15" value="emdr-tracking">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">EMDR session tracking (SUD/VoC, phase tracking)</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q15" value="dbt-skills">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">DBT skills module documentation</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q15" value="play-therapy">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Play therapy session notes</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q15" value="couples-family">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Couples / family therapy (multi-participant)</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q15" value="group-therapy">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Group therapy notes</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q15" value="substance-abuse-asam">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Substance abuse / ASAM criteria</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q15" value="assessment-tracking">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Assessment score tracking (PHQ-9, GAD-7, PCL-5...)</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q15" value="treatment-plan-auto">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Treatment plan auto-generation</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q15" value="supervision-review">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Supervision / review workflow</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q15" value="basic-soap-only">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">None -- just basic SOAP notes</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q15" value="other">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Other</span>
+                            <input type="text" name="q15_other" class="other-input" placeholder="Please specify">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Q16 -->
+                <div class="survey-card" data-required>
+                    <div class="card-header">
+                        <span class="question-badge">Q16</span>
+                        <h3>How important is it that your session audio is processed entirely on your device?</h3>
+                    </div>
+                    <div class="survey-rating">
+                        <span class="rating-label-left">Don't care if HIPAA-compliant</span>
+                        <div class="rating-options">
+                            <label class="rating-option"><input type="radio" name="q16" value="1"><span class="rating-dot">1</span></label>
+                            <label class="rating-option"><input type="radio" name="q16" value="2"><span class="rating-dot">2</span></label>
+                            <label class="rating-option"><input type="radio" name="q16" value="3"><span class="rating-dot">3</span></label>
+                            <label class="rating-option"><input type="radio" name="q16" value="4"><span class="rating-dot">4</span></label>
+                            <label class="rating-option"><input type="radio" name="q16" value="5"><span class="rating-dot">5</span></label>
+                        </div>
+                        <span class="rating-label-right">Dealbreaker</span>
+                    </div>
+                </div>
+
+                <!-- Q17 -->
+                <div class="survey-card">
+                    <div class="card-header">
+                        <span class="question-badge">Q17</span>
+                        <h3>Would you want the tool to track client outcome measures and include trends in your notes?</h3>
+                    </div>
+                    <div class="survey-options">
+                        <label class="survey-option">
+                            <input type="radio" name="q17" value="yes-very-valuable">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Yes, very valuable</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q17" value="maybe">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Maybe -- I'd want to see how it works</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q17" value="no-handle-separately">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">No, I handle assessments separately</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q17" value="no-standardized-measures">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">I don't use standardized measures</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Q18 -->
+                <div class="survey-card">
+                    <div class="card-header">
+                        <span class="question-badge">Q18</span>
+                        <h3>Which export / integration options matter most?</h3>
+                        <span class="card-hint">Select all that apply</span>
+                    </div>
+                    <div class="survey-options survey-options--multi">
+                        <label class="survey-option">
+                            <input type="checkbox" name="q18" value="copy-clipboard">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Copy to clipboard (paste into EHR)</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q18" value="pdf-export">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">PDF export</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q18" value="ehr-integration">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Direct integration with my EHR</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q18" value="email-self">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Email to myself</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q18" value="fhir-export">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">FHIR-compliant export</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q18" value="print">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Print</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q18" value="copy-paste-fine">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">I'm fine with copy/paste</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================
+                 SECTION 5: Privacy & Trust
+                 ============================================ -->
+            <div class="survey-section" data-title="Privacy">
+                <div class="section-intro">
+                    <h2>Privacy &amp; Trust</h2>
+                    <p>Your trust is non-negotiable. Help us understand your concerns.</p>
+                </div>
+
+                <!-- Q19 -->
+                <div class="survey-card" data-required data-min-selections="1">
+                    <div class="card-header">
+                        <span class="question-badge">Q19</span>
+                        <h3>What are your biggest concerns about using AI for clinical documentation?</h3>
+                        <span class="card-hint">Select all that apply</span>
+                    </div>
+                    <div class="survey-options survey-options--multi">
+                        <label class="survey-option">
+                            <input type="checkbox" name="q19" value="hipaa-privacy">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Patient privacy / HIPAA compliance</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q19" value="accuracy">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Accuracy of AI-generated content</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q19" value="hallucination">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">AI hallucinating clinical details</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q19" value="ethical-concerns">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Ethical concerns (AI in clinical context)</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q19" value="liability">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Liability if AI note has errors</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q19" value="cost">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Cost</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q19" value="learning-curve">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Learning curve / too much change</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q19" value="clients-uncomfortable">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">My clients wouldn't be comfortable</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q19" value="insurance-payer">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Insurance / payer wouldn't accept AI notes</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q19" value="no-major-concerns">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">I don't have any major concerns</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q19" value="other">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Other</span>
+                            <input type="text" name="q19_other" class="other-input" placeholder="Please specify">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Q20 -->
+                <div class="survey-card">
+                    <div class="card-header">
+                        <span class="question-badge">Q20</span>
+                        <h3>What would make you trust an AI documentation tool?</h3>
+                        <span class="card-hint">Select all that apply</span>
+                    </div>
+                    <div class="survey-options survey-options--multi">
+                        <label class="survey-option">
+                            <input type="checkbox" name="q20" value="hipaa-baa">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">HIPAA-compliant with signed BAA</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q20" value="soc2">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">SOC 2 Type II certification</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q20" value="audio-deleted">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Audio deleted immediately after transcription</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q20" value="e2e-encryption">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">End-to-end encryption</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q20" value="professional-recommendation">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Recommended by a professional I trust</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q20" value="positive-reviews">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Positive reviews from other therapists</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q20" value="free-trial">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Free trial with real sessions</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q20" value="on-device">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">On-device processing option</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q20" value="audit-reports">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Published audit / security reports</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q20" value="other">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Other</span>
+                            <input type="text" name="q20_other" class="other-input" placeholder="Please specify">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Q21 -->
+                <div class="survey-card">
+                    <div class="card-header">
+                        <span class="question-badge">Q21</span>
+                        <h3>What would prevent you from trying this tool?</h3>
+                    </div>
+                    <textarea name="q21" rows="4" placeholder="Share any barriers or concerns that come to mind..."></textarea>
+                </div>
+            </div>
+
+            <!-- ============================================
+                 SECTION 6: Pricing & Value
+                 ============================================ -->
+            <div class="survey-section" data-title="Pricing">
+                <div class="section-intro">
+                    <h2>Pricing &amp; Value</h2>
+                    <p>Help us price this fairly.</p>
+                </div>
+
+                <!-- Q22 -->
+                <div class="survey-card" data-required>
+                    <div class="card-header">
+                        <span class="question-badge">Q22</span>
+                        <h3>How much do you currently spend monthly on documentation / EHR tools?</h3>
+                    </div>
+                    <div class="survey-options">
+                        <label class="survey-option">
+                            <input type="radio" name="q22" value="0-free">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">$0 (free tools or paper)</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q22" value="1-29">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">$1-$29</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q22" value="30-59">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">$30-$59</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q22" value="60-99">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">$60-$99</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q22" value="100-149">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">$100-$149</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q22" value="150-plus">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">$150+</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Q23 -->
+                <div class="survey-card" data-required>
+                    <div class="card-header">
+                        <span class="question-badge">Q23</span>
+                        <h3>For a tool that cuts your documentation time by 75%, what monthly price feels fair?</h3>
+                    </div>
+                    <div class="survey-options">
+                        <label class="survey-option">
+                            <input type="radio" name="q23" value="less-than-20">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Less than $20</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q23" value="20-39">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">$20-$39</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q23" value="40-59">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">$40-$59</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q23" value="60-79">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">$60-$79</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q23" value="80-99">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">$80-$99</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q23" value="100-plus">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">$100+</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Q24 -->
+                <div class="survey-card">
+                    <div class="card-header">
+                        <span class="question-badge">Q24</span>
+                        <h3>Which pricing model do you prefer?</h3>
+                    </div>
+                    <div class="survey-options">
+                        <label class="survey-option">
+                            <input type="radio" name="q24" value="monthly-flat">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Monthly subscription (flat rate, unlimited)</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q24" value="monthly-tiered">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Monthly subscription (tiered by volume)</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q24" value="pay-per-note">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Pay-per-note</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q24" value="annual-discounted">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Annual subscription (discounted)</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q24" value="free-tier">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">I'd need a free tier</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Q25 -->
+                <div class="survey-card">
+                    <div class="card-header">
+                        <span class="question-badge">Q25</span>
+                        <h3>Would a 14-day free trial (no credit card required) be enough to evaluate the tool?</h3>
+                    </div>
+                    <div class="survey-options">
+                        <label class="survey-option">
+                            <input type="radio" name="q25" value="yes-plenty">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Yes, that's plenty</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q25" value="need-30-days">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">I'd need 30 days</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q25" value="free-tier-forever">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">I'd need a free tier forever</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q25" value="need-recommendation">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">I wouldn't try without a recommendation</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================
+                 SECTION 7: Almost Done
+                 ============================================ -->
+            <div class="survey-section" data-title="Wrap Up">
+                <div class="section-intro">
+                    <h2>Almost Done</h2>
+                    <p>Last few questions -- we promise.</p>
+                </div>
+
+                <!-- Q26 -->
+                <div class="survey-card" data-required>
+                    <div class="card-header">
+                        <span class="question-badge">Q26</span>
+                        <h3>What device would you primarily use for recording session notes?</h3>
+                    </div>
+                    <div class="survey-options">
+                        <label class="survey-option">
+                            <input type="radio" name="q26" value="iphone">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">iPhone</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q26" value="ipad">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">iPad</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q26" value="mac">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Mac / MacBook</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q26" value="android-phone">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Android phone</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q26" value="android-tablet">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Android tablet</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q26" value="windows-pc">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Windows PC</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q26" value="multiple-devices">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Multiple devices</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Q27 -->
+                <div class="survey-card">
+                    <div class="card-header">
+                        <span class="question-badge">Q27</span>
+                        <h3>Would you be interested in joining a beta test group?</h3>
+                    </div>
+                    <div class="survey-options">
+                        <label class="survey-option">
+                            <input type="radio" name="q27" value="beta-yes">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Yes -- sign me up!</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q27" value="beta-maybe">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Maybe -- tell me more first</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q27" value="no-thanks">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">No thanks</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Q28 (conditional) -->
+                <div class="survey-card survey-card--conditional" data-show-when="q27=beta-yes,beta-maybe" hidden>
+                    <div class="card-header">
+                        <span class="question-badge">Q28</span>
+                        <h3>What's the best email to reach you?</h3>
+                    </div>
+                    <input type="email" name="q28" placeholder="your@email.com">
+                </div>
+
+                <!-- Q29 -->
+                <div class="survey-card">
+                    <div class="card-header">
+                        <span class="question-badge">Q29</span>
+                        <h3>Anything else you'd like us to know?</h3>
+                    </div>
+                    <textarea name="q29" rows="4" placeholder="Share your thoughts, ideas, or concerns..."></textarea>
+                </div>
+            </div>
+
+            <!-- ============================================
+                 THANK YOU
+                 ============================================ -->
+            <div class="survey-section survey-section--thankyou">
+                <div class="survey-thankyou">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    <h2>Thank You!</h2>
+                    <p>Your insights will directly shape how we build this tool. If you signed up for the beta, we'll be in touch soon.</p>
+                    <a href="/" class="survey-nav-btn survey-nav-btn--next">Back to HeiloProjects</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div aria-hidden="true" style="position:absolute;left:-9999px">
+            <input type="text" name="website" tabindex="-1" autocomplete="off">
+        </div>
+    </main>
+
+    <script src="/surveys/survey.js"></script>
+    <script>new SurveyEngine({ surveyId: 'therapy', endpoint: '' });</script>
+</body>
+</html>

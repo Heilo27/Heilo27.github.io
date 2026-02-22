@@ -1,0 +1,739 @@
+/* Survey Engine Styles — extends the site design system */
+
+/* ============================================
+   Layout
+   ============================================ */
+
+.survey-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 100px 24px 80px;
+    min-height: 100vh;
+}
+
+/* ============================================
+   Progress Bar
+   ============================================ */
+
+.survey-progress {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    z-index: 90;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 12px 24px;
+    display: none;
+}
+
+.survey-progress.visible {
+    display: block;
+}
+
+.progress-bar {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.progress-track {
+    height: 4px;
+    background: var(--border-subtle);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+    width: 0%;
+}
+
+.progress-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    font-size: 0.75rem;
+    color: var(--text-subtle);
+}
+
+.progress-labels span {
+    transition: color 0.3s ease;
+}
+
+.progress-labels span.active {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.progress-labels span.completed {
+    color: var(--text-muted);
+}
+
+/* ============================================
+   Sections
+   ============================================ */
+
+.survey-section {
+    display: none;
+    animation: surveyFadeIn 0.4s ease;
+}
+
+.survey-section.active {
+    display: block;
+}
+
+@keyframes surveyFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   Hero / Intro
+   ============================================ */
+
+.survey-hero {
+    text-align: center;
+    padding: 80px 0 40px;
+}
+
+.survey-badge {
+    display: inline-block;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.survey-hero h1 {
+    font-size: 2.75rem;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    color: var(--text);
+}
+
+.survey-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 540px;
+    margin: 0 auto 32px;
+}
+
+.survey-meta {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 40px;
+    font-size: 0.875rem;
+    color: var(--text-subtle);
+}
+
+.survey-meta span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.survey-meta span::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+}
+
+.survey-start-btn {
+    font-size: 1.0625rem;
+}
+
+/* ============================================
+   Section Intros
+   ============================================ */
+
+.section-intro {
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.section-intro h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+    color: var(--text);
+}
+
+.section-intro p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* ============================================
+   Question Cards
+   ============================================ */
+
+.survey-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 20px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.survey-card:hover {
+    border-color: var(--border);
+}
+
+.survey-card.error {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.survey-card.error .card-header::after {
+    content: 'Required';
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #ef4444;
+    margin-left: auto;
+}
+
+.survey-card--conditional {
+    border-left: 3px solid var(--accent);
+}
+
+.card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.question-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 28px;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 8px;
+    flex-shrink: 0;
+    padding: 0 8px;
+}
+
+.card-header h3 {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.5;
+    flex: 1;
+}
+
+.card-hint {
+    font-size: 0.8125rem;
+    color: var(--text-subtle);
+    width: 100%;
+    padding-left: 48px;
+    margin-top: -8px;
+}
+
+/* ============================================
+   Options (Radio & Checkbox)
+   ============================================ */
+
+.survey-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.survey-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.survey-option:hover {
+    background: var(--accent-light);
+    border-color: var(--accent);
+}
+
+.survey-option input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.survey-option .option-indicator {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border);
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Checkbox indicator */
+.survey-options--multi .option-indicator {
+    border-radius: 6px;
+}
+
+.survey-option input:checked ~ .option-indicator {
+    border-color: var(--accent);
+    background: var(--accent);
+}
+
+.survey-option input:checked ~ .option-indicator::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+}
+
+.survey-options--multi .survey-option input:checked ~ .option-indicator::after {
+    width: 10px;
+    height: 10px;
+    background: none;
+    border-radius: 0;
+    /* Checkmark via border trick */
+    border-bottom: 2px solid white;
+    border-right: 2px solid white;
+    transform: rotate(45deg);
+    margin-top: -2px;
+    width: 5px;
+    height: 9px;
+}
+
+.survey-option input:checked ~ .option-text {
+    color: var(--text);
+    font-weight: 500;
+}
+
+.option-text {
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* Other input inline */
+.other-input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 0.875rem;
+    font-family: inherit;
+    margin-left: 8px;
+    min-width: 0;
+    transition: border-color 0.2s ease;
+}
+
+.other-input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+/* ============================================
+   Rating Scale
+   ============================================ */
+
+.survey-rating {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.rating-label-left,
+.rating-label-right {
+    font-size: 0.8125rem;
+    color: var(--text-subtle);
+    min-width: 80px;
+    white-space: nowrap;
+}
+
+.rating-label-left {
+    text-align: right;
+}
+
+.rating-label-right {
+    text-align: left;
+}
+
+.rating-options {
+    display: flex;
+    gap: 8px;
+    flex: 1;
+    justify-content: center;
+}
+
+.rating-option {
+    cursor: pointer;
+    user-select: none;
+}
+
+.rating-option input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.rating-dot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 2px solid var(--border);
+    border-radius: 50%;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+}
+
+.rating-option:hover .rating-dot {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-light);
+}
+
+.rating-option input:checked ~ .rating-dot {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: white;
+}
+
+/* ============================================
+   Importance Grid
+   ============================================ */
+
+.importance-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.importance-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.importance-row:last-child {
+    border-bottom: none;
+}
+
+.importance-label {
+    font-size: 0.9375rem;
+    color: var(--text);
+}
+
+.importance-dots {
+    display: flex;
+    gap: 6px;
+}
+
+.importance-dots label {
+    cursor: pointer;
+    user-select: none;
+}
+
+.importance-dots input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.importance-dots .imp-dot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1.5px solid var(--border);
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-subtle);
+    transition: all 0.2s ease;
+}
+
+.importance-dots label:hover .imp-dot {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.importance-dots input:checked ~ .imp-dot {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: white;
+}
+
+/* ============================================
+   Text Inputs
+   ============================================ */
+
+.survey-card textarea,
+.survey-card input[type="text"],
+.survey-card input[type="email"] {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.2s ease;
+    resize: vertical;
+}
+
+.survey-card textarea:focus,
+.survey-card input[type="text"]:focus,
+.survey-card input[type="email"]:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+.survey-card textarea::placeholder,
+.survey-card input::placeholder {
+    color: var(--text-subtle);
+}
+
+/* ============================================
+   Navigation
+   ============================================ */
+
+.survey-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 0;
+    margin-top: 16px;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.survey-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.survey-nav-btn--back {
+    background: transparent;
+    color: var(--text-muted);
+    padding-left: 16px;
+}
+
+.survey-nav-btn--back:hover {
+    color: var(--text);
+    background: var(--accent-light);
+}
+
+.survey-nav-btn--next,
+.survey-nav-btn--submit {
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 4px 12px rgba(45, 125, 70, 0.3);
+}
+
+.survey-nav-btn--next:hover,
+.survey-nav-btn--submit:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(45, 125, 70, 0.4);
+}
+
+.survey-nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.survey-nav-btn--hidden {
+    visibility: hidden;
+}
+
+/* ============================================
+   Thank You
+   ============================================ */
+
+.survey-thankyou {
+    text-align: center;
+    padding: 100px 0 60px;
+}
+
+.survey-thankyou svg {
+    margin-bottom: 24px;
+}
+
+.survey-thankyou h2 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 12px;
+}
+
+.survey-thankyou p {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 480px;
+    margin: 0 auto 40px;
+}
+
+/* ============================================
+   Loading / Error States
+   ============================================ */
+
+.survey-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 40px;
+    color: var(--text-muted);
+}
+
+.survey-loading .spinner {
+    animation: surveySpinner 1s linear infinite;
+}
+
+@keyframes surveySpinner {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.survey-error {
+    text-align: center;
+    padding: 40px;
+    color: #ef4444;
+}
+
+.survey-error p {
+    margin-bottom: 16px;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 768px) {
+    .survey-container {
+        padding: 88px 16px 60px;
+    }
+
+    .survey-hero {
+        padding: 40px 0 24px;
+    }
+
+    .survey-hero h1 {
+        font-size: 2rem;
+    }
+
+    .survey-meta {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .survey-card {
+        padding: 20px;
+    }
+
+    .survey-rating {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .rating-label-left,
+    .rating-label-right {
+        text-align: center;
+        min-width: auto;
+    }
+
+    .importance-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .progress-labels {
+        display: none;
+    }
+
+    .card-hint {
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .survey-hero h1 {
+        font-size: 1.75rem;
+    }
+
+    .rating-dot {
+        width: 38px;
+        height: 38px;
+    }
+
+    .importance-dots .imp-dot {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .survey-section {
+        animation: none;
+    }
+}

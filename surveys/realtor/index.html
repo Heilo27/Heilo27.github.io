@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Marketing Survey | HeiloProjects</title>
+    <meta name="description" content="Help us build better listing marketing tools — share your experience in this 4-minute survey.">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/surveys/survey.css">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <header>
+        <nav aria-label="Main navigation">
+            <a href="/" class="logo"><span class="logo-heilo">Heilo</span><span class="logo-projects">Projects</span></a>
+            <ul class="nav-links"><li><a href="/">Home</a></li></ul>
+        </nav>
+    </header>
+    <main id="main">
+        <div class="survey-container" data-survey-id="realtor">
+
+            <!-- Intro -->
+            <div class="survey-section survey-section--intro active">
+                <div class="survey-hero">
+                    <span class="survey-badge">Market Research</span>
+                    <h1>Help Us Automate Listing Marketing</h1>
+                    <p class="survey-subtitle">Creating social posts, videos, and property websites for every listing takes hours. We're building a tool to do it in minutes. Tell us what you need.</p>
+                    <div class="survey-meta">
+                        <span>~4 minutes</span>
+                        <span>20 questions</span>
+                        <span>Anonymous</span>
+                    </div>
+                    <button class="cta cta-primary survey-start-btn" type="button">
+                        <span>Start Survey</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Section 1: About Your Business -->
+            <div class="survey-section" data-title="Your Business">
+                <div class="section-intro">
+                    <h2>About Your Business</h2>
+                    <p>Help us understand your real estate practice.</p>
+                </div>
+
+                <!-- Q1 -->
+                <div class="survey-card" data-required>
+                    <div class="card-header">
+                        <span class="question-badge">Q1</span>
+                        <h3>What best describes your real estate practice?</h3>
+                    </div>
+                    <div class="survey-options">
+                        <label class="survey-option">
+                            <input type="radio" name="q1" value="solo-agent">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Solo agent</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q1" value="team-member">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Agent on a team (2–5 agents)</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q1" value="team-lead">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Team lead / managing broker</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q1" value="brokerage-owner">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Brokerage owner</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q1" value="property-manager">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Property manager</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q1" value="other">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Other</span>
+                            <input type="text" name="q1_other" class="other-input" placeholder="Please specify">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="survey-card" data-required>
+                    <div class="card-header">
+                        <span class="question-badge">Q2</span>
+                        <h3>How many listings do you typically manage per month?</h3>
+                    </div>
+                    <div class="survey-options">
+                        <label class="survey-option">
+                            <input type="radio" name="q2" value="1-2">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">1–2</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q2" value="3-5">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">3–5</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q2" value="6-10">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">6–10</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q2" value="11-20">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">11–20</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q2" value="20+">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">20+</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="survey-card" data-required data-min-selections="1">
+                    <div class="card-header">
+                        <span class="question-badge">Q3</span>
+                        <h3>What type of properties do you primarily sell?</h3>
+                        <span class="card-hint">Select all that apply</span>
+                    </div>
+                    <div class="survey-options survey-options--multi">
+                        <label class="survey-option">
+                            <input type="checkbox" name="q3" value="single-family">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Single-family residential</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q3" value="condos">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Condos / townhomes</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q3" value="luxury">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Luxury ($1M+)</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q3" value="commercial">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Commercial</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q3" value="multi-family">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Multi-family / investment</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q3" value="land">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Land / lots</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q3" value="new-construction">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">New construction</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q3" value="other">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Other</span>
+                            <input type="text" name="q3_other" class="other-input" placeholder="Please specify">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="survey-card" data-required>
+                    <div class="card-header">
+                        <span class="question-badge">Q4</span>
+                        <h3>How many years have you been in real estate?</h3>
+                    </div>
+                    <div class="survey-options">
+                        <label class="survey-option">
+                            <input type="radio" name="q4" value="less-2">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Less than 2 years</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q4" value="2-5">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">2–5</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q4" value="6-10">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">6–10</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q4" value="11-20">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">11–20</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q4" value="20+">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">20+</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2: Marketing Process -->
+            <div class="survey-section" data-title="Marketing Process">
+                <div class="section-intro">
+                    <h2>Current Marketing Process</h2>
+                    <p>Tell us how you currently market your listings.</p>
+                </div>
+
+                <!-- Q5 -->
+                <div class="survey-card" data-required data-min-selections="1">
+                    <div class="card-header">
+                        <span class="question-badge">Q5</span>
+                        <h3>How do you currently create marketing materials for your listings?</h3>
+                        <span class="card-hint">Select all that apply</span>
+                    </div>
+                    <div class="survey-options survey-options--multi">
+                        <label class="survey-option">
+                            <input type="checkbox" name="q5" value="diy">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">I do it myself (Canva, Adobe, etc.)</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q5" value="photographer">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">I hire a photographer/videographer</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q5" value="brokerage">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">My brokerage provides marketing support</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q5" value="va">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">I use a virtual assistant</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q5" value="service">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">I use a listing marketing service</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q5" value="minimal">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">I do minimal marketing (MLS listing only)</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q5" value="other">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Other</span>
+                            <input type="text" name="q5_other" class="other-input" placeholder="Please specify">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Q6 -->
+                <div class="survey-card" data-required>
+                    <div class="card-header">
+                        <span class="question-badge">Q6</span>
+                        <h3>How much time do you spend on marketing per listing?</h3>
+                    </div>
+                    <div class="survey-options">
+                        <label class="survey-option">
+                            <input type="radio" name="q6" value="less-1h">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Less than 1 hour</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q6" value="1-2h">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">1–2 hours</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q6" value="3-5h">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">3–5 hours</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q6" value="5-8h">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">5–8 hours</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q6" value="more-8h">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">More than 8 hours</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Q7 -->
+                <div class="survey-card" data-required data-min-selections="1">
+                    <div class="card-header">
+                        <span class="question-badge">Q7</span>
+                        <h3>What types of marketing content do you create for each listing?</h3>
+                        <span class="card-hint">Select all that apply</span>
+                    </div>
+                    <div class="survey-options survey-options--multi">
+                        <label class="survey-option">
+                            <input type="checkbox" name="q7" value="photography">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Professional photography</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q7" value="social">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Social media posts</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q7" value="video">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Video walkthrough / tour</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q7" value="property-site">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Single-property website</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q7" value="print">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Print flyers / brochures</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q7" value="email">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Email campaigns</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q7" value="staging">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Virtual staging</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q7" value="drone">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Drone / aerial photos</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q7" value="3d-tour">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">3D tours (Matterport, etc.)</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q7" value="neighborhood">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Neighborhood guides</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q7" value="open-house">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Open house invitations</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q7" value="rarely">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">I rarely create marketing materials</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Q8 -->
+                <div class="survey-card">
+                    <div class="card-header">
+                        <span class="question-badge">Q8</span>
+                        <h3>What tools do you currently use for listing marketing?</h3>
+                        <span class="card-hint">Select all that apply</span>
+                    </div>
+                    <div class="survey-options survey-options--multi">
+                        <label class="survey-option">
+                            <input type="checkbox" name="q8" value="canva">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Canva</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q8" value="adobe">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Adobe Creative Suite</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q8" value="capcut">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">CapCut / InShot</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q8" value="mls-tools">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">MLS built-in tools</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q8" value="kvcore">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">KVCore</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q8" value="chime">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Chime</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q8" value="boomtown">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">BoomTown</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q8" value="coffee-contracts">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Coffee &amp; Contracts</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q8" value="labcoat">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Lab Coat Agents templates</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q8" value="social-scheduler">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Social media scheduling (Hootsuite, Buffer)</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q8" value="website-builder">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Custom website builder</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q8" value="none">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">None / just MLS</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q8" value="other">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Other</span>
+                            <input type="text" name="q8_other" class="other-input" placeholder="Please specify">
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: Pain Points -->
+            <div class="survey-section" data-title="Pain Points">
+                <div class="section-intro">
+                    <h2>Pain Points</h2>
+                    <p>What's frustrating about marketing your listings?</p>
+                </div>
+
+                <!-- Q9 -->
+                <div class="survey-card" data-required data-min-selections="1">
+                    <div class="card-header">
+                        <span class="question-badge">Q9</span>
+                        <h3>What are your biggest frustrations with listing marketing?</h3>
+                        <span class="card-hint">Select all that apply</span>
+                    </div>
+                    <div class="survey-options survey-options--multi">
+                        <label class="survey-option">
+                            <input type="checkbox" name="q9" value="takes-long">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Takes too long</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q9" value="inconsistent">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Inconsistent brand look across listings</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q9" value="unclear-roi">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Don't know what content performs best</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q9" value="expensive">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Expensive to outsource</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q9" value="trends">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Hard to keep up with social media trends</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q9" value="video-hard">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Creating video content is difficult</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q9" value="writing-hard">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Writing compelling descriptions is hard</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q9" value="coordination">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Coordinating photographers/vendors takes effort</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q9" value="not-enough-time">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Not enough time to market every listing well</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q9" value="measuring">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Results are hard to measure</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q9" value="other">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Other</span>
+                            <input type="text" name="q9_other" class="other-input" placeholder="Please specify">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Q10 -->
+                <div class="survey-card" data-required>
+                    <div class="card-header">
+                        <span class="question-badge">Q10</span>
+                        <h3>How would you rate the impact of marketing quality on your ability to attract buyers?</h3>
+                    </div>
+                    <div class="survey-rating">
+                        <span class="rating-label-left">Minimal impact</span>
+                        <div class="rating-options">
+                            <label class="rating-option">
+                                <input type="radio" name="q10" value="1">
+                                <span class="rating-dot">1</span>
+                            </label>
+                            <label class="rating-option">
+                                <input type="radio" name="q10" value="2">
+                                <span class="rating-dot">2</span>
+                            </label>
+                            <label class="rating-option">
+                                <input type="radio" name="q10" value="3">
+                                <span class="rating-dot">3</span>
+                            </label>
+                            <label class="rating-option">
+                                <input type="radio" name="q10" value="4">
+                                <span class="rating-dot">4</span>
+                            </label>
+                            <label class="rating-option">
+                                <input type="radio" name="q10" value="5">
+                                <span class="rating-dot">5</span>
+                            </label>
+                        </div>
+                        <span class="rating-label-right">Critical to every sale</span>
+                    </div>
+                </div>
+
+                <!-- Q11 -->
+                <div class="survey-card" data-required>
+                    <div class="card-header">
+                        <span class="question-badge">Q11</span>
+                        <h3>What percentage of your working time goes to marketing vs. selling?</h3>
+                    </div>
+                    <div class="survey-options">
+                        <label class="survey-option">
+                            <input type="radio" name="q11" value="less-10">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Less than 10% marketing</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q11" value="10-25">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">10–25%</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q11" value="25-40">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">25–40%</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q11" value="40-60">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">40–60%</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q11" value="more-60">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">More than 60% marketing</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 4: AI Interest -->
+            <div class="survey-section" data-title="AI Interest">
+                <div class="section-intro">
+                    <h2>Interest in Automation</h2>
+                    <p>We're exploring automated listing marketing.</p>
+                </div>
+
+                <!-- Q12 -->
+                <div class="survey-card" data-required>
+                    <div class="card-header">
+                        <span class="question-badge">Q12</span>
+                        <h3>Imagine a tool that auto-generates a complete marketing kit from your listing details — 10 social posts, a video walkthrough script, and a single-property website, all branded to you. How interested would you be?</h3>
+                    </div>
+                    <div class="survey-rating">
+                        <span class="rating-label-left">Not interested</span>
+                        <div class="rating-options">
+                            <label class="rating-option">
+                                <input type="radio" name="q12" value="1">
+                                <span class="rating-dot">1</span>
+                            </label>
+                            <label class="rating-option">
+                                <input type="radio" name="q12" value="2">
+                                <span class="rating-dot">2</span>
+                            </label>
+                            <label class="rating-option">
+                                <input type="radio" name="q12" value="3">
+                                <span class="rating-dot">3</span>
+                            </label>
+                            <label class="rating-option">
+                                <input type="radio" name="q12" value="4">
+                                <span class="rating-dot">4</span>
+                            </label>
+                            <label class="rating-option">
+                                <input type="radio" name="q12" value="5">
+                                <span class="rating-dot">5</span>
+                            </label>
+                        </div>
+                        <span class="rating-label-right">Need this yesterday</span>
+                    </div>
+                </div>
+
+                <!-- Q13 -->
+                <div class="survey-card" data-required data-min-selections="5">
+                    <div class="card-header">
+                        <span class="question-badge">Q13</span>
+                        <h3>What features would be most important to you?</h3>
+                        <span class="card-hint">Rate each feature 1–5</span>
+                    </div>
+                    <div class="importance-grid">
+                        <div class="importance-row">
+                            <span class="importance-label">Speed (marketing kit in under 5 minutes)</span>
+                            <div class="importance-dots">
+                                <label><input type="radio" name="q13_speed" value="1"><span class="imp-dot">1</span></label>
+                                <label><input type="radio" name="q13_speed" value="2"><span class="imp-dot">2</span></label>
+                                <label><input type="radio" name="q13_speed" value="3"><span class="imp-dot">3</span></label>
+                                <label><input type="radio" name="q13_speed" value="4"><span class="imp-dot">4</span></label>
+                                <label><input type="radio" name="q13_speed" value="5"><span class="imp-dot">5</span></label>
+                            </div>
+                        </div>
+                        <div class="importance-row">
+                            <span class="importance-label">Brand consistency (matches your personal brand)</span>
+                            <div class="importance-dots">
+                                <label><input type="radio" name="q13_brand" value="1"><span class="imp-dot">1</span></label>
+                                <label><input type="radio" name="q13_brand" value="2"><span class="imp-dot">2</span></label>
+                                <label><input type="radio" name="q13_brand" value="3"><span class="imp-dot">3</span></label>
+                                <label><input type="radio" name="q13_brand" value="4"><span class="imp-dot">4</span></label>
+                                <label><input type="radio" name="q13_brand" value="5"><span class="imp-dot">5</span></label>
+                            </div>
+                        </div>
+                        <div class="importance-row">
+                            <span class="importance-label">Social media ready (platform-optimized)</span>
+                            <div class="importance-dots">
+                                <label><input type="radio" name="q13_social" value="1"><span class="imp-dot">1</span></label>
+                                <label><input type="radio" name="q13_social" value="2"><span class="imp-dot">2</span></label>
+                                <label><input type="radio" name="q13_social" value="3"><span class="imp-dot">3</span></label>
+                                <label><input type="radio" name="q13_social" value="4"><span class="imp-dot">4</span></label>
+                                <label><input type="radio" name="q13_social" value="5"><span class="imp-dot">5</span></label>
+                            </div>
+                        </div>
+                        <div class="importance-row">
+                            <span class="importance-label">Video generation (auto-edited walkthrough)</span>
+                            <div class="importance-dots">
+                                <label><input type="radio" name="q13_video" value="1"><span class="imp-dot">1</span></label>
+                                <label><input type="radio" name="q13_video" value="2"><span class="imp-dot">2</span></label>
+                                <label><input type="radio" name="q13_video" value="3"><span class="imp-dot">3</span></label>
+                                <label><input type="radio" name="q13_video" value="4"><span class="imp-dot">4</span></label>
+                                <label><input type="radio" name="q13_video" value="5"><span class="imp-dot">5</span></label>
+                            </div>
+                        </div>
+                        <div class="importance-row">
+                            <span class="importance-label">Property website (standalone, branded)</span>
+                            <div class="importance-dots">
+                                <label><input type="radio" name="q13_website" value="1"><span class="imp-dot">1</span></label>
+                                <label><input type="radio" name="q13_website" value="2"><span class="imp-dot">2</span></label>
+                                <label><input type="radio" name="q13_website" value="3"><span class="imp-dot">3</span></label>
+                                <label><input type="radio" name="q13_website" value="4"><span class="imp-dot">4</span></label>
+                                <label><input type="radio" name="q13_website" value="5"><span class="imp-dot">5</span></label>
+                            </div>
+                        </div>
+                        <div class="importance-row">
+                            <span class="importance-label">MLS integration (auto-pull listing details)</span>
+                            <div class="importance-dots">
+                                <label><input type="radio" name="q13_mls" value="1"><span class="imp-dot">1</span></label>
+                                <label><input type="radio" name="q13_mls" value="2"><span class="imp-dot">2</span></label>
+                                <label><input type="radio" name="q13_mls" value="3"><span class="imp-dot">3</span></label>
+                                <label><input type="radio" name="q13_mls" value="4"><span class="imp-dot">4</span></label>
+                                <label><input type="radio" name="q13_mls" value="5"><span class="imp-dot">5</span></label>
+                            </div>
+                        </div>
+                        <div class="importance-row">
+                            <span class="importance-label">Customizable templates</span>
+                            <div class="importance-dots">
+                                <label><input type="radio" name="q13_templates" value="1"><span class="imp-dot">1</span></label>
+                                <label><input type="radio" name="q13_templates" value="2"><span class="imp-dot">2</span></label>
+                                <label><input type="radio" name="q13_templates" value="3"><span class="imp-dot">3</span></label>
+                                <label><input type="radio" name="q13_templates" value="4"><span class="imp-dot">4</span></label>
+                                <label><input type="radio" name="q13_templates" value="5"><span class="imp-dot">5</span></label>
+                            </div>
+                        </div>
+                        <div class="importance-row">
+                            <span class="importance-label">Analytics (track content performance)</span>
+                            <div class="importance-dots">
+                                <label><input type="radio" name="q13_analytics" value="1"><span class="imp-dot">1</span></label>
+                                <label><input type="radio" name="q13_analytics" value="2"><span class="imp-dot">2</span></label>
+                                <label><input type="radio" name="q13_analytics" value="3"><span class="imp-dot">3</span></label>
+                                <label><input type="radio" name="q13_analytics" value="4"><span class="imp-dot">4</span></label>
+                                <label><input type="radio" name="q13_analytics" value="5"><span class="imp-dot">5</span></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q14 -->
+                <div class="survey-card">
+                    <div class="card-header">
+                        <span class="question-badge">Q14</span>
+                        <h3>What would you need to trust this tool?</h3>
+                        <span class="card-hint">Select all that apply</span>
+                    </div>
+                    <div class="survey-options survey-options--multi">
+                        <label class="survey-option">
+                            <input type="checkbox" name="q14" value="examples">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">See examples from real listings</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q14" value="trial">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Free trial with my actual listing</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q14" value="peers">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Used by agents I know</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q14" value="broker">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Recommended by my broker</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q14" value="integration">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Integration with my CRM/MLS</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q14" value="editable">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Ability to edit everything before publishing</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="checkbox" name="q14" value="pricing">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Clear pricing (no hidden fees)</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 5: Pricing -->
+            <div class="survey-section" data-title="Pricing">
+                <div class="section-intro">
+                    <h2>Pricing &amp; Value</h2>
+                    <p>Help us price this right.</p>
+                </div>
+
+                <!-- Q15 -->
+                <div class="survey-card" data-required>
+                    <div class="card-header">
+                        <span class="question-badge">Q15</span>
+                        <h3>How much do you currently spend monthly on marketing tools/services?</h3>
+                    </div>
+                    <div class="survey-options">
+                        <label class="survey-option">
+                            <input type="radio" name="q15" value="$0">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">$0 (free tools)</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q15" value="1-49">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">$1–$49</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q15" value="50-99">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">$50–$99</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q15" value="100-199">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">$100–$199</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q15" value="200-499">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">$200–$499</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q15" value="500+">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">$500+</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Q16 -->
+                <div class="survey-card" data-required>
+                    <div class="card-header">
+                        <span class="question-badge">Q16</span>
+                        <h3>For a tool that creates complete marketing kits per listing in minutes, what monthly price feels fair?</h3>
+                    </div>
+                    <div class="survey-options">
+                        <label class="survey-option">
+                            <input type="radio" name="q16" value="less-50">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Less than $50</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q16" value="50-79">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">$50–$79</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q16" value="80-119">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">$80–$119</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q16" value="120-149">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">$120–$149</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q16" value="150-199">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">$150–$199</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q16" value="200+">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">$200+</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Q17 -->
+                <div class="survey-card">
+                    <div class="card-header">
+                        <span class="question-badge">Q17</span>
+                        <h3>Which pricing model do you prefer?</h3>
+                    </div>
+                    <div class="survey-options">
+                        <label class="survey-option">
+                            <input type="radio" name="q17" value="flat">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Flat monthly subscription</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q17" value="per-listing">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Per-listing fee</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q17" value="annual">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Annual subscription (discounted)</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q17" value="paygo">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Pay-as-you-go</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q17" value="free-tier">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Free tier with premium features</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 6: Wrap Up -->
+            <div class="survey-section" data-title="Wrap Up">
+                <div class="section-intro">
+                    <h2>Wrap Up</h2>
+                    <p>Last few questions — we promise.</p>
+                </div>
+
+                <!-- Q18 -->
+                <div class="survey-card">
+                    <div class="card-header">
+                        <span class="question-badge">Q18</span>
+                        <h3>Would you be interested in trying an early version of this tool?</h3>
+                    </div>
+                    <div class="survey-options">
+                        <label class="survey-option">
+                            <input type="radio" name="q18" value="beta-yes">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Yes, sign me up!</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q18" value="beta-maybe">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">Maybe — I'd like to learn more</span>
+                        </label>
+                        <label class="survey-option">
+                            <input type="radio" name="q18" value="no">
+                            <span class="option-indicator"></span>
+                            <span class="option-text">No thanks</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Q19 (conditional) -->
+                <div class="survey-card survey-card--conditional" data-show-when="q18=beta-yes,beta-maybe" hidden>
+                    <div class="card-header">
+                        <span class="question-badge">Q19</span>
+                        <h3>What's the best email to reach you?</h3>
+                    </div>
+                    <input type="email" name="q19" placeholder="your@email.com" autocomplete="email">
+                </div>
+
+                <!-- Q20 -->
+                <div class="survey-card">
+                    <div class="card-header">
+                        <span class="question-badge">Q20</span>
+                        <h3>Anything else you'd like us to know?</h3>
+                    </div>
+                    <textarea name="q20" rows="5" placeholder="Share your thoughts, ideas, or concerns..."></textarea>
+                </div>
+            </div>
+
+            <!-- Thank You -->
+            <div class="survey-section survey-section--thankyou">
+                <div class="survey-thankyou">
+                    <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <circle cx="32" cy="32" r="32" fill="rgba(45, 125, 70, 0.12)"/>
+                        <circle cx="32" cy="32" r="20" fill="rgba(45, 125, 70, 0.2)"/>
+                        <path d="M22 32L29 39L42 26" stroke="#2d7d46" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <h2>Thank you!</h2>
+                    <p>Your insights will directly shape what we build. If you signed up for early access, we'll be in touch soon.</p>
+                    <a href="/" class="btn">Back to HeiloProjects</a>
+                </div>
+            </div>
+
+        </div>
+        <div aria-hidden="true" style="position:absolute;left:-9999px">
+            <input type="text" name="website" tabindex="-1" autocomplete="off">
+        </div>
+    </main>
+    <script src="/surveys/survey.js"></script>
+    <script>new SurveyEngine({ surveyId: 'realtor', endpoint: '' });</script>
+</body>
+</html>
