@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surveys | HeiloProjects</title>
+    <meta name="description" content="Help shape the future of HeiloProjects — contribute to our research surveys.">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <style>
+        .surveys-hero {
+            text-align: center;
+            padding: 80px 24px;
+            background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+        }
+
+        .surveys-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            color: #1a202c;
+        }
+
+        .surveys-hero p {
+            font-size: 1.125rem;
+            color: #4a5568;
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .surveys-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            padding: 64px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .survey-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 32px 24px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .survey-card:hover {
+            border-color: #cbd5e0;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transform: translateY(-4px);
+        }
+
+        .survey-card-badge {
+            display: inline-block;
+            background: #edf2f7;
+            color: #2d3748;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+            width: fit-content;
+        }
+
+        .survey-card h2 {
+            font-size: 1.5rem;
+            margin: 0 0 12px 0;
+            color: #1a202c;
+        }
+
+        .survey-card p {
+            color: #4a5568;
+            margin: 0 0 24px 0;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+
+        .survey-card-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 0.875rem;
+            color: #718096;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .survey-card-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .survey-card-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #2563eb;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.3s ease;
+            width: 100%;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .survey-card-cta:hover {
+            background: #1d4ed8;
+        }
+
+        .survey-card-cta svg {
+            width: 18px;
+            height: 18px;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <header>
+        <nav aria-label="Main navigation">
+            <a href="/" class="logo"><span class="logo-heilo">Heilo</span><span class="logo-projects">Projects</span></a>
+            <ul class="nav-links"><li><a href="/">Home</a></li></ul>
+        </nav>
+    </header>
+
+    <main id="main">
+        <div class="surveys-hero">
+            <h1>Help Shape Our Products</h1>
+            <p>Your feedback drives our roadmap. Contribute to ongoing market research — each survey takes 4-5 minutes.</p>
+        </div>
+
+        <div class="surveys-grid">
+            <!-- FieldFlow Survey -->
+            <a href="/surveys/fieldflow/" class="survey-card">
+                <div class="survey-card-badge">Market Research</div>
+                <h2>FieldFlow</h2>
+                <p>Help us understand the needs of small trade teams. What scheduling, invoicing, and payment features matter most to you?</p>
+                <div class="survey-card-meta">
+                    <span>📋 ~4 min</span>
+                    <span>❓ 21 questions</span>
+                    <span>🔒 Anonymous</span>
+                </div>
+                <button class="survey-card-cta">
+                    <span>Start Survey</span>
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+            </a>
+
+            <!-- Realtor Survey -->
+            <a href="/surveys/realtor/" class="survey-card">
+                <div class="survey-card-badge">Market Research</div>
+                <h2>Realtor Insights</h2>
+                <p>We're exploring tools that help real estate professionals manage clients and closings. Share your biggest pain points.</p>
+                <div class="survey-card-meta">
+                    <span>📋 ~4 min</span>
+                    <span>❓ 18 questions</span>
+                    <span>🔒 Anonymous</span>
+                </div>
+                <button class="survey-card-cta">
+                    <span>Start Survey</span>
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+            </a>
+
+            <!-- Therapy Survey -->
+            <a href="/surveys/therapy/" class="survey-card">
+                <div class="survey-card-badge">Product Feedback</div>
+                <h2>Mental Health Support</h2>
+                <p>Early stage research on tools that help therapists and counselors. What features would improve your practice?</p>
+                <div class="survey-card-meta">
+                    <span>📋 ~5 min</span>
+                    <span>❓ 20 questions</span>
+                    <span>🔒 Anonymous</span>
+                </div>
+                <button class="survey-card-cta">
+                    <span>Start Survey</span>
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+            </a>
+        </div>
+    </main>
+
+    <footer style="text-align: center; padding: 40px 24px; color: #718096; border-top: 1px solid #e2e8f0;">
+        <p>&copy; 2026 HeiloProjects. All feedback is appreciated and kept confidential.</p>
+    </footer>
+</body>
+</html>
