@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connecting to QuickBooks…</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background: #f5f5f7;
+            color: #1d1d1f;
+        }
+        .message {
+            text-align: center;
+            padding: 40px;
+        }
+        p {
+            color: #6e6e73;
+            font-size: 15px;
+            margin-top: 12px;
+        }
+        a {
+            color: #0071e3;
+        }
+    </style>
+    <script>
+        // Bounce the Intuit OAuth callback back into the Stripes app.
+        // ASWebAuthenticationSession (callbackURLScheme: "stripes") intercepts
+        // any navigation to a stripes:// URL within the session.
+        (function () {
+            var dest = "stripes://qb-callback" + window.location.search;
+            window.location.replace(dest);
+        })();
+    </script>
+</head>
+<body>
+    <div class="message">
+        <strong>Returning to Stripes…</strong>
+        <p>If the app doesn't open automatically, <a id="link" href="#">tap here</a>.</p>
+    </div>
+    <script>
+        document.getElementById("link").href =
+            "stripes://qb-callback" + window.location.search;
+    </script>
+</body>
+</html>

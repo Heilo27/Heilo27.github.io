@@ -35,7 +35,7 @@
         <section class="legal-section">
             <div class="legal-container">
                 <h1>Privacy Policy</h1>
-                <p class="legal-updated">Last updated: January 2026</p>
+                    <p class="legal-updated">Last updated: March 2026</p>
 
                 <div class="legal-content">
                     <h2>Our Commitment</h2>
@@ -55,6 +55,24 @@
 
                     <h2>iCloud Sync</h2>
                     <p>Some of our apps offer iCloud sync to keep your data in sync across your Apple devices. This data is stored in your personal iCloud account, managed by Apple according to their privacy policy. We have no access to your iCloud data.</p>
+
+                    <h2>Stripes — Additional Privacy Disclosures</h2>
+                    <p>Stripes is a field crew dispatch app for lawn care businesses. Because it is a business-operations tool, it collects and processes additional data beyond what our other apps require. This section describes Stripes-specific data practices.</p>
+
+                    <h3 style="font-size:1.125rem;font-weight:600;margin-top:24px;margin-bottom:12px;color:var(--text);">Location Data</h3>
+                    <p>Stripes requests access to your precise location to power geofence job timers — the app automatically starts and stops job timers when a crew member arrives at or departs from a job site. Location data is used solely for this feature. It is not sold, shared with advertisers, or used for any tracking purpose. On Tier 1 (Calendar), location events are processed on-device only. On Tier 2 (Server), arrival and departure timestamps are stored on our cloud servers (Supabase) to support dispatcher reporting.</p>
+
+                    <h3 style="font-size:1.125rem;font-weight:600;margin-top:24px;margin-bottom:12px;color:var(--text);">Business Contact Information</h3>
+                    <p>Stripes stores customer records that may include business names, addresses, phone numbers, and email addresses. This information is entered by the dispatcher or imported from your device's contacts. On Tier 1 (Calendar), all customer data is stored locally on your device and synced through your personal iCloud account. On Tier 2 (Server), customer records are stored on our cloud servers to enable real-time sync across dispatcher and crew devices. We do not sell or share this data with third parties.</p>
+
+                    <h3 style="font-size:1.125rem;font-weight:600;margin-top:24px;margin-bottom:12px;color:var(--text);">Photos and Field Notes</h3>
+                    <p>Crew members can photograph job sites and add field notes within the app. On Tier 1 (Calendar), photos are stored on-device and shared only via Apple's native Share Sheet (AirDrop, Messages, Mail). On Tier 2 (Server), photos are uploaded to our cloud servers so dispatchers can view them in-app. Photos are associated with job records and are not used for any purpose other than displaying them to authorized users of your account.</p>
+
+                    <h3 style="font-size:1.125rem;font-weight:600;margin-top:24px;margin-bottom:12px;color:var(--text);">Cloud Server (Tier 2)</h3>
+                    <p>Stripes Tier 2 uses Supabase as its cloud backend. Data stored on Supabase servers includes: customer records, job schedules, job completion records, time logs, field notes, and crew account information. Supabase servers are located in the United States. Supabase's privacy policy is available at <a href="https://supabase.com/privacy" target="_blank" rel="noopener">supabase.com/privacy</a>. We retain your data for as long as your subscription is active. Upon cancellation, you may request deletion of your account data by contacting <a href="mailto:heiloprojects@icloud.com">heiloprojects@icloud.com</a>.</p>
+
+                    <h3 style="font-size:1.125rem;font-weight:600;margin-top:24px;margin-bottom:12px;color:var(--text);">QuickBooks Integration</h3>
+                    <p>Stripes optionally integrates with QuickBooks Online via Intuit's OAuth 2.0 authorization. If you choose to connect QuickBooks, you authorize Stripes to access your QuickBooks account on your behalf to create and update invoices and retrieve customer records. Your QuickBooks credentials are never visible to Stripes — authorization is handled entirely by Intuit's login screen. Access tokens are stored securely in your device's Keychain and on our server-side OAuth proxy (a Supabase Edge Function). We do not store your QuickBooks username or password. You can revoke Stripes' access to your QuickBooks account at any time from within the app (Settings → QuickBooks → Disconnect) or directly from your Intuit account at <a href="https://accounts.intuit.com" target="_blank" rel="noopener">accounts.intuit.com</a>.</p>
 
                     <h2>Contact Forms</h2>
                     <p>If you contact us through our website or email:</p>

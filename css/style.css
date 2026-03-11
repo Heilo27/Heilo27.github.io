@@ -527,6 +527,11 @@ nav {
     background-position: center;
 }
 
+.app-icon-stripes {
+    background: url('../images/icons/stripes-icon.png') center/cover no-repeat;
+    box-shadow: 0 8px 24px rgba(45, 125, 70, 0.35);
+}
+
 .app-icon-pantrychef {
     background: url('../images/icons/pantrychef-icon.png') center/cover no-repeat;
     box-shadow: 0 8px 24px rgba(74, 222, 128, 0.3);
