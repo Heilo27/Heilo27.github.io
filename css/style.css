@@ -532,8 +532,8 @@ nav {
     box-shadow: 0 8px 24px rgba(45, 125, 70, 0.35);
 }
 
-.app-icon-pantrychef {
-    background: url('../images/icons/pantrychef-icon.png') center/cover no-repeat;
+.app-icon-stockup {
+    background: url('../images/icons/stockup-icon.png') center/cover no-repeat;
     box-shadow: 0 8px 24px rgba(74, 222, 128, 0.3);
 }
 
