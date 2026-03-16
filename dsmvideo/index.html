@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DSM Video - Your NAS, Beautifully | HeiloProjects</title>
-    <meta name="description" content="A native iOS and Apple TV client for Synology Video Station. Browse and stream your personal video library directly from your NAS. Free, no subscriptions, no cloud required.">
-    <meta name="keywords" content="Synology Video Station app, NAS video player, DSM video iOS, Synology iOS app, Apple TV NAS streaming, DLNA iOS, home media server app">
+    <meta name="description" content="A native iOS and Apple TV replacement for Synology Video Station. Stream your personal video library directly from your NAS with DSVideoServer. Free, no subscriptions, no cloud required.">
+    <meta name="keywords" content="Synology NAS video player, DSM video iOS, Synology iOS app, Apple TV NAS streaming, home media server app, Video Station replacement, DSVideoServer">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="canonical" href="https://heiloprojects.com/dsmvideo/">
@@ -14,13 +14,13 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://heiloprojects.com/dsmvideo/">
     <meta property="og:title" content="DSM Video - Your NAS, Beautifully">
-    <meta property="og:description" content="Native iOS and Apple TV client for Synology Video Station. Stream your personal library from your NAS. Free forever.">
+    <meta property="og:description" content="Native iOS and Apple TV replacement for Synology Video Station. Stream your personal library from your NAS via DSVideoServer. Free forever.">
     <meta property="og:image" content="https://heiloprojects.com/images/icons/dsmvideo-icon.png">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="DSM Video - Your NAS, Beautifully">
-    <meta name="twitter:description" content="Native iOS and Apple TV client for Synology Video Station. Stream your personal library from your NAS. Free forever.">
+    <meta name="twitter:description" content="Native iOS and Apple TV replacement for Synology Video Station. Stream your personal library from your NAS via DSVideoServer. Free forever.">
 
     <style>
         /* ── Page-specific overrides ── */
@@ -190,7 +190,7 @@
                 <h1>Your Personal Video Library, Beautifully.</h1>
                 <p class="app-hero-tagline">Your NAS, Beautifully.</p>
                 <p class="app-hero-description">
-                    If you have a Synology NAS running Video Station, DSM Video gives you a polished native client on iPhone, iPad, and Apple TV. Browse, stream, and enjoy your personal movie and TV collection — no subscriptions, no third-party cloud, no compromise.
+                    DSM Video is a polished native replacement for Synology Video Station — built for iPhone, iPad, and Apple TV. Install DSVideoServer on your NAS, point the app at it, and enjoy your personal movie and TV collection the way it was meant to be watched. No subscriptions, no third-party cloud, no compromise.
                 </p>
                 <div class="app-hero-ctas">
                     <a href="https://apps.apple.com/app/dsm-video" class="cta cta-primary" id="download">
@@ -212,7 +212,7 @@
                     </a>
                 </div>
                 <div class="app-platforms-hero">
-                    <span>Free. Works on iPhone, iPad, and Apple TV. Requires a Synology NAS with Video Station.</span>
+                    <span>Free. Works on iPhone, iPad, and Apple TV. Requires a Synology NAS and DSVideoServer.</span>
                 </div>
             </div>
         </section>
@@ -221,8 +221,8 @@
         <section class="problem-statement-section">
             <div class="container">
                 <div class="problem-statement">
-                    <h2>You Already Have a Home Media Server. You Deserve a Great App for It.</h2>
-                    <p>Synology Video Station is powerful — but the official apps are outdated, limited on Apple TV, and don't take advantage of modern iOS. DSM Video is the app Synology should have built: fast, native, and designed for the way you actually watch.</p>
+                    <h2>You Already Have a Home Media Server. You Deserve an App That Does It Justice.</h2>
+                    <p>Synology's Video Station is dated, clunky on Apple TV, and ignores years of iOS improvements. DSM Video is the full replacement — a fast, native app powered by DSVideoServer, a lightweight package that runs on your NAS and manages your library directly.</p>
                     <p><strong>Your library is on your hardware, in your home, under your control. DSM Video keeps it that way.</strong></p>
                 </div>
             </div>
@@ -245,7 +245,7 @@
                             </svg>
                         </div>
                         <h3>Native Streaming</h3>
-                        <p>Full HLS and direct-play streaming from your Synology NAS. Smooth 4K playback on Apple TV with hardware-accelerated decoding.</p>
+                        <p>Full HLS and direct-play streaming from your NAS via DSVideoServer. Smooth 4K playback on Apple TV with hardware-accelerated decoding.</p>
                     </div>
 
                     <div class="feature-card">
@@ -355,9 +355,9 @@
                         </svg>
                     </div>
 
-                    <h2>Install the DSM Video Server Package</h2>
+                    <h2>Install DSVideoServer on Your NAS</h2>
                     <p>
-                        DSM Video connects to a lightweight server package running on your Synology NAS. It bridges the iOS app with Synology's Video Station API, handles authentication, and manages HLS transcoding for smooth streaming on any network.
+                        DSM Video connects to DSVideoServer — a lightweight package that runs on your Synology NAS. It manages your video library, handles authentication, and takes care of HLS transcoding for smooth streaming on any network.
                     </p>
 
                     <div class="server-steps">
@@ -373,8 +373,8 @@
                         </div>
                         <div class="server-step">
                             <div class="step-num">3</div>
-                            <h4>Configure Video Station</h4>
-                            <p>Ensure Video Station is installed and your libraries are indexed in DSM.</p>
+                            <h4>Point to Your Videos</h4>
+                            <p>In DSVideoServer's settings, set the paths to your video folders on the NAS.</p>
                         </div>
                         <div class="server-step">
                             <div class="step-num">4</div>
@@ -391,7 +391,7 @@
                     </a>
 
                     <p class="requirements-note">
-                        Requires Synology DSM 7.0 or later · Video Station must be installed · Intel or AMD NAS recommended for transcoding
+                        Requires Synology DSM 7.0 or later · Intel or AMD NAS recommended for transcoding
                     </p>
                 </div>
             </div>
@@ -428,7 +428,7 @@
                 <div class="faq-grid">
                     <div class="faq-item">
                         <h3>What do I need to use DSM Video?</h3>
-                        <p>A Synology NAS running DSM 7.0 or later, with the Video Station package installed and your videos organized in a library. You'll also need to install the DSVideoServer package from our GitHub releases page.</p>
+                        <p>A Synology NAS running DSM 7.0 or later, and the DSVideoServer package installed from our GitHub releases page. Point DSVideoServer at your video folders and you're ready to go — no other packages required.</p>
                     </div>
                     <div class="faq-item">
                         <h3>Does it work outside my home network?</h3>
@@ -440,11 +440,11 @@
                     </div>
                     <div class="faq-item">
                         <h3>Which Synology models are supported?</h3>
-                        <p>Any Synology NAS that can run DSM 7.0 and Video Station. For HLS transcoding, an Intel or AMD processor is recommended — ARM-based (Plus/Value) models may have limited transcoding performance.</p>
+                        <p>Any Synology NAS capable of running DSM 7.0. For HLS transcoding, an Intel or AMD processor is recommended — ARM-based models may have limited transcoding performance.</p>
                     </div>
                     <div class="faq-item">
-                        <h3>Do I need Video Station installed?</h3>
-                        <p>Yes. DSM Video uses Synology's Video Station API to browse your library and initiate streams. Video Station (available free in Package Center) manages your library indexing and metadata.</p>
+                        <h3>Do I need Synology Video Station?</h3>
+                        <p>No. DSM Video is a complete replacement for Video Station. DSVideoServer manages its own library index and handles everything independently — you don't need Video Station installed at all.</p>
                     </div>
                     <div class="faq-item">
                         <h3>Can I download videos for offline viewing?</h3>
