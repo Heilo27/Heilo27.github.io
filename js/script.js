@@ -85,10 +85,24 @@
             const formData = new FormData(this);
             const data = Object.fromEntries(formData);
 
-            // Simulate form submission (replace with actual API call)
             try {
-                // In production, replace this with actual form submission
-                await new Promise(resolve => setTimeout(resolve, 1500));
+                const response = await fetch('https://formsubmit.co/ajax/heiloprojects@icloud.com', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: data.name,
+                        email: data.email,
+                        type: data.type,
+                        message: data.message,
+                        _subject: `HeiloProjects Contact: ${data.type} from ${data.name}`,
+                        _captcha: 'false'
+                    })
+                });
+
+                if (!response.ok) throw new Error('Submission failed');
 
                 // Show success state
                 showFormSuccess(contactForm);
@@ -96,7 +110,7 @@
                 // Show error state
                 submitBtn.innerHTML = originalContent;
                 submitBtn.disabled = false;
-                alert('Something went wrong. Please try again or email us directly.');
+                alert('Something went wrong. Please try again or email us directly at heiloprojects@icloud.com');
             }
         });
     }
