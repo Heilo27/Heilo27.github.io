@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSM Video - Your NAS, Beautifully | HeiloProjects</title>
+    <meta name="description" content="A native iOS and Apple TV client for Synology Video Station. Browse and stream your personal video library directly from your NAS. Free, no subscriptions, no cloud required.">
+    <meta name="keywords" content="Synology Video Station app, NAS video player, DSM video iOS, Synology iOS app, Apple TV NAS streaming, DLNA iOS, home media server app">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="canonical" href="https://heiloprojects.com/dsmvideo/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://heiloprojects.com/dsmvideo/">
+    <meta property="og:title" content="DSM Video - Your NAS, Beautifully">
+    <meta property="og:description" content="Native iOS and Apple TV client for Synology Video Station. Stream your personal library from your NAS. Free forever.">
+    <meta property="og:image" content="https://heiloprojects.com/images/icons/dsmvideo-icon.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DSM Video - Your NAS, Beautifully">
+    <meta name="twitter:description" content="Native iOS and Apple TV client for Synology Video Station. Stream your personal library from your NAS. Free forever.">
+
+    <style>
+        /* ── Page-specific overrides ── */
+        .app-hero-icon-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 27px;
+            box-shadow: 0 16px 48px rgba(229, 0, 43, 0.45);
+            margin-bottom: 24px;
+        }
+
+        .platform-badge.nas {
+            background: rgba(229, 0, 43, 0.12);
+            color: #ff4d6d;
+            border-color: rgba(229, 0, 43, 0.25);
+        }
+
+        /* Server install section */
+        .server-section {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 48px;
+            margin-top: 64px;
+            text-align: center;
+        }
+
+        .server-section .nas-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border: 1px solid rgba(229, 0, 43, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            box-shadow: 0 8px 24px rgba(229, 0, 43, 0.2);
+        }
+
+        .server-section h2 {
+            font-size: 1.75rem;
+            margin-bottom: 12px;
+        }
+
+        .server-section p {
+            color: var(--text-muted);
+            max-width: 560px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
+        }
+
+        .server-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin: 40px 0;
+            text-align: left;
+        }
+
+        .server-step {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .server-step .step-num {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(229, 0, 43, 0.15);
+            color: #ff4d6d;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+
+        .server-step h4 {
+            font-size: 0.95rem;
+            margin-bottom: 6px;
+        }
+
+        .server-step p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .cta-secondary-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border: 1px solid rgba(229, 0, 43, 0.4);
+            border-radius: 12px;
+            color: #ff4d6d;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .cta-secondary-outline:hover {
+            background: rgba(229, 0, 43, 0.1);
+            border-color: rgba(229, 0, 43, 0.6);
+        }
+
+        .requirements-note {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-top: 16px;
+        }
+
+        /* Feature grid accent color override */
+        .feature-card:hover {
+            border-color: rgba(229, 0, 43, 0.3);
+        }
+
+        /* Hero accent */
+        .app-hero {
+            background: radial-gradient(ellipse at 50% -20%, rgba(229, 0, 43, 0.12) 0%, transparent 70%);
+        }
+
+        @media (max-width: 768px) {
+            .server-section {
+                padding: 32px 20px;
+            }
+            .server-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <header>
+        <nav aria-label="Main navigation">
+            <a href="/" class="logo">
+                <span class="logo-heilo">Heilo</span><span class="logo-projects">Projects</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/#apps">All Apps</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#server">Server Setup</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main id="main">
+
+        <!-- Hero -->
+        <section class="app-hero">
+            <div class="app-hero-content">
+                <img src="../images/icons/dsmvideo-icon.png" alt="DSM Video app icon" class="app-hero-icon-img">
+                <h1>Your Personal Video Library, Beautifully.</h1>
+                <p class="app-hero-tagline">Your NAS, Beautifully.</p>
+                <p class="app-hero-description">
+                    If you have a Synology NAS running Video Station, DSM Video gives you a polished native client on iPhone, iPad, and Apple TV. Browse, stream, and enjoy your personal movie and TV collection — no subscriptions, no third-party cloud, no compromise.
+                </p>
+                <div class="app-hero-ctas">
+                    <a href="https://apps.apple.com/app/dsm-video" class="cta cta-primary" id="download">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        <span>Download Free on the App Store</span>
+                    </a>
+                    <a href="#server" class="cta cta-secondary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                            <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                            <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                        </svg>
+                        <span>Set Up Your NAS Server</span>
+                    </a>
+                </div>
+                <div class="app-platforms-hero">
+                    <span>Free. Works on iPhone, iPad, and Apple TV. Requires a Synology NAS with Video Station.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem -->
+        <section class="problem-statement-section">
+            <div class="container">
+                <div class="problem-statement">
+                    <h2>You Already Have a Home Media Server. You Deserve a Great App for It.</h2>
+                    <p>Synology Video Station is powerful — but the official apps are outdated, limited on Apple TV, and don't take advantage of modern iOS. DSM Video is the app Synology should have built: fast, native, and designed for the way you actually watch.</p>
+                    <p><strong>Your library is on your hardware, in your home, under your control. DSM Video keeps it that way.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section id="features" class="features-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Built for Every Screen</h2>
+                    <p class="section-subtitle">One app, every Apple device you own</p>
+                </div>
+
+                <div class="features-grid">
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </div>
+                        <h3>Native Streaming</h3>
+                        <p>Full HLS and direct-play streaming from your Synology NAS. Smooth 4K playback on Apple TV with hardware-accelerated decoding.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                        </div>
+                        <h3>Apple TV App</h3>
+                        <p>A full tvOS app built for the 10-foot experience. Focus-engine navigation, cinematic poster art, and a parallax icon that looks great on your home screen.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                            </svg>
+                        </div>
+                        <h3>Movies &amp; TV Shows</h3>
+                        <p>Browse your entire library organized by Movies and TV Shows. Poster art, episode lists, season breakdowns — everything you'd expect from a premium streaming app.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </div>
+                        <h3>Search Your Library</h3>
+                        <p>Full-text search across your entire video collection. Find any movie or episode in seconds, no matter how large your library.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                        </div>
+                        <h3>Offline Downloads</h3>
+                        <p>Download videos to your iPhone or iPad for offline viewing. Perfect for flights, road trips, or anywhere you're away from your network.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <h3>Fully Private</h3>
+                        <p>No accounts, no analytics, no third-party cloud. Everything stays between your device and your NAS. Your media stays yours.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="23 4 23 10 17 10"></polyline>
+                                <polyline points="1 20 1 14 7 14"></polyline>
+                                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                            </svg>
+                        </div>
+                        <h3>Resume Anywhere</h3>
+                        <p>Watch progress syncs across your devices. Stop on your iPhone, pick up exactly where you left off on Apple TV.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"></path>
+                            </svg>
+                        </div>
+                        <h3>QuickConnect Support</h3>
+                        <p>Access your NAS from anywhere. Enter your Synology QuickConnect ID and DSM Video finds your server — no static IP, no port forwarding required.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Player section -->
+        <section class="problem-statement-section" style="padding: 80px 0;">
+            <div class="container">
+                <div class="problem-statement">
+                    <h2>A Player Built for Power Users</h2>
+                    <p>Gesture-driven controls designed for how you actually watch video. Swipe anywhere on screen to scrub through video — a full swipe covers 30 minutes. Swipe up or down to control volume. Pinch or tap to toggle between fill and fit. AirPlay to any device. Playback speed control. Skip forward and back with a tap.</p>
+                    <p>On iPad, a sidebar gives you instant access to your entire library. On Apple TV, a cinematic interface built for the living room.</p>
+                    <p><strong>It feels like it was made by someone who watches a lot of movies. Because it was.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Server Setup -->
+        <section id="server" class="features-section" style="padding-top: 0;">
+            <div class="container">
+                <div class="server-section">
+                    <div class="nas-icon" aria-hidden="true">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#e5002b" stroke-width="1.5">
+                            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                            <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                            <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                        </svg>
+                    </div>
+
+                    <h2>Install the DSM Video Server Package</h2>
+                    <p>
+                        DSM Video connects to a lightweight server package running on your Synology NAS. It bridges the iOS app with Synology's Video Station API, handles authentication, and manages HLS transcoding for smooth streaming on any network.
+                    </p>
+
+                    <div class="server-steps">
+                        <div class="server-step">
+                            <div class="step-num">1</div>
+                            <h4>Download the Package</h4>
+                            <p>Download the latest DSVideoServer .spk package from GitHub Releases.</p>
+                        </div>
+                        <div class="server-step">
+                            <div class="step-num">2</div>
+                            <h4>Open Package Center</h4>
+                            <p>In DSM, open Package Center → Manual Install and upload the .spk file.</p>
+                        </div>
+                        <div class="server-step">
+                            <div class="step-num">3</div>
+                            <h4>Configure Video Station</h4>
+                            <p>Ensure Video Station is installed and your libraries are indexed in DSM.</p>
+                        </div>
+                        <div class="server-step">
+                            <div class="step-num">4</div>
+                            <h4>Connect the App</h4>
+                            <p>Open DSM Video on iOS, enter your NAS address or QuickConnect ID, and log in.</p>
+                        </div>
+                    </div>
+
+                    <a href="https://github.com/Heilo27/DS-Reel/releases" class="cta-secondary-outline" target="_blank" rel="noopener noreferrer">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+                        </svg>
+                        Download DSVideoServer from GitHub
+                    </a>
+
+                    <p class="requirements-note">
+                        Requires Synology DSM 7.0 or later · Video Station must be installed · Intel or AMD NAS recommended for transcoding
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Promise -->
+        <section class="problem-statement-section" style="padding: 64px 0;">
+            <div class="container">
+                <div class="problem-statement">
+                    <h2>Free Forever. No Strings.</h2>
+                    <p>DSM Video is completely free. No subscription, no in-app purchases, no ads. You already paid for your Synology — the app to use it should be free.</p>
+                    <p>DSM Video is open-source. The server package and iOS app source are available on GitHub. Contribute, inspect, or fork it for your own needs.</p>
+                    <div style="margin-top: 32px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                        <a href="https://apps.apple.com/app/dsm-video" class="cta cta-primary">
+                            Download Free on the App Store
+                        </a>
+                        <a href="https://github.com/Heilo27/DS-Reel" class="cta-secondary-outline" target="_blank" rel="noopener noreferrer">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+                            </svg>
+                            View Source on GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Common Questions</h2>
+                </div>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3>What do I need to use DSM Video?</h3>
+                        <p>A Synology NAS running DSM 7.0 or later, with the Video Station package installed and your videos organized in a library. You'll also need to install the DSVideoServer package from our GitHub releases page.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Does it work outside my home network?</h3>
+                        <p>Yes. Use your Synology QuickConnect ID or your NAS's external IP/domain. DSM Video will handle authentication and stream over the internet — just like being at home, only potentially slower depending on your upload speed.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Is it really free?</h3>
+                        <p>Yes. Completely free, no in-app purchases, no subscription. The app and server package are both open-source on GitHub.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Which Synology models are supported?</h3>
+                        <p>Any Synology NAS that can run DSM 7.0 and Video Station. For HLS transcoding, an Intel or AMD processor is recommended — ARM-based (Plus/Value) models may have limited transcoding performance.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Do I need Video Station installed?</h3>
+                        <p>Yes. DSM Video uses Synology's Video Station API to browse your library and initiate streams. Video Station (available free in Package Center) manages your library indexing and metadata.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Can I download videos for offline viewing?</h3>
+                        <p>Yes. Tap the download button on any video in the app to save it to your iPhone or iPad for offline playback. Downloads are stored locally on your device.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="final-cta-section">
+            <div class="container">
+                <div class="final-cta-content">
+                    <h2>Your NAS Deserves a Better App.</h2>
+                    <p>Download DSM Video free and start watching your personal library the way it was meant to be watched.</p>
+                    <a href="https://apps.apple.com/app/dsm-video" class="cta cta-primary cta-large">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Get DSM Video — Free
+                    </a>
+                    <p style="margin-top: 16px; font-size: 0.875rem; color: var(--text-muted);">
+                        Also available on Apple TV via the App Store.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="/" class="logo">
+                    <span class="logo-heilo">Heilo</span><span class="logo-projects">Projects</span>
+                </a>
+                <p class="footer-tagline">Apps people actually love.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>DSM Video</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#server">Server Setup</a></li>
+                        <li><a href="https://github.com/Heilo27/DS-Reel/releases" target="_blank" rel="noopener noreferrer">Download Server</a></li>
+                        <li><a href="https://github.com/Heilo27/DS-Reel" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Apps</h4>
+                    <ul>
+                        <li><a href="/stockup">Stock Up</a></li>
+                        <li><a href="/rightrudder">Right Rudder</a></li>
+                        <li><a href="/stripes">Stripes</a></li>
+                        <li><a href="/#apps">All Apps</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/privacy.html">Privacy Policy</a></li>
+                        <li><a href="/terms.html">Terms of Service</a></li>
+                        <li><a href="/#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 HeiloProjects. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

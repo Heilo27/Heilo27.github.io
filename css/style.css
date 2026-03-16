@@ -562,6 +562,11 @@ nav {
     box-shadow: 0 8px 24px rgba(250, 115, 21, 0.35);
 }
 
+.app-icon-dsmvideo {
+    background: url('../images/icons/dsmvideo-icon.png') center/cover no-repeat;
+    box-shadow: 0 8px 24px rgba(229, 0, 43, 0.35);
+}
+
 .app-icon-more {
     background: var(--bg-alt);
     border: 2px dashed var(--border);
