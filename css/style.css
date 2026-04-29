@@ -572,6 +572,11 @@ nav {
     box-shadow: 0 8px 24px rgba(74, 178, 100, 0.35);
 }
 
+.app-icon-lodestone {
+    background: url('../images/icons/lodestone-pf1-icon.png') center/cover no-repeat;
+    box-shadow: 0 8px 24px rgba(139, 92, 246, 0.35);
+}
+
 .app-icon-skylog {
     background: url('../images/icons/skylog-icon.png') center/cover no-repeat;
     box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
