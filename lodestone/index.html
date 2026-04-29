@@ -79,8 +79,10 @@
                                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                             </svg>
                         </div>
-                        <h3>Instant Full-Text Search</h3>
-                        <p>Search across every spell, feat, class, monster, and item in the ruleset simultaneously. Results appear in under 200ms, grouped by type so you find what you need without hunting. <strong>The whole rulebook, searchable in a tap.</strong></p>
+                        <div class="feature-card-body">
+                            <h3>Instant Full-Text Search</h3>
+                            <p>Search across every spell, feat, class, monster, and item in the ruleset simultaneously. Results appear in under 200ms, grouped by type so you find what you need without hunting. <strong>The whole rulebook, searchable in a tap.</strong></p>
+                        </div>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon feature-icon-lodestone">
@@ -89,8 +91,10 @@
                                 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
                             </svg>
                         </div>
-                        <h3>Deep Cross-Linking</h3>
-                        <p>Every rule reference is a live link. A feat that requires a specific spell links directly to it. A monster's special ability links to the feat it mirrors. Follow the rules wherever they lead — no backtracking, no context lost. <strong>The rules as they were meant to be read.</strong></p>
+                        <div class="feature-card-body">
+                            <h3>Deep Cross-Linking</h3>
+                            <p>Every rule reference is a live link. A feat that requires a specific spell links directly to it. A monster's special ability links to the feat it mirrors. Follow the rules wherever they lead — no backtracking, no context lost. <strong>The rules as they were meant to be read.</strong></p>
+                        </div>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon feature-icon-lodestone">
@@ -103,8 +107,10 @@
                                 <line x1="3" y1="18" x2="3.01" y2="18"></line>
                             </svg>
                         </div>
-                        <h3>Columnar Hierarchy Navigation</h3>
-                        <p>Browse from book to chapter to entry in a fluid columnar layout — especially powerful on iPad. Your navigation context stays visible as you drill down, so you always know where you are and how you got there. <strong>Structure that mirrors the rules themselves.</strong></p>
+                        <div class="feature-card-body">
+                            <h3>Columnar Hierarchy Navigation</h3>
+                            <p>Browse from book to chapter to entry in a fluid columnar layout — especially powerful on iPad. Your navigation context stays visible as you drill down, so you always know where you are and how you got there. <strong>Structure that mirrors the rules themselves.</strong></p>
+                        </div>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon feature-icon-lodestone">
@@ -114,8 +120,10 @@
                                 <line x1="16" y1="6" x2="16" y2="22"></line>
                             </svg>
                         </div>
-                        <h3>Offline-First</h3>
-                        <p>All content lives on your device. No server dependency, no WiFi required, no loading spinners at the table. The Core Rulebook ships with the app — premium content downloads once and stays put. <strong>Works wherever you play.</strong></p>
+                        <div class="feature-card-body">
+                            <h3>Offline-First</h3>
+                            <p>All content lives on your device. No server dependency, no WiFi required, no loading spinners at the table. The Core Rulebook ships with the app — premium content downloads once and stays put. <strong>Works wherever you play.</strong></p>
+                        </div>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon feature-icon-lodestone">
@@ -123,8 +131,10 @@
                                 <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
                             </svg>
                         </div>
-                        <h3>Favorites & Bookmarks</h3>
-                        <p>Bookmark any entry and organize it into folders. Build a quick-reference list of your character's spells, your GM prep monsters, or any combination of rules you reach for constantly. <strong>Your most-used rules, always one tap away.</strong></p>
+                        <div class="feature-card-body">
+                            <h3>Favorites & Bookmarks</h3>
+                            <p>Bookmark any entry and organize it into folders. Build a quick-reference list of your character's spells, your GM prep monsters, or any combination of rules you reach for constantly. <strong>Your most-used rules, always one tap away.</strong></p>
+                        </div>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon feature-icon-lodestone">
@@ -134,8 +144,10 @@
                                 <line x1="12" y1="17" x2="12" y2="21"></line>
                             </svg>
                         </div>
-                        <h3>iPad & iPhone, Both First-Class</h3>
-                        <p>On iPad, the columnar layout keeps your place while you read. On iPhone, a clean navigation stack gives you the same depth in your pocket. Dark mode, Dynamic Type, and VoiceOver supported throughout. <strong>Native. Fast. No compromises.</strong></p>
+                        <div class="feature-card-body">
+                            <h3>iPad & iPhone, Both First-Class</h3>
+                            <p>On iPad, the columnar layout keeps your place while you read. On iPhone, a clean navigation stack gives you the same depth in your pocket. Dark mode, Dynamic Type, and VoiceOver supported throughout. <strong>Native. Fast. No compromises.</strong></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -265,10 +277,6 @@
                         <p>Both are in development. PF2 is next, followed by SF1. The same UI, search, and navigation you know from PF1 carries over to both.</p>
                     </div>
                     <div class="faq-item">
-                        <h3>Where does the content come from?</h3>
-                        <p>All content is sourced from the Archives of Nethys and d20PFSRD under the Open Game License (OGL). No proprietary Paizo content is included.</p>
-                    </div>
-                    <div class="faq-item">
                         <h3>Is my data private?</h3>
                         <p>Yes. No analytics, no tracking, no data collection. Your favorites and settings stay on your device.</p>
                     </div>
@@ -388,12 +396,69 @@
             padding: 100px 0;
             background: var(--bg-alt);
         }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+        .feature-card {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            background: var(--bg);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 28px 24px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .feature-card:hover {
+            border-color: rgba(139, 92, 246, 0.4);
+            box-shadow: 0 8px 32px rgba(139, 92, 246, 0.08);
+        }
+        .feature-icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+        .feature-icon svg {
+            width: 22px;
+            height: 22px;
+        }
+        .feature-card-body {
+            flex: 1;
+            min-width: 0;
+        }
+        .feature-card h3 {
+            font-size: 1.0625rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        .feature-card p {
+            font-size: 0.9375rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+            margin: 0;
+        }
         .feature-icon-lodestone {
             background: linear-gradient(135deg, #8b5cf6, #6d28d9);
         }
         .feature-card p strong {
             color: #8b5cf6;
             font-weight: 600;
+        }
+        @media (max-width: 680px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
         }
         .section-subhead {
             font-size: 1.125rem;
