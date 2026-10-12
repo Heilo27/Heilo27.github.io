@@ -62,6 +62,7 @@ function initStage() {
 
   // ── Chapter geometry, cached ────────────────────────────────────────────────────────────
   const chapters = [...document.querySelectorAll<HTMLElement>('[data-rd-ch]')];
+  const carousels = [...document.querySelectorAll<HTMLElement>('[data-rd-carousel]')];
   let tops: number[] = [];
   let heights: number[] = [];
   let anchor = 0;
@@ -77,6 +78,11 @@ function initStage() {
     const stageBottom = stage.getBoundingClientRect().height;
     anchor = innerWidth < 900 ? Math.min(stageBottom + (vh - stageBottom) * 0.35, vh * 0.85) : vh * 0.55;
     if (adf) { const r = adf.getBoundingClientRect(); adfTop = r.top + y; adfH = Math.max(r.height, 1); }
+    // Screenshot rows scroll sideways on phones: a tab stop there (arrow keys scroll), none when they fit.
+    for (const c of carousels) {
+      if (c.scrollWidth > c.clientWidth + 1) c.tabIndex = 0;
+      else c.removeAttribute('tabindex');
+    }
   };
   measure();
   ScrollTrigger.addEventListener('refresh', measure);

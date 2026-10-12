@@ -3,6 +3,10 @@
    keep their own radius. */
 
 .rd { --rd-amber: var(--c-amber, #ffb020); --rd-off: var(--c-off, #ff5a4e); overflow-x: clip; }
+/* The bottom-left status line repeats the CTA note on this page; the "Next app" corner stays. */
+:root:has([data-rd]) .frame__bl { display: none; }
+/* Key buttons: a light ring, distinct from the button's own fill. */
+.rd .btn--key:focus-visible { outline: 2px solid var(--c-fg); outline-offset: 4px; border-radius: 0; }
 
 /* ── The walk: hero + lessons 1 to 4 beside one sticky stage ─────────────────────────────── */
 .rd-walk {
@@ -182,7 +186,7 @@
 
 /* ── Lesson 5: other stations ───────────────────────────────────────────────────────────── */
 .rd-more { border-top: 1px solid var(--c-line); }
-.rd-more__head { display: grid; gap: calc(var(--u) * 1.5); margin-bottom: calc(var(--u) * 7); }
+.rd-more__head { display: grid; gap: calc(var(--u) * 1.5); }
 .rd-adfrow, .rd-ils {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -190,9 +194,12 @@
   row-gap: calc(var(--u) * 4);
   align-items: center;
 }
-.rd-adfrow { padding-block: calc(var(--u) * 4); }
-.rd-adfrow__text { grid-column: 1 / span 4; }
-.rd-adfrow__fig { grid-column: 6 / -1; }
+/* Heading and NDB text stack on the left; the ADF figure sits beside both, so no band of air
+   opens between the section title and its first lesson. */
+.rd-adfrow { row-gap: calc(var(--u) * 3.5); }
+.rd-more__head { grid-column: 1 / span 5; grid-row: 1; align-self: end; }
+.rd-adfrow__text { grid-column: 1 / span 4; grid-row: 2; align-self: start; }
+.rd-adfrow__fig { grid-column: 6 / -1; grid-row: 1 / span 2; }
 .rd-adfrow__fig svg { width: 100%; height: auto; display: block; }
 .rd-adfrow .h-m, .rd-ils .h-m { margin-bottom: 0.9rem; }
 html:not(.motion) .rd-motion-only { display: none; }
@@ -216,6 +223,7 @@ html:not(.motion) .rd-motion-only { display: none; }
 .rd-ils { margin-top: calc(var(--u) * 10); align-items: end; }
 .rd-ils__text { grid-column: 1 / span 4; align-self: start; }
 .rd-ils__shots {
+  --rd-ils-w: 240px;
   grid-column: 5 / -1;
   list-style: none; padding: 0;
   display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter);
@@ -245,12 +253,23 @@ html:not(.motion) .rd-motion-only { display: none; }
 .rd-kt__grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); row-gap: calc(var(--u) * 5); }
 .rd-kt__text { grid-column: 8 / -1; grid-row: 1; display: grid; gap: calc(var(--u) * 2); align-content: start; position: sticky; top: 7rem; align-self: start; }
 .rd-kt__shots {
+  --rd-kt-w: 230px;
   grid-column: 1 / span 6; grid-row: 1;
   list-style: none; padding: 0;
   display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter);
 }
 .rd-kt__shots li:nth-child(2) { margin-top: 8svh; }
 .rd-kt__shots li:nth-child(3) { margin-top: 16svh; }
+
+/* Carousels (phones): keyboard-focusable when they scroll (radial.ts sets tabindex). */
+.rd-ils__shots:focus-visible, .rd-kt__shots:focus-visible { outline: 2px solid var(--c-key); outline-offset: -2px; }
+
+/* Wide screens: the phones grow into their columns instead of leaving air beside the text. */
+@media (min-width: 1600px) {
+  .rd-ils__shots { --rd-ils-w: clamp(240px, 16vw, 320px); }
+  .rd-kt__shots { --rd-kt-w: clamp(230px, 15vw, 300px); grid-column: 1 / span 7; }
+  .rd-kt__text { grid-column: 9 / -1; align-self: center; }
+}
 
 /* ── What it is ─────────────────────────────────────────────────────────────────────────── */
 .rd-plain__h { grid-column: 1 / span 5; max-width: 11ch; }
@@ -352,8 +371,9 @@ html:not(.motion) .rd-motion-only { display: none; }
   .rd-ch, .rd-ch:nth-of-type(3), .rd-ch:nth-of-type(4) { min-height: 0; padding-block: 2.5rem 7rem; }
   .rd-inset { width: min(60%, 210px); }
 
-  .rd-adfrow { min-height: 0; }
-  .rd-adfrow__text, .rd-adfrow__fig, .rd-ils__text, .rd-ils__shots, .rd-kt__text, .rd-kt__shots,
+  .rd-adfrow { min-height: 0; row-gap: calc(var(--u) * 5); }
+  .rd-more__head, .rd-adfrow__text, .rd-adfrow__fig { grid-row: auto; }
+  .rd-more__head, .rd-adfrow__text, .rd-adfrow__fig, .rd-ils__text, .rd-ils__shots, .rd-kt__text, .rd-kt__shots,
   .rd-plain__h, .rd-plain__list, .rd-need__shot, .rd-need__text, .rd-faq__h, .rd-faq__list,
   .rd-end__h, .rd-end__cta { grid-column: 1 / -1; }
   .rd-adf__read { justify-content: flex-start; gap: 1.25rem; }

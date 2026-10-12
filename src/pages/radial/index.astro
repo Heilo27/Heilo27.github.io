@@ -106,12 +106,12 @@ const kt = [
     <!-- Lesson 5: other stations. The ADF heading follows this section's own scroll. -->
     <section class="rd-more section" aria-labelledby="rd-ch5">
       <div class="wrap">
-        <div class="rd-more__head">
-          <p class="label">Lesson 5</p>
-          <h2 id="rd-ch5" class="display h-xl" data-split="lines">Beyond the VOR</h2>
-        </div>
-
+        <!-- The heading shares the NDB row: title and lesson on the left, the ADF beside both. -->
         <div class="rd-adfrow" data-rd-adfsec>
+          <div class="rd-more__head">
+            <p class="label">Lesson 5</p>
+            <h2 id="rd-ch5" class="display h-xl" data-split="lines">Beyond the VOR</h2>
+          </div>
           <div class="rd-adfrow__text body">
             <h3 class="h-m">An NDB teaches the opposite</h3>
             <p>Stand still north of the beacon and turn. The ADF needle swings with every degree, because it shows where the station is relative to your nose. Add the heading and you get the bearing to the station.</p>
@@ -125,8 +125,8 @@ const kt = [
             <h3 class="h-m">An ILS on your table</h3>
             <p>Set a runway on the kitchen table and fly the approach with the phone. Localizer and glideslope, mile markers along the centreline, an HSI with distance, and a head-up display when you want to look outside.</p>
           </div>
-          <ul class="rd-ils__shots" role="list">
-            {ils.map((s) => <li><Phone shot={s.shot} width={240} caption={s.cap} /></li>)}
+          <ul class="rd-ils__shots" role="list" aria-label="Screenshots: the ILS approach" data-rd-carousel>
+            {ils.map((s) => <li><Phone shot={s.shot} width={320} size="var(--rd-ils-w)" caption={s.cap} /></li>)}
           </ul>
         </div>
       </div>
@@ -143,8 +143,8 @@ const kt = [
             <p>Every answer is computed by the code that drives the receiver in the room, and every wrong answer says why. No floor space needed.</p>
           </div>
         </div>
-        <ul class="rd-kt__shots" role="list">
-          {kt.map((s) => <li><Phone shot={s.shot} width={230} caption={s.cap} class="rd-phone--tall" /></li>)}
+        <ul class="rd-kt__shots" role="list" aria-label="Screenshots: the knowledge test" data-rd-carousel>
+          {kt.map((s) => <li><Phone shot={s.shot} width={300} size="var(--rd-kt-w)" caption={s.cap} /></li>)}
         </ul>
       </div>
     </section>
