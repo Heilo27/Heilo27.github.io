@@ -198,7 +198,7 @@ export const apps: App[] = [
       { title: 'Dispatch in seconds', text: 'Drag customers onto the day, set the order and send it to every crew in one tap. No phone calls, no group texts.', shot: 0 },
       { title: 'Route order that saves fuel', text: 'Stripes works out the most efficient driving order for each crew’s day. Fewer miles, more jobs, and you can still drag a stop wherever you want it.', shot: 1 },
       { title: 'Time that tracks itself', text: 'When a crew arrives at a property the job timer starts. When they leave it stops. Your labor costs become exact without anyone touching a clock.', shot: 3 },
-      { title: 'Invoices, then QuickBooks', text: 'A finished job becomes an invoice waiting for your review. Approve it and it goes to QuickBooks. No double entry.', shot: 2 },
+      { title: 'Invoices, then QuickBooks', text: 'A finished job becomes an invoice waiting for your review. Approve it and it goes to QuickBooks. No double entry.', shot: 1 },
       { title: 'A crew app in English and Spanish', text: 'Job details, navigation, the timer and notes are fully translated, so you can hire the best crew regardless of language.', shot: 3 },
     ],
     gallery: [4, 5],
