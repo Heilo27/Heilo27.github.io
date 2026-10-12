@@ -1,0 +1,29 @@
+---
+// The site behaves like a Home Screen, so a missing page is an app that isn't installed.
+import Base from '../layouts/Base.astro';
+import { apps } from '../data/apps';
+const first = apps.filter((a) => a.status === 'live').slice(0, 3);
+---
+<Base title="Page not found" description="This page isn't installed. Head home or open one of the apps.">
+  <section class="lost wrap">
+    <div class="lost__slot" aria-hidden="true"></div>
+    <p class="label">404</p>
+    <h1 class="display lost__title">This app isn’t installed.</h1>
+    <p class="lede">There is nothing at this address. It may have moved, or the link may be mistyped.</p>
+    <p class="lost__links">
+      <a class="btn" href="/">Back to the Home Screen <span class="btn__arrow" aria-hidden="true">→</span></a>
+      <a class="btn btn--line" href="/#apps">See the apps</a>
+    </p>
+    {first.length > 0 && (
+      <p class="label lost__try">Or open one: {first.map((a, i) => <>{i > 0 && ', '}<a class="link" href={`/${a.slug}/`}>{a.name}</a></>)}.</p>
+    )}
+  </section>
+</Base>
+<style>
+  .lost { min-height: 70dvh; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 1.1rem; padding-block: calc(var(--u) * 10); }
+  .lost__slot { width: clamp(88px, 18vw, 140px); aspect-ratio: 1; border-radius: var(--icon-r); border: 2px dashed var(--c-muted); opacity: 0.55; margin-bottom: 0.8rem; }
+  .lost__title { font-size: var(--t-xl); max-width: 14ch; }
+  .lost__links { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.8rem; }
+  .lost__try { margin-top: 0.6rem; }
+  .lost__try a { color: var(--c-fg); }
+</style>

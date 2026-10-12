@@ -1,0 +1,18 @@
+---
+// PantryChef became StockUp. A designed redirect: meta refresh for browsers, canonical for search engines.
+import Base from '../../layouts/Base.astro';
+---
+<Base title="PantryChef is now StockUp" description="PantryChef is now StockUp. The same pantry and recipe app, under a new name." app="stockup">
+  <meta slot="head" http-equiv="refresh" content="0; url=/stockup/" />
+  <link slot="head" rel="canonical" href="https://heiloprojects.com/stockup/" />
+  <section class="moved wrap">
+    <p class="label">Moved</p>
+    <h1 class="display moved__title"><a href="/stockup/">PantryChef is now StockUp</a></h1>
+    <p class="lede">Same pantry and recipe app, new name. Taking you there now.</p>
+    <p><a class="btn btn--key" href="/stockup/">Open StockUp <span class="btn__arrow" aria-hidden="true">→</span></a></p>
+  </section>
+</Base>
+<style>
+  .moved { min-height: 60dvh; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 1.1rem; padding-block: calc(var(--u) * 10); }
+  .moved__title { font-size: var(--t-xl); max-width: 14ch; }
+</style>

@@ -1,0 +1,37 @@
+---
+// Legal and support documents: one calm reading column over Base. The verbatim body comes from
+// src/data/docs/<file>; index.json holds the title, description and owning app.
+import Base from './Base.astro';
+import { appBySlug } from '../data/apps';
+import entries from '../data/docs/index.json';
+import '../styles/doc.css';
+
+interface Props { route: string; appName?: string }
+const { route, appName } = Astro.props;
+const entry = entries.find((e) => e.route === route);
+if (!entry) throw new Error(`No document entry for route "${route}"`);
+
+const bodies = import.meta.glob('../data/docs/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
+const raw = bodies[`../data/docs/${entry.file}`];
+if (raw === undefined) throw new Error(`Missing document body ${entry.file}`);
+
+// Never print two h1s: if the body brings its own, ours is skipped. Editor comments are not content.
+const body = raw.replace(/<!--[\s\S]*?-->/g, '');
+const ownH1 = /<h1[\s>]/i.test(body);
+const app = entry.app ? appBySlug(entry.app) : undefined;
+const owner = app?.name ?? appName;
+const title = owner && !entry.title.includes(owner) ? `${entry.title} | ${owner}` : entry.title;
+---
+<Base title={title} description={entry.description} app={entry.app ?? undefined}>
+  <article class="doc wrap">
+    <header class="doc__head">
+      {owner && <p class="doc__app label">{owner}</p>}
+      {!ownH1 && <h1 class="doc__title display">{entry.title}</h1>}
+    </header>
+    <div class="doc__body" set:html={body} />
+    <footer class="doc__foot label">
+      <a class="link" href="/">HeiloProjects home</a>
+      {app && <> <span aria-hidden="true">/</span> <a class="link" href={`/${app.slug}/`}>{app.name}</a></>}
+    </footer>
+  </article>
+</Base>

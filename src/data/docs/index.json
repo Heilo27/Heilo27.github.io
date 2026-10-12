@@ -59,8 +59,8 @@
   "route": "stripes/privacy",
   "file": "stripes__privacy.html",
   "title": "Privacy Policy",
-  "metaTitle": "Stripes \u2014 Privacy Policy",
-  "description": "",
+  "metaTitle": "Stripes — Privacy Policy",
+  "description": "Stripes privacy policy. What the lawn care dispatch app stores, what stays on your device, and how QuickBooks data is handled.",
   "app": "stripes"
  },
  {
@@ -68,7 +68,7 @@
   "file": "stripes__support.html",
   "title": "Stripes Support",
   "metaTitle": "Support - Stripes | HeiloProjects",
-  "description": "Stripes support \u2014 get help with scheduling, crew setup, QuickBooks connection, and subscriptions. Contact heiloprojects@icloud.com.",
+  "description": "Stripes support — get help with scheduling, crew setup, QuickBooks connection, and subscriptions. Contact heiloprojects@icloud.com.",
   "app": "stripes"
  },
  {
