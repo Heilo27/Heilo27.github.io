@@ -1,0 +1,27 @@
+---
+// Sticky narrative. The stage (heading, the step numeral, five ticks) holds still while the
+// steps scroll past; src/motion/home.ts rolls the numeral to the step in view.
+// The numbers are the real order of a project, not decoration.
+import { process } from '../../data/site';
+import { processUi } from './copy';
+const total = process.length;
+---
+<section class="process wrap section" aria-labelledby="process-title" data-process>
+  <div class="process__stage" data-process-stage data-step="0">
+    <h2 id="process-title" class="display h-l" data-split="lines">{processUi.heading}</h2>
+    <div class="process__count num" aria-hidden="true">
+      <span class="process__window"><span class="process__strip" data-process-strip>{process.map((_, i) => <span>{i + 1}</span>)}</span></span>
+      <span class="process__total">/{total}</span>
+    </div>
+    <ol class="process__ticks" aria-hidden="true">{process.map(() => <li></li>)}</ol>
+  </div>
+  <ol class="process__steps">
+    {process.map((p, i) => (
+      <li class="step" data-process-step={i}>
+        <span class="step__n num" aria-hidden="true">{i + 1}</span>
+        <h3 class="step__title h-m">{p.title}</h3>
+        <p class="step__text">{p.text}</p>
+      </li>
+    ))}
+  </ol>
+</section>

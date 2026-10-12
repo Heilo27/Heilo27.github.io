@@ -1,0 +1,82 @@
+[
+ {
+  "route": "privacy",
+  "file": "privacy.html",
+  "title": "Privacy Policy",
+  "metaTitle": "Privacy Policy - HeiloProjects",
+  "description": "HeiloProjects privacy policy. We respect your privacy and don't collect personal data.",
+  "app": null
+ },
+ {
+  "route": "terms",
+  "file": "terms.html",
+  "title": "Terms of Service",
+  "metaTitle": "Terms of Service - HeiloProjects",
+  "description": "HeiloProjects terms of service for our apps and website.",
+  "app": null
+ },
+ {
+  "route": "capwingman/privacy",
+  "file": "capwingman__privacy.html",
+  "title": "Privacy Policy",
+  "metaTitle": "Privacy Policy - CAP Wingman | HeiloProjects",
+  "description": "CAP Wingman privacy policy. Your CAP forms and references stay on your device. No tracking, no ads, no data collection.",
+  "app": "capwingman"
+ },
+ {
+  "route": "castleofthewinds/privacy",
+  "file": "castleofthewinds__privacy.html",
+  "title": "Privacy Policy",
+  "metaTitle": "Privacy Policy - Castle of the Winds | HeiloProjects",
+  "description": "Castle of the Winds privacy policy. Your game saves stay on your device. No tracking, no ads, no data collection.",
+  "app": "castleofthewinds"
+ },
+ {
+  "route": "pantrychef/privacy",
+  "file": "pantrychef__privacy.html",
+  "title": "Privacy Policy",
+  "metaTitle": "Privacy Policy - PantryChef | HeiloProjects",
+  "description": "PantryChef privacy policy. Your recipes and pantry data stay on your device. No tracking, no ads, no data collection.",
+  "app": null
+ },
+ {
+  "route": "rightrudder/privacy",
+  "file": "rightrudder__privacy.html",
+  "title": "Privacy Policy",
+  "metaTitle": "Privacy Policy - Right Rudder | HeiloProjects",
+  "description": "Right Rudder privacy policy. Your flight training records and student data stay on your device. No tracking, no ads, no data collection.",
+  "app": "rightrudder"
+ },
+ {
+  "route": "stockup/privacy",
+  "file": "stockup__privacy.html",
+  "title": "Privacy Policy",
+  "metaTitle": "Privacy Policy - Stock Up | HeiloProjects",
+  "description": "Stock Up privacy policy. Your recipes and pantry data stay on your device. No tracking, no ads, no data collection.",
+  "app": "stockup"
+ },
+ {
+  "route": "stripes/privacy",
+  "file": "stripes__privacy.html",
+  "title": "Privacy Policy",
+  "metaTitle": "Stripes — Privacy Policy",
+  "description": "Stripes privacy policy. What the lawn care dispatch app stores, what stays on your device, and how QuickBooks data is handled.",
+  "app": "stripes"
+ },
+ {
+  "route": "stripes/support",
+  "file": "stripes__support.html",
+  "title": "Stripes Support",
+  "metaTitle": "Support - Stripes | HeiloProjects",
+  "description": "Stripes support — get help with scheduling, crew setup, QuickBooks connection, and subscriptions. Contact heiloprojects@icloud.com.",
+  "app": "stripes"
+ },
+ {
+  "route": "foreman/support/index",
+  "file": "foreman__support__index.html",
+  "title": "Foreman Support",
+  "metaTitle": "Foreman Support | HeiloProjects",
+  "description": "Get help with Foreman: Field Service. Contact support, manage your subscription, and find answers to common questions.",
+  "app": "foreman"
+ }
+]

@@ -1,0 +1,31 @@
+---
+// A Home Screen folder holding the apps that prove an offer. Each icon is a real link and
+// launches its app; Green Arc goes to its own site.
+import { appBySlug, type App } from '../../data/apps';
+import { appHref, launches } from '../../lib/links';
+import AppIcon from '../AppIcon.astro';
+
+interface Props { slugs: string[]; label: string }
+const { slugs, label } = Astro.props;
+const list = slugs.map(appBySlug).filter((a): a is App => !!a);
+const name = list.length === 1 ? list[0].name : `${list.length} apps`;
+---
+<figure class="folder" data-folder>
+  <ul class="folder__box" aria-label={label} data-count={list.length}>
+    {list.map((a) => (
+      <li>
+        <a
+          class="folder__app"
+          href={appHref(a)}
+          data-launch={launches(a) ? '' : undefined}
+          rel={a.external ? 'noopener' : undefined}
+          title={a.name}
+        >
+          <AppIcon app={a} size={52} />
+          <span class="sr-only">{a.name}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+  <figcaption class="folder__name">{name}</figcaption>
+</figure>

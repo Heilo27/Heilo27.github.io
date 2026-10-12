@@ -1,0 +1,51 @@
+---
+// The end of an app page: the last call to action, the documents and support line, then the next
+// app on the Home Screen. Its icon is a launch link, so the tour continues app to app.
+import AppIcon from '../AppIcon.astro';
+import { nextApp, type App } from '../../data/apps';
+import { docHref, isExternal } from '../../lib/links';
+import { isLong, lenOf } from './fit';
+
+interface Props { app: App }
+const { app } = Astro.props;
+const next = nextApp(app.slug);
+const onStore = !!app.cta?.href.startsWith('https://apps.apple.com');
+const heading =
+  app.status === 'service' ? 'Tell me about your system.'
+  : app.status === 'development' || app.status === 'testflight' ? `${app.name} is on its way.`
+  : onStore ? `Get ${app.name}.`
+  : `Download ${app.name}.`;
+const list = (xs: string[]) => (xs.length < 2 ? xs.join('') : `${xs.slice(0, -1).join(', ')} and ${xs.at(-1)}`);
+const facts = app.status === 'service' ? app.price : `For ${list(app.platforms)}. ${app.price}.`;
+const ext = app.cta && isExternal(app.cta.href);
+---
+{app.cta && (
+  <section class="acta wrap" aria-labelledby="cta-h">
+    <h2 id="cta-h" class="display acta__h" data-split="lines">{heading}</h2>
+    <div class="acta__side" data-reveal="up">
+      <p class="acta__facts">{facts}</p>
+      <a class="btn btn--key" href={app.cta.href} rel={ext ? 'noopener' : undefined}>
+        {app.cta.label} <span class="btn__arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+)}
+
+<section class="ahelp wrap" aria-labelledby="help-h">
+  <h2 id="help-h" class="label">Help and documents</h2>
+  <ul class="ahelp__list">
+    {app.docs.map((d) => (
+      <li><a class="ahelp__link" href={docHref(d.href)} rel={isExternal(d.href) ? 'noopener' : undefined}>{d.label}<span class="ahelp__arrow" aria-hidden="true">{isExternal(d.href) ? '↗' : '→'}</span></a></li>
+    ))}
+    <li><a class="ahelp__link" href={`mailto:${app.support}?subject=${encodeURIComponent(app.name)}`}>Write to {app.support}</a></li>
+  </ul>
+</section>
+
+<nav class="anext" aria-label="Next app" data-app={next.slug}>
+  <a class="anext__link wrap" href={`/${next.slug}/`} data-launch data-cursor="Open">
+    <span class="anext__label label">Next app</span>
+    <AppIcon app={next} size={128} class="anext__icon" />
+    <span class:list={['display anext__name', { 'anext__name--long': isLong(next.name) }]} style={`--len:${lenOf(next.name)}`} data-fit>{next.name}</span>
+    <span class="anext__line muted">{next.category}</span>
+  </a>
+</nav>

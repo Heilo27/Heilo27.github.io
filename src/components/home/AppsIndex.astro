@@ -1,0 +1,74 @@
+---
+// Index list. Every row launches its app (the row's icon is the launch source).
+// Fine pointers: a device follows the cursor showing the app's first screen (src/motion/home.ts).
+// Touch: the same screen sits inline at the end of the row. Both are decorative (wrappers are
+// aria-hidden) but keep the shot's true alt, as the app pages do, for no-CSS and image search.
+import { Image } from 'astro:assets';
+import { showcase, statusLabel, type App } from '../../data/apps';
+import { appHref, launches } from '../../lib/links';
+import AppIcon from '../AppIcon.astro';
+import { appsUi } from './copy';
+
+// The Radial screens are instrument imagery, which belongs to the Radial page only.
+const previewOf = (a: App) => (a.slug === 'radial' ? undefined : a.shots[0]);
+const previews = showcase.map((a) => ({ app: a, shot: previewOf(a) })).filter((p) => p.shot);
+---
+<section id="apps" class="apps wrap section" aria-labelledby="apps-title">
+  <header class="apps__head">
+    <h2 id="apps-title" class="display h-xl" data-split="lines">{appsUi.heading}</h2>
+    <p class="apps__intro muted" data-reveal="fade">{appsUi.intro}</p>
+  </header>
+
+  <div class="apps__cols label" aria-hidden="true">
+    <span>{appsUi.cols.name}</span><span>{appsUi.cols.category}</span><span>{appsUi.cols.platforms}</span><span>{appsUi.cols.status}</span>
+  </div>
+  <ul class="index" data-index>
+    {showcase.map((a) => {
+      const shot = previewOf(a);
+      return (
+        <li class="index__row">
+          <a
+            class="index__link"
+            href={appHref(a)}
+            data-launch={launches(a) ? '' : undefined}
+            data-preview={shot ? a.slug : undefined}
+            rel={a.external ? 'noopener' : undefined}
+          >
+            <span class="index__name">
+              <AppIcon app={a} size={48} />
+              <span class="index__title">{a.name}{a.external && <span class="index__ext" aria-hidden="true">↗</span>}</span>
+            </span>
+            <span class="index__cat">{a.category}</span>
+            <span class="index__plat">{a.platforms.join(', ')}</span>
+            <span class={`index__status index__status--${a.status}`}>{statusLabel[a.status]}</span>
+            {shot && (
+              <span class="index__thumb" aria-hidden="true">
+                <Image src={shot.src} alt={shot.alt} width={84} densities={[1, 2]} loading="lazy" decoding="async" format="webp" quality={70} />
+              </span>
+            )}
+          </a>
+        </li>
+      );
+    })}
+  </ul>
+
+  <div class="preview" aria-hidden="true" data-preview-box>
+    <div class="preview__device">
+      {previews.map(({ app, shot }) => (
+        <Image
+          class="preview__shot"
+          data-shot={app.slug}
+          data-device={shot!.device}
+          src={shot!.src}
+          alt={shot!.alt}
+          width={shot!.device === 'ipad' ? 360 : 240}
+          densities={[1, 2]}
+          loading="lazy"
+          decoding="async"
+          format="webp"
+          quality={78}
+        />
+      ))}
+    </div>
+  </div>
+</section>

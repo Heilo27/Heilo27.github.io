@@ -1,0 +1,74 @@
+---
+// One sales page per app, each in its own world (data-app on <html>). Radial AR has a custom page
+// (src/pages/radial/). Sections render only when the app has the data for them.
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/app/Hero.astro';
+import Problem from '../../components/app/Problem.astro';
+import Features from '../../components/app/Features.astro';
+import Gallery from '../../components/app/Gallery.astro';
+import Extras from '../../components/app/Extras.astro';
+import Tiers from '../../components/app/Tiers.astro';
+import Faq from '../../components/app/Faq.astro';
+import Finale from '../../components/app/Finale.astro';
+import { pagedApps, type App } from '../../data/apps';
+import { site } from '../../data/site';
+import '../../styles/app.css';
+
+export function getStaticPaths() {
+  return pagedApps.filter((a) => a.slug !== 'radial').map((app) => ({ params: { slug: app.slug }, props: { app } }));
+}
+
+interface Props { app: App }
+const { app } = Astro.props;
+const url = new URL(`/${app.slug}/`, Astro.site ?? site.url).href;
+
+// Structured data: only facts the page states. An App Store price is given only when it is the
+// store price (verified against the iTunes lookup, 2026-10-12): free downloads (some with in-app
+// purchases, which the ctaNote says) are 0, a one-time purchase is its amount, and a subscription
+// is left out rather than guessed.
+const OS: Record<string, string> = { iPhone: 'iOS', iPad: 'iPadOS', Mac: 'macOS', 'Apple TV': 'tvOS' };
+const CATEGORY: Record<string, string> = {
+  rightrudder: 'EducationalApplication', stripes: 'BusinessApplication', skylog: 'BusinessApplication',
+  stockup: 'LifestyleApplication', grove: 'LifestyleApplication', lodestone: 'ReferenceApplication',
+  dsmvideo: 'MultimediaApplication', capwingman: 'ReferenceApplication', foreman: 'BusinessApplication',
+  castleofthewinds: 'GameApplication', radiowriter: 'UtilitiesApplication',
+};
+function storePrice(a: App): string | undefined {
+  if (!a.cta?.href.startsWith('https://apps.apple.com')) return undefined;
+  if (/^Free\b/.test(a.price) || /\bFree to\b/.test(a.ctaNote ?? '')) return '0';
+  return a.price.match(/^\$(\d+(?:\.\d\d)?) once$/)?.[1];
+}
+const price = storePrice(app);
+const ld =
+  app.status === 'service'
+    ? { '@context': 'https://schema.org', '@type': 'Service', name: app.name, description: app.description, url, serviceType: app.category, provider: { '@id': `${site.url}/#studio` } }
+    : {
+        '@context': 'https://schema.org',
+        '@type': 'SoftwareApplication',
+        name: app.name,
+        description: app.description,
+        url,
+        applicationCategory: CATEGORY[app.slug],
+        operatingSystem: [...new Set(app.platforms.map((p) => OS[p]).filter(Boolean))].join(', '),
+        author: { '@id': `${site.url}/#studio` },
+        ...(app.cta?.href.startsWith('https://apps.apple.com') ? { installUrl: app.cta.href } : {}),
+        ...(price !== undefined ? { offers: { '@type': 'Offer', price, priceCurrency: 'USD' } } : {}),
+      };
+const title = `${app.name}: ${app.line.replace(/\.$/, '')}`;
+---
+<Base title={title} description={app.description} app={app.slug}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(ld)} />
+  <div class="apage" data-app-page>
+    <Hero app={app} />
+    {app.problem && <Problem problem={app.problem} />}
+    {app.features.length > 0 && <Features app={app} />}
+    {(app.gallery?.length ?? 0) > 0 && <Gallery app={app} />}
+    <Extras app={app} part="quotes" />
+    <Extras app={app} part="family" />
+    <Extras app={app} part="steps" />
+    <Extras app={app} part="columns" />
+    {(app.tiers?.length ?? 0) > 0 && <Tiers app={app} />}
+    {app.faq.length > 0 && <Faq app={app} />}
+    <Finale app={app} />
+  </div>
+</Base>

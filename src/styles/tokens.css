@@ -1,0 +1,90 @@
+/* Design tokens. Names are the engine contract; values come from DESIGN.md. */
+
+@font-face {
+  font-family: 'Mona';
+  src: url('/fonts/mona-200_900-normal.woff2') format('woff2');
+  font-weight: 200 900;
+  font-style: normal;
+  font-stretch: 75% 125%;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'B612 Mono';
+  src: url('/fonts/b612-mono-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'B612 Mono';
+  src: url('/fonts/b612-mono-700-normal.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root, [data-app='studio'] {
+  /* Studio world (home, documents, 404) */
+  --c-bg: #f2f3f5;
+  --c-fg: #0b0c0e;
+  --c-muted: #5a6069;
+  --c-line: rgb(11 12 14 / 0.12);
+  --c-key: #0b0c0e;      /* the app's own colour on app pages; ink in the studio */
+  --c-key-ink: #ffffff;  /* text on --c-key */
+  --c-raise: #ffffff;    /* surfaces that sit above the ground (devices' bezels, tiers) */
+  --c-accent: var(--c-fg); /* focus ring */
+  --c-curtain: #0b0c0e;
+
+  --f-display: 'Mona', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --f-body: 'Mona', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --f-mono: 'B612 Mono', ui-monospace, monospace;
+
+  --t-mega: clamp(3.4rem, 0.9rem + 10.6vw, 13rem);
+  --t-xl: clamp(2.5rem, 1.2rem + 5.2vw, 6.5rem);
+  --t-l: clamp(1.75rem, 1.2rem + 2.3vw, 3.25rem);
+  --t-m: clamp(1.25rem, 1.05rem + 0.75vw, 1.75rem);
+  --t-body: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
+  --t-s: 0.875rem;
+  --t-xs: 0.78rem;
+
+  --u: clamp(0.5rem, 0.35rem + 0.6vw, 1rem);
+  --gutter: clamp(1rem, 0.6rem + 1.6vw, 2.5rem);
+  --cols: 12;
+  --max: 1680px;
+
+  /* Shape: rounded rectangles belong to apps (icons, devices). Layout is square. */
+  --radius: 0px;
+  --icon-r: 22.37%;
+
+  --z-gl: 0;
+  --z-content: 1;
+  --z-header: 50;
+  --z-cursor: 80;
+  --z-curtain: 90;
+  --z-loader: 100;
+}
+
+/* ---- App worlds. Sampled from each app's icon and screens. ---- */
+[data-app='radial']      { --c-bg: #06080a; --c-fg: #e8ecef; --c-muted: #8e98a3; --c-line: rgb(232 236 239 / 0.14); --c-key: #5cd6f2; --c-key-ink: #04161c; --c-raise: #0f1317; --c-amber: #ffb020; --c-off: #ff5a4e; }
+[data-app='rightrudder'] { --c-bg: #edf2f7; --c-fg: #0a1a2b; --c-muted: #4f5f70; --c-line: rgb(10 26 43 / 0.12); --c-key: #0b63a8; --c-key-ink: #fff; --c-raise: #fff; }
+[data-app='stripes']     { --c-bg: #eef3eb; --c-fg: #0d1a0e; --c-muted: #4e5f4f; --c-line: rgb(13 26 14 / 0.12); --c-key: #2e7d32; --c-key-ink: #fff; --c-raise: #fff; }
+[data-app='stockup']     { --c-bg: #edf5f8; --c-fg: #0a1a22; --c-muted: #48606e; --c-line: rgb(10 26 34 / 0.12); --c-key: #1177a6; --c-key-ink: #fff; --c-raise: #fff; }
+[data-app='grove']       { --c-bg: #eef2ec; --c-fg: #14201a; --c-muted: #55625a; --c-line: rgb(20 32 26 / 0.12); --c-key: #2f6b45; --c-key-ink: #fff; --c-raise: #fff; --c-root: #c98a1e; }
+[data-app='lodestone']   { --c-bg: #0e0d0b; --c-fg: #ede6d6; --c-muted: #a0978a; --c-line: rgb(237 230 214 / 0.14); --c-key: #d4ae52; --c-key-ink: #1a1408; --c-raise: #1a1814; }
+[data-app='dsmvideo']    { --c-bg: #0a0a0b; --c-fg: #f2f2f2; --c-muted: #9a9a9f; --c-line: rgb(242 242 242 / 0.14); --c-key: #e0262f; --c-key-ink: #fff; --c-raise: #161618; }
+[data-app='skylog']      { --c-bg: #ecf4fb; --c-fg: #0a1826; --c-muted: #4c6072; --c-line: rgb(10 24 38 / 0.12); --c-key: #1b78cc; --c-key-ink: #fff; --c-raise: #fff; }
+[data-app='capwingman']  { --c-bg: #eff1f7; --c-fg: #0a1240; --c-muted: #4c5578; --c-line: rgb(10 18 64 / 0.12); --c-key: #0b2a8f; --c-key-ink: #fff; --c-raise: #fff; --c-red: #c8202a; }
+[data-app='castleofthewinds'] { --c-bg: #110e1d; --c-fg: #eee8f5; --c-muted: #a39bb8; --c-line: rgb(238 232 245 / 0.14); --c-key: #f2a93b; --c-key-ink: #1d1206; --c-raise: #1b1730; }
+[data-app='foreman']     { --c-bg: #f0f0ee; --c-fg: #16120e; --c-muted: #5c554d; --c-line: rgb(22 18 14 / 0.12); --c-key: #c4501a; --c-key-ink: #fff; --c-raise: #fff; }
+[data-app='radiowriter'] { --c-bg: #101214; --c-fg: #e9eaec; --c-muted: #9aa0a6; --c-line: rgb(233 234 236 / 0.14); --c-key: #f2c230; --c-key-ink: #1a1404; --c-raise: #181b1e; }
+[data-app='specterdc']   { --c-bg: #0b0b0a; --c-fg: #e9e4d8; --c-muted: #9c968a; --c-line: rgb(233 228 216 / 0.14); --c-key: #ffb000; --c-key-ink: #1a1100; --c-raise: #151513; }
+
+/* ---- Ink world: a dark section inside the studio (the home page's contact finale). The footer
+   that directly follows an ink section at the end of <main> wears it too. ---- */
+[data-world='ink'], main:has(> [data-world='ink']:last-child) + .footer {
+  --c-bg: #0b0c0e; --c-fg: #f2f3f5; --c-muted: #9aa1ab; --c-line: rgb(242 243 245 / 0.14);
+  --c-key: #f2f3f5; --c-key-ink: #0b0c0e; --c-raise: #15171a; --c-accent: #f2f3f5;
+  --c-field: rgb(242 243 245 / 0.42); --c-error: #ff9b91;
+  background: var(--c-bg);
+  color: var(--c-fg);
+  color-scheme: dark;
+}

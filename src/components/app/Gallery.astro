@@ -1,0 +1,42 @@
+---
+// More screens. Two or more: a filmstrip that snaps frame by frame (native scroll, so touch,
+// trackpad and keyboard all work; the arrows are an enhancement). One: a single device, set large.
+import Device from './Device.astro';
+import type { App } from '../../data/apps';
+
+interface Props { app: App }
+const { app } = Astro.props;
+const shots = (app.gallery ?? []).map((i) => app.shots[i]).filter(Boolean);
+const allIpad = shots.every((s) => s.device === 'ipad');
+const heading = allIpad ? `${app.name} on iPad` : `More of ${app.name}`;
+---
+{shots.length === 1 && (
+  <section class="agal agal--solo wrap section" aria-labelledby="gal-h">
+    <h2 id="gal-h" class="display agal__h" data-split="lines">{heading}</h2>
+    <figure class="agal__solo" data-reveal="up">
+      <Device shot={shots[0]} role="solo" decorative />
+      <figcaption class="agal__cap">{shots[0].alt}</figcaption>
+    </figure>
+  </section>
+)}
+{shots.length > 1 && (
+  <section class="agal section" aria-labelledby="gal-h" data-gallery>
+    <div class="agal__head wrap">
+      <h2 id="gal-h" class="display agal__h" data-split="lines">{heading}</h2>
+      <div class="agal__nav" data-gallery-nav hidden>
+        <button class="agal__btn" type="button" data-dir="-1" aria-label="Previous screen"><span aria-hidden="true">←</span></button>
+        <button class="agal__btn" type="button" data-dir="1" aria-label="Next screen"><span aria-hidden="true">→</span></button>
+      </div>
+    </div>
+    <ul class="agal__track" data-track tabindex="0" aria-label={`${app.name} screens, scrolls sideways`}>
+      {shots.map((s) => (
+        <li class="agal__item">
+          <figure>
+            <Device shot={s} role="strip" decorative />
+            <figcaption class="agal__cap">{s.alt}</figcaption>
+          </figure>
+        </li>
+      ))}
+    </ul>
+  </section>
+)}

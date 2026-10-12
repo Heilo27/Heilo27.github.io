@@ -37,6 +37,7 @@ The marketing website is the **public face of HeiloProjects**. It should feel pr
 | 2026-01-28 | Per-app privacy policies | Each app page links to its own policy |
 | 2026-01-28 | CAP Wingman showcase only | Not for general public, just demonstrate capability |
 | 2026-01-28 | SpecterDC is services, not app | B2B offering, inquiry-based |
+| 2026-10-12 | Rebuild on Astro with motion | An Astro build step and motion are now in scope (Ryan asked for premium transitions). Supersedes "No build process" above and "Complex animations or effects" under Out of Scope. |
 
 ---
 

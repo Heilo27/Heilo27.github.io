@@ -1,0 +1,17 @@
+---
+// A real app screenshot in an iPhone-shaped frame. Devices keep their own radius (DESIGN.md shape rule).
+import { Image } from 'astro:assets';
+import type { Shot } from '../../data/apps';
+
+// width: the image's CSS pixel width (srcset is built from it). size: the frame's CSS width when a
+// stylesheet scales it (a custom property); defaults to width.
+interface Props { shot: Shot; width: number; size?: string; caption?: string; class?: string; eager?: boolean }
+const { shot, width, size = `${width}px`, caption, class: cls = '', eager = false } = Astro.props;
+---
+<figure class:list={['rd-phone', cls]} style={`--w:${size}`}>
+  <div class="rd-phone__body">
+    <Image src={shot.src} alt={shot.alt} width={width} densities={[1, 2]} format="webp" quality={80}
+      loading={eager ? 'eager' : 'lazy'} decoding="async" class="rd-phone__screen" />
+  </div>
+  {caption && <figcaption class="rd-phone__cap">{caption}</figcaption>}
+</figure>

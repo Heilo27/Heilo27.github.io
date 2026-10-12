@@ -1,0 +1,51 @@
+---
+// A real screenshot in a pure-CSS device frame (frame styles: site.css .device--*).
+// `role` sets the image sizes for where the device sits; `eager` is for the hero only.
+import { Image } from 'astro:assets';
+import type { Shot } from '../../data/apps';
+
+interface Props {
+  shot: Shot;
+  role: 'hero' | 'stage' | 'inline' | 'strip' | 'solo';
+  eager?: boolean;
+  decorative?: boolean; // the same screen is described elsewhere (captions, an earlier copy): hidden from AT
+  class?: string;
+}
+const { shot, role, eager = false, decorative = false, class: cls = '' } = Astro.props;
+const kind = shot.device;
+
+// Rendered CSS widths (app.css sets --device-w per role); sizes mirror them.
+const sizes: Record<string, string> = {
+  'hero-phone': '(min-width: 900px) min(24vw, 360px), 62vw',
+  'hero-ipad': '(min-width: 900px) min(36vw, 560px), 82vw',
+  'hero-landscape': '(min-width: 900px) min(26vw, 380px), 40vw', // rotated: the img's width is the screen height
+  'stage-phone': '(min-width: 900px) min(22vw, 330px), 1px',
+  'stage-ipad': '(min-width: 900px) min(32vw, 480px), 1px',
+  'stage-landscape': '(min-width: 900px) 16vw, 1px',
+  'inline-phone': '(min-width: 900px) 1px, 64vw',
+  'inline-ipad': '(min-width: 900px) 1px, 84vw',
+  'inline-landscape': '(min-width: 900px) 1px, 40vw',
+  'strip-phone': '(min-width: 900px) 300px, 60vw',
+  'strip-ipad': '(min-width: 900px) 520px, 78vw',
+  'strip-landscape': '(min-width: 900px) 300px, 40vw',
+  'solo-phone': '(min-width: 900px) 360px, 62vw',
+  'solo-ipad': '(min-width: 900px) min(56vw, 760px), 86vw',
+  'solo-landscape': '(min-width: 900px) 420px, 44vw',
+};
+const widths = kind === 'ipad' ? [640, 1000, 1500] : [420, 700, 900];
+---
+<div class:list={['device', `device--${kind}`, `device--${role}`, cls]} aria-hidden={decorative ? 'true' : undefined}>
+  <div class="device__screen">
+    <Image
+      src={shot.src}
+      alt={shot.alt}
+      widths={widths}
+      sizes={sizes[`${role}-${kind}`]}
+      loading={eager ? 'eager' : 'lazy'}
+      fetchpriority={eager ? 'high' : undefined}
+      decoding={eager ? 'sync' : 'async'}
+      format="webp"
+      quality={82}
+    />
+  </div>
+</div>

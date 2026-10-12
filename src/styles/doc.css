@@ -1,0 +1,24 @@
+/* Documents: legal and support text in one calm reading column (60 to 70ch). */
+.doc { padding-block: calc(var(--u) * 10) calc(var(--u) * 14); }
+.doc__head, .doc__body, .doc__foot { max-width: 66ch; margin-inline: auto; }
+.doc__app { margin-bottom: 1rem; }
+.doc__title { font-size: clamp(2.2rem, 1.4rem + 3.6vw, 4.25rem); letter-spacing: -0.04em; line-height: 0.98; margin-bottom: calc(var(--u) * 3); }
+.doc__body { font-size: var(--t-body); line-height: 1.65; }
+.doc__body h1 { font-family: var(--f-display); font-stretch: 118%; font-weight: 700; font-size: clamp(2.2rem, 1.4rem + 3.6vw, 4.25rem); letter-spacing: -0.04em; line-height: 0.98; margin-bottom: calc(var(--u) * 3); text-wrap: balance; }
+.doc__body h2 { font-family: var(--f-display); font-stretch: 108%; font-weight: 640; font-size: var(--t-m); letter-spacing: -0.02em; line-height: 1.15; margin: 2.4em 0 0.6em; padding-top: 1.2em; border-top: 1px solid var(--c-line); text-wrap: balance; }
+.doc__body h3 { font-weight: 640; font-size: 1.1em; margin: 1.8em 0 0.4em; }
+.doc__body p, .doc__body ul, .doc__body ol, .doc__body dl, .doc__body table { margin-bottom: 1em; }
+.doc__body ul, .doc__body ol { padding-left: 1.4em; }
+.doc__body ul { list-style: disc; }
+.doc__body ol { list-style: decimal; }
+.doc__body li { margin-bottom: 0.4em; padding-left: 0.2em; }
+.doc__body li::marker { color: var(--c-muted); }
+.doc__body a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.2em; overflow-wrap: anywhere; }
+.doc__body a:hover { text-decoration-thickness: 2px; }
+.doc__body > p:first-child { color: var(--c-muted); font-size: var(--t-s); }
+.doc__body strong { font-weight: 640; }
+.doc__body .callout { padding: 1em 1.2em; background: var(--c-raise); box-shadow: inset 3px 0 0 var(--c-key); }
+.doc__body table { width: 100%; border-collapse: collapse; font-size: var(--t-s); }
+.doc__body th, .doc__body td { text-align: left; padding: 0.6em 0.8em 0.6em 0; border-bottom: 1px solid var(--c-line); vertical-align: top; }
+.doc__body code { font-family: var(--f-mono); font-size: 0.88em; }
+.doc__foot { margin-top: calc(var(--u) * 6); padding-top: 1.2rem; border-top: 1px solid var(--c-line); }

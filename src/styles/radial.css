@@ -1,0 +1,396 @@
+/* Radial AR page. Colours come from the [data-app='radial'] world in tokens.css.
+   Mono (B612) only for instrument readouts. Layout stays square; devices and the receiver bezel
+   keep their own radius. */
+
+.rd { --rd-amber: var(--c-amber, #ffb020); --rd-off: var(--c-off, #ff5a4e); overflow-x: clip; }
+/* The bottom-left status line repeats the CTA note on this page; the "Next app" corner stays. */
+:root:has([data-rd]) .frame__bl { display: none; }
+/* Key buttons: a light ring, distinct from the button's own fill. */
+.rd .btn--key:focus-visible { outline: 2px solid var(--c-fg); outline-offset: 4px; border-radius: 0; }
+
+/* ── The walk: hero + lessons 1 to 4 beside one sticky stage ─────────────────────────────── */
+.rd-walk {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+}
+.rd-hero, .rd-hero__body, .rd-ch { grid-column: 1 / span 5; }
+.rd-stage { grid-column: 6 / -1; grid-row: 1 / span 6; align-self: start; }
+
+.rd-hero {
+  grid-row: 1;
+  padding-top: max(5.5rem, 11svh);
+  display: grid;
+  gap: calc(var(--u) * 1.5);
+  justify-items: start;
+}
+.rd-hero__title {
+  font-size: clamp(3.6rem, 1rem + 6.4vw, 8.4rem);
+  letter-spacing: -0.05em;
+  line-height: 0.86;
+  white-space: nowrap;
+  margin-top: calc(var(--u) * 1.5);
+  margin-left: -0.05em; /* optical: the R's stem sits on the column line */
+}
+.rd-hero__line {
+  font-size: var(--t-l);
+  font-stretch: 112%;
+  font-weight: 640;
+  letter-spacing: -0.035em;
+  line-height: 1;
+  color: var(--c-key);
+}
+.rd-hero__body {
+  grid-row: 2;
+  padding-top: calc(var(--u) * 3);
+  padding-bottom: max(6rem, 16svh);
+}
+/* base CTA before the height variants below, so their margins win */
+.rd-cta { margin-top: calc(var(--u) * 3.5); display: grid; gap: 0.9rem; justify-items: start; }
+.rd-cta__note { font-size: var(--t-s); max-width: 32ch; }
+/* The bottom corners rest at the top of the page (frame.ts, >= 1100 px): icon to CTA must end above
+   them (1536×864 and 1600×900 are the common laptops that need it),
+   so short viewports tighten the stack instead of letting the corner sit on the button. */
+@media (min-width: 900px) and (max-height: 920px) {
+  .rd-hero { padding-top: 5.5rem; }
+  .rd-hero .icon { --icon-size: 64px !important; }
+  .rd-hero__body { padding-top: calc(var(--u) * 2); }
+  .rd-hero__body .lede { font-size: 1.2rem; line-height: 1.4; }
+  .rd-cta { margin-top: calc(var(--u) * 2.5); }
+}
+/* Laptop heights (1280×720, 1100×700): the status corner sits ~50 px from the bottom, so the title
+   scales with the height as well as the width and the stack closes up. */
+@media (min-width: 900px) and (max-height: 760px) {
+  .rd-hero { padding-top: 5rem; }
+  .rd-hero__title { font-size: clamp(3.6rem, min(1rem + 6.4vw, 11svh), 8.4rem); margin-top: calc(var(--u) * 0.5); }
+  .rd-hero__body { padding-top: calc(var(--u) * 1.5); }
+  .rd-cta { margin-top: calc(var(--u) * 1.75); gap: 0.6rem; }
+}
+
+.rd-ch {
+  min-height: 135svh;
+  padding-block: 18svh 10svh;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--u) * 2);
+  align-items: flex-start;
+}
+.rd-ch:nth-of-type(1) { grid-row: 3; }
+.rd-ch:nth-of-type(2) { grid-row: 4; }
+.rd-ch:nth-of-type(3) { grid-row: 5; min-height: 165svh; }
+.rd-ch:nth-of-type(4) { grid-row: 6; min-height: 175svh; }
+.rd-ch .h-l { max-width: 12ch; }
+.rd-ch .body { max-width: 33rem; }
+.rd-inset { margin-top: calc(var(--u) * 2); }
+
+/* ── Stage ───────────────────────────────────────────────────────────────────────────────── */
+.rd-stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  container-type: size;
+}
+.rd-stage__room {
+  position: absolute;
+  inset: 4.5rem 14% 1.5rem 0;
+  display: grid;
+  place-items: center;
+}
+.rd-room { width: 100%; height: 100%; display: block; overflow: visible; }
+.rd-stage__rx {
+  position: absolute;
+  right: 0;
+  bottom: max(1.5rem, 4cqh);
+  /* floor = the DME, chip and CRS row at its widest ('ABEAM'): narrower and the row spills past the gutter.
+     The dial keeps the narrower size (.rd-cdi), so on small stages the readouts sit wider than it, as in the app. */
+  width: clamp(16.5rem, 33cqw, 20rem);
+  /* the instrument sits on the floor plan: the plan dissolves under it instead of peeking between the boxes */
+  background: var(--c-bg);
+  box-shadow: 0 0 2.5rem 1.25rem var(--c-bg);
+  border-radius: 24px;
+}
+@media (min-width: 1100px) {
+  .rd-stage__rx { bottom: calc(var(--gutter) + 4.25rem); } /* clear of the "Next app" corner, not touching it */
+}
+
+/* Room */
+.rd-room__grid { color: var(--c-line); }
+.rd-room__rose circle { stroke: rgb(232 236 239 / 0.28); stroke-width: 1; }
+.rd-room__rose line { stroke: rgb(232 236 239 / 0.3); stroke-width: 1; }
+.rd-room__rose line.is-major { stroke: rgb(232 236 239 / 0.62); stroke-width: 1.4; }
+.rd-room__rose text { fill: var(--c-muted); font: 600 11px var(--f-body); text-anchor: middle; dominant-baseline: middle; }
+.rd-room__rose text.is-cardinal { fill: var(--c-fg); font-size: 13px; }
+.rd-room__abeam path { fill: rgb(255 90 78 / 0.16); }
+.rd-room__abeam line { stroke: rgb(232 236 239 / 0.34); stroke-width: 1; stroke-dasharray: 3 5; }
+.rd-room__side { fill: var(--c-muted); font: 700 9.5px var(--f-mono); letter-spacing: 0.12em; text-anchor: middle; dominant-baseline: middle; }
+.rd-room__course line { stroke: var(--c-key); stroke-width: 2.2; }
+.rd-room__course path { fill: var(--c-key); }
+.rd-room__cone { fill: rgb(255 90 78 / 0.06); stroke: rgb(255 90 78 / 0.55); stroke-width: 1; stroke-dasharray: 2 3; transition: fill 0.4s; }
+.rd-room__cone.is-in { fill: rgb(255 90 78 / 0.22); stroke: var(--rd-off); }
+.rd-room__dme { fill: none; stroke: var(--rd-amber); stroke-width: 1; stroke-dasharray: 1 4; stroke-linecap: round; opacity: 0.75; }
+.rd-room__radial { stroke: rgb(232 236 239 / 0.5); stroke-width: 1; }
+.rd-room__station rect, .rd-room__station path { fill: none; stroke: var(--c-fg); stroke-width: 1.4; }
+.rd-room__station .rd-room__dot { fill: var(--c-fg); }
+.rd-room__plane { fill: var(--c-fg); }
+.rd-room__tag { fill: var(--c-fg); font: 700 11px var(--f-mono); letter-spacing: 0.04em; paint-order: stroke; stroke: var(--c-bg); stroke-width: 4px; stroke-linejoin: round; }
+.rd-room__tag--hdg { fill: var(--c-muted); font-weight: 400; }
+.rd-room__scale line { stroke: var(--c-muted); stroke-width: 1; }
+.rd-room__scale text { fill: var(--c-muted); font: 400 10px var(--f-mono); text-anchor: middle; }
+
+/* Receiver, after the app's own */
+.rd-rx { display: grid; gap: 0.6rem; }
+.rd-rx__row { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 0.4rem; }
+.rd-rx__box {
+  display: flex; align-items: baseline; gap: 0.35rem;
+  padding: 0.45rem 0.6rem;
+  background: var(--c-raise);
+  border: 1px solid var(--c-line);
+  border-radius: 6px;
+  font-family: var(--f-mono);
+}
+.rd-rx__box--crs { justify-content: flex-end; }
+.rd-rx__k { font-size: 0.66rem; color: var(--c-muted); letter-spacing: 0.06em; }
+.rd-rx__v { white-space: nowrap; font-size: clamp(1.05rem, 0.8rem + 1.1cqw, 1.5rem); font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1; }
+.rd-rx__v--dme { color: var(--rd-amber); }
+.rd-rx__v--crs { color: var(--c-key); }
+.rd-rx__u { font-size: 0.66rem; color: var(--rd-amber); }
+.rd-rx__dp { display: inline-block; width: 0.42em; text-align: center; }
+.rd-rx__chip {
+  font: 700 0.66rem var(--f-mono); letter-spacing: 0.06em;
+  color: var(--rd-amber); border: 1px solid var(--rd-amber); border-radius: 3px; padding: 0.2rem 0.35rem;
+}
+.rd-rx__chip[hidden] { display: inline-block; visibility: hidden; } /* keeps the row from shifting */
+.rd-cdi { width: 100%; max-width: clamp(13rem, 33cqw, 20rem); justify-self: center; height: auto; display: block; }
+.rd-cdi__bezel { fill: var(--c-raise); stroke: var(--c-line); }
+.rd-cdi__bezelc { fill: var(--c-raise); stroke: var(--c-line); }
+.rd-cdi__face { fill: #0a0d10; }
+.rd-cdi__rim { fill: none; stroke: rgb(232 236 239 / 0.18); stroke-width: 1.5; }
+.rd-cdi__card line { stroke: rgb(232 236 239 / 0.55); stroke-width: 1.2; }
+.rd-cdi__card line.is-major { stroke: var(--c-fg); stroke-width: 1.8; }
+.rd-cdi__card text { fill: var(--c-fg); font: 700 12px var(--f-mono); text-anchor: middle; dominant-baseline: middle; }
+.rd-cdi__index { fill: var(--c-key); }
+.rd-cdi__index--recip { fill: rgb(232 236 239 / 0.5); }
+.rd-cdi__dots circle { fill: none; stroke: var(--c-fg); stroke-width: 1.6; }
+.rd-cdi__dots .rd-cdi__centre { stroke-width: 1.4; }
+.rd-cdi__name { fill: var(--c-muted); font: 700 8px var(--f-mono); letter-spacing: 0.2em; text-anchor: middle; }
+.rd-cdi__flagbox { fill: #1a1f24; stroke: rgb(232 236 239 / 0.3); }
+.rd-cdi__flag text { fill: var(--c-fg); font: 700 10px var(--f-mono); text-anchor: middle; }
+.rd-cdi__tri { fill: var(--c-fg); }
+.rd-cdi__offlabel { fill: #f4f4f4; }
+.rd-cdi__flag .rd-cdi__offtext { fill: #b3140a; font-size: 9px; }
+.rd-cdi__needle { fill: var(--c-key); }
+.rd-cdi__knob circle { fill: #1a1f24; stroke: rgb(232 236 239 / 0.3); }
+.rd-cdi__knob line { stroke: rgb(232 236 239 / 0.4); }
+.rd-cdi__obs { fill: var(--c-muted); font: 700 7px var(--f-mono); letter-spacing: 0.15em; }
+[data-flag='OFF'] .rd-cdi__needle { fill: rgb(232 236 239 / 0.55); }
+
+/* ── Lesson 5: other stations ───────────────────────────────────────────────────────────── */
+.rd-more { border-top: 1px solid var(--c-line); }
+.rd-more__head { display: grid; gap: calc(var(--u) * 1.5); }
+.rd-adfrow, .rd-ils {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  row-gap: calc(var(--u) * 4);
+  align-items: center;
+}
+/* Heading and NDB text stack on the left; the ADF figure sits beside both, so no band of air
+   opens between the section title and its first lesson. */
+.rd-adfrow { row-gap: calc(var(--u) * 3.5); }
+.rd-more__head { grid-column: 1 / span 5; grid-row: 1; align-self: end; }
+.rd-adfrow__text { grid-column: 1 / span 4; grid-row: 2; align-self: start; }
+.rd-adfrow__fig { grid-column: 6 / -1; grid-row: 1 / span 2; }
+.rd-adfrow__fig svg { width: 100%; height: auto; display: block; }
+.rd-adfrow .h-m, .rd-ils .h-m { margin-bottom: 0.9rem; }
+html:not(.motion) .rd-motion-only { display: none; }
+.rd-adf__floor { fill: none; stroke: var(--c-line); }
+.rd-adf__ndb { fill: var(--rd-amber); }
+.rd-adf__bearing { stroke: var(--rd-amber); stroke-width: 1; stroke-dasharray: 2 4; }
+.rd-adf__n { fill: var(--c-muted); font: 700 11px var(--f-mono); text-anchor: middle; }
+.rd-adf__tick { stroke: var(--c-fg); stroke-width: 1.4; }
+.rd-adf__lab { fill: var(--c-fg); font: 700 13px var(--f-mono); text-anchor: middle; }
+.rd-adf__lubber { fill: var(--c-key); }
+.rd-adf__mini { fill: none; stroke: var(--c-muted); stroke-width: 2; }
+.rd-adf__needle { fill: var(--rd-amber); }
+.rd-adf__hub { fill: #1a1f24; stroke: rgb(232 236 239 / 0.4); }
+.rd-adf__read {
+  display: flex; gap: 1.75rem; justify-content: flex-end; margin-top: 0.9rem;
+  font: 400 var(--t-s) var(--f-mono); color: var(--c-muted);
+}
+.rd-adf__read b { color: var(--c-fg); font-weight: 700; font-variant-numeric: tabular-nums; }
+.rd-adf__read .rd-amber { color: var(--rd-amber); }
+
+.rd-ils { margin-top: calc(var(--u) * 10); align-items: end; }
+.rd-ils__text { grid-column: 1 / span 4; align-self: start; }
+.rd-ils__shots {
+  --rd-ils-w: 240px;
+  grid-column: 5 / -1;
+  list-style: none; padding: 0;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter);
+  align-items: start;
+}
+.rd-ils__shots li:nth-child(2) { margin-top: 12svh; }
+.rd-ils__shots li:nth-child(3) { margin-top: 4svh; }
+
+/* ── Phones (real screenshots) ──────────────────────────────────────────────────────────── */
+.rd-phone { width: min(100%, var(--w)); display: grid; gap: 0.75rem; }
+.rd-phone__body {
+  padding: 3.2%;
+  background: #15191d;
+  border-radius: calc(var(--w) * 0.16);
+  box-shadow: inset 0 0 0 1px rgb(232 236 239 / 0.12), 0 30px 60px -30px rgb(0 0 0 / 0.8);
+}
+.rd-phone__screen {
+  display: block; width: 100%; height: auto;
+  aspect-ratio: 786 / 1704; object-fit: cover; object-position: top;
+  border-radius: calc(var(--w) * 0.13);
+  background: #000;
+}
+.rd-phone__cap { font-size: var(--t-s); color: var(--c-muted); max-width: 26ch; }
+
+/* ── Lesson 6: knowledge test ───────────────────────────────────────────────────────────── */
+.rd-kt { background: var(--c-raise); }
+.rd-kt__grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); row-gap: calc(var(--u) * 5); }
+.rd-kt__text { grid-column: 8 / -1; grid-row: 1; display: grid; gap: calc(var(--u) * 2); align-content: start; position: sticky; top: 7rem; align-self: start; }
+.rd-kt__shots {
+  --rd-kt-w: 230px;
+  grid-column: 1 / span 6; grid-row: 1;
+  list-style: none; padding: 0;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter);
+}
+.rd-kt__shots li:nth-child(2) { margin-top: 8svh; }
+.rd-kt__shots li:nth-child(3) { margin-top: 16svh; }
+
+/* Carousels (phones): keyboard-focusable when they scroll (radial.ts sets tabindex). */
+.rd-ils__shots:focus-visible, .rd-kt__shots:focus-visible { outline: 2px solid var(--c-key); outline-offset: -2px; }
+
+/* Wide screens: the phones grow into their columns instead of leaving air beside the text. */
+@media (min-width: 1600px) {
+  .rd-ils__shots { --rd-ils-w: clamp(240px, 16vw, 320px); }
+  .rd-kt__shots { --rd-kt-w: clamp(230px, 15vw, 300px); grid-column: 1 / span 7; }
+  .rd-kt__text { grid-column: 9 / -1; align-self: center; }
+}
+
+/* ── What it is ─────────────────────────────────────────────────────────────────────────── */
+.rd-plain__h { grid-column: 1 / span 5; max-width: 11ch; }
+.rd-plain__list { grid-column: 7 / -1; list-style: none; padding: 0; border-top: 1px solid var(--c-line); }
+.rd-plain__list li { padding-block: calc(var(--u) * 2.5); border-bottom: 1px solid var(--c-line); display: grid; gap: 0.5rem; }
+.rd-plain__list p { color: var(--c-muted); max-width: 40rem; }
+
+.rd-need { margin-top: calc(var(--u) * 14); align-items: center; }
+.rd-need__shot { grid-column: 2 / span 3; }
+.rd-need__text { grid-column: 7 / -1; display: grid; gap: calc(var(--u) * 3); }
+.rd-need__list { border-top: 1px solid var(--c-line); }
+.rd-need__list div { display: grid; grid-template-columns: 7rem 1fr; gap: 1rem; padding-block: 1rem; border-bottom: 1px solid var(--c-line); }
+.rd-need__list dt { color: var(--c-muted); font-weight: 560; font-size: var(--t-s); padding-top: 0.15em; }
+
+/* ── FAQ ────────────────────────────────────────────────────────────────────────────────── */
+.rd-faq { border-top: 1px solid var(--c-line); }
+.rd-faq__h { grid-column: 1 / span 4; }
+.rd-faq__list { grid-column: 6 / -1; border-top: 1px solid var(--c-line); }
+.rd-faq__item { border-bottom: 1px solid var(--c-line); }
+.rd-faq__item summary {
+  list-style: none; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  min-height: 3.5rem; padding-block: 1rem;
+  font-size: var(--t-m); font-stretch: 106%; font-weight: 600; letter-spacing: -0.015em; line-height: 1.2;
+}
+.rd-faq__item summary::-webkit-details-marker { display: none; }
+.rd-faq__item summary:hover span:first-child { color: var(--c-key); }
+.rd-faq__item summary:focus-visible { outline: 2px solid var(--c-key); outline-offset: 4px; }
+.rd-faq__mark { position: relative; flex: none; width: 1rem; height: 1rem; }
+.rd-faq__mark::before, .rd-faq__mark::after { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 1.5px; background: currentColor; transition: rotate 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
+.rd-faq__mark::after { rotate: 90deg; }
+.rd-faq__item[open] .rd-faq__mark::after { rotate: 0deg; }
+.rd-faq__item p { padding-bottom: 1.4rem; max-width: 42rem; color: var(--c-muted); }
+
+/* ── End ────────────────────────────────────────────────────────────────────────────────── */
+.rd-end { border-top: 1px solid var(--c-line); }
+.rd-end__h { grid-column: 1 / span 8; max-width: 11ch; }
+.rd-end__cta { grid-column: 9 / -1; align-self: end; display: grid; gap: 0.9rem; justify-items: start; }
+
+.rd-next { border-top: 1px solid var(--c-line); }
+.rd-next__link {
+  display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto auto;
+  column-gap: calc(var(--u) * 3); row-gap: 0.4rem; align-items: center;
+  padding-block: calc(var(--u) * 8);
+}
+.rd-next__link .label { grid-column: 1 / -1; margin-bottom: calc(var(--u) * 2); }
+.rd-next__link .icon { grid-row: 2 / span 2; transition: scale 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+.rd-next__name { align-self: end; }
+.rd-next__line { align-self: start; }
+.rd-next__link:hover .icon { scale: 1.06; }
+.rd-next__link:hover .rd-next__name { color: var(--c-key); }
+.rd-next__link:focus-visible { outline: 2px solid var(--c-key); outline-offset: -2px; }
+
+/* ── Tablets ────────────────────────────────────────────────────────────────────────────── */
+@media (max-width: 1199px) {
+  .rd-stage__room { right: 6%; }
+  .rd-kt__text { grid-column: 7 / -1; }
+}
+
+/* ── Phones and portrait tablets: the stage sticks to the top, text scrolls beneath it ────── */
+@media (max-width: 899px) {
+  .rd-walk { display: block; }
+  .rd-hero { padding-top: calc(4.75rem + env(safe-area-inset-top)); gap: 0.5rem; grid-template-columns: auto 1fr; align-items: end; column-gap: 1rem; }
+  .rd-hero .icon { --icon-size: 64px !important; grid-row: 1 / span 2; }
+  .rd-hero__title { font-size: clamp(2.9rem, 14vw, 4.6rem); margin: 0; }
+  .rd-hero__line { font-size: clamp(1.25rem, 5.6vw, 1.75rem); }
+
+  .rd-stage {
+    position: sticky; top: 0; z-index: 2;
+    /* as tall as the plan and the receiver need, never more than half the screen: the rest is for reading */
+    height: min(52svh, calc(4.1rem + 60vw));
+    margin-inline: calc(var(--gutter) * -1);
+    background: var(--c-bg);
+  }
+  .rd-stage::after {
+    content: ''; position: absolute; left: 0; right: 0; top: 100%; height: 2.5rem;
+    background: linear-gradient(var(--c-bg), transparent); pointer-events: none;
+  }
+  .rd-stage__room { inset: 3.6rem 41% 0.5rem 0; }
+  /* Receiver column: DME over CRS over the CDI, centred beside the floor plan. */
+  .rd-stage__rx {
+    top: 3.6rem; bottom: 0.5rem; right: var(--gutter); width: 41%;
+    display: grid; align-content: center;
+    background: none; box-shadow: none;
+  }
+  .rd-rx { position: relative; gap: 0.45rem; }
+  .rd-rx__row { grid-template-columns: minmax(0, 1fr); gap: 0.35rem; }
+  .rd-rx__box { padding: 0.35rem 0.5rem; }
+  .rd-rx__box--crs { justify-content: flex-start; }
+  .rd-rx__chip { position: absolute; top: 0.4rem; right: 0.45rem; } /* inside the DME box, as the app pairs them */
+  .rd-room__rose text { font-size: 18px; }
+  .rd-room__rose text.is-cardinal { font-size: 20px; }
+  .rd-room__tag { font-size: 17px; }
+  .rd-room__side { font-size: 14px; }
+  .rd-room__scale { display: none; }
+
+  .rd-hero__body { padding-top: 2.5rem; padding-bottom: 4rem; }
+  /* The text is the scroll track: the stage plays while its own words pass beneath it. */
+  .rd-ch, .rd-ch:nth-of-type(3), .rd-ch:nth-of-type(4) { min-height: 0; padding-block: 2.5rem 7rem; }
+  .rd-inset { width: min(60%, 210px); }
+
+  .rd-adfrow { min-height: 0; row-gap: calc(var(--u) * 5); }
+  .rd-more__head, .rd-adfrow__text, .rd-adfrow__fig { grid-row: auto; }
+  .rd-more__head, .rd-adfrow__text, .rd-adfrow__fig, .rd-ils__text, .rd-ils__shots, .rd-kt__text, .rd-kt__shots,
+  .rd-plain__h, .rd-plain__list, .rd-need__shot, .rd-need__text, .rd-faq__h, .rd-faq__list,
+  .rd-end__h, .rd-end__cta { grid-column: 1 / -1; }
+  .rd-adf__read { justify-content: flex-start; gap: 1.25rem; }
+  .rd-ils__shots, .rd-kt__shots {
+    display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 1rem;
+    margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); padding-bottom: 0.5rem;
+    scroll-padding-inline: var(--gutter); /* snap to the gutter, not the screen edge */
+  }
+  .rd-ils__shots li, .rd-kt__shots li { flex: 0 0 62%; scroll-snap-align: start; margin-top: 0 !important; }
+  .rd-kt__text { position: static; grid-row: auto; }
+  .rd-kt__shots { grid-row: auto; }
+  .rd-need__shot { max-width: 60%; }
+  .rd-need { margin-top: calc(var(--u) * 10); row-gap: calc(var(--u) * 6); }
+  .rd-plain__h, .rd-faq__h { margin-bottom: calc(var(--u) * 3); }
+  .rd-end__cta { margin-top: calc(var(--u) * 4); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rd-room__cone { transition: none; }
+}

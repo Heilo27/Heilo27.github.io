@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://heiloprojects.com/sitemap-index.xml

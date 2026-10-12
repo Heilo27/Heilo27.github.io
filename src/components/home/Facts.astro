@@ -1,0 +1,16 @@
+---
+// Data: three true numbers, each checkable on the App Store or in the index below.
+import { facts } from '../../data/site';
+import { factsUi } from './copy';
+---
+<section class="facts wrap" aria-labelledby="facts-title">
+  <h2 id="facts-title" class="sr-only">{factsUi.heading}</h2>
+  <ul class="facts__list">
+    {facts.map((f) => (
+      <li class="facts__item">
+        <span class="facts__value num display" data-settle-num>{f.value}</span>
+        <span class="facts__label">{f.label}</span>
+      </li>
+    ))}
+  </ul>
+</section>

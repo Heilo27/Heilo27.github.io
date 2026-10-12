@@ -1,0 +1,112 @@
+---
+// Top-down view of the room: the VOR/DME station at the centre, the compass rose painted on the
+// floor, the selected course (cyan), the TO/FROM boundary with its abeam band, the cone footprint,
+// the DME range circle and the aircraft (your phone). 1 m = 100 units, north up.
+// Rendered at build time in its first state; src/motion/radial.ts moves it from then on.
+import { computeVOR, formatCourse } from './vor';
+import { U, CONE_FOOTPRINT_M, TAG_FLIP_E, type Pose } from './walk';
+
+interface Props { pose: Pose }
+const { pose } = Astro.props;
+const S = 100;
+const ROSE = 190;
+const v = computeVOR(pose.e, pose.n, U, pose.obs);
+const x = pose.e * S;
+const y = -pose.n * S;
+const r = Math.hypot(x, y);
+const west = pose.e > TAG_FLIP_E;
+const tagX = west ? -22 : 22;
+
+const ticks = Array.from({ length: 72 }, (_, i) => i * 5);
+const labels = ['N', '3', '6', 'E', '12', '15', 'S', '21', '24', 'W', '30', '33'];
+const band = 2; // AMBIGUITY_BAND_DEG, drawn either side of the abeam line
+const wedge = (center: number) => {
+  const p = (a: number) => `${(Math.sin((a * Math.PI) / 180) * ROSE).toFixed(1)},${(-Math.cos((a * Math.PI) / 180) * ROSE).toFixed(1)}`;
+  return `M0,0 L${p(center - band)} A${ROSE},${ROSE} 0 0 1 ${p(center + band)} Z`;
+};
+const lbl = (bearing: number, dist: number) => ({
+  x: (Math.sin((bearing * Math.PI) / 180) * dist).toFixed(1),
+  y: (-Math.cos((bearing * Math.PI) / 180) * dist).toFixed(1),
+});
+const fromL = lbl(pose.obs + 24, 118);
+const toL = lbl(pose.obs + 204, 118);
+---
+<svg class="rd-room" viewBox="-210 -210 420 420" role="img" aria-label="The room from above: the VOR station at the centre, the selected course in cyan, and your phone as the aircraft" focusable="false">
+  <defs>
+    <pattern id="rd-grid" width="50" height="50" patternUnits="userSpaceOnUse" x="-25" y="-25">
+      <path d="M50 0H0V50" fill="none" stroke="currentColor" stroke-width="0.6" />
+    </pattern>
+    <radialGradient id="rd-fade">
+      <stop offset="0.55" stop-color="#fff" />
+      <stop offset="1" stop-color="#fff" stop-opacity="0" />
+    </radialGradient>
+    <mask id="rd-floor-mask"><rect x="-210" y="-210" width="420" height="420" fill="url(#rd-fade)" /></mask>
+    <filter id="rd-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2.4" result="b" />
+      <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+  </defs>
+
+  <rect class="rd-room__grid" x="-210" y="-210" width="420" height="420" fill="url(#rd-grid)" mask="url(#rd-floor-mask)" />
+
+  <!-- Compass rose painted on the floor -->
+  <g class="rd-room__rose">
+    <circle r={ROSE} fill="none" />
+    {ticks.map((a) => {
+      const len = a % 30 === 0 ? 16 : a % 10 === 0 ? 10 : 5;
+      return <line x1="0" y1={-ROSE} x2="0" y2={-ROSE + len} transform={`rotate(${a})`} class={a % 30 === 0 ? 'is-major' : undefined} />;
+    })}
+    {labels.map((t, i) => (
+      <text transform={`rotate(${i * 30}) translate(0 ${-ROSE + 30})`} class={i % 3 === 0 ? 'is-cardinal' : undefined}>{t}</text>
+    ))}
+  </g>
+
+  <!-- TO/FROM boundary: the line abeam the station, with the ±2° band where the flag shows OFF -->
+  <g class="rd-room__abeam" data-rd-abeam transform={`rotate(${pose.obs})`}>
+    <path d={wedge(90)} />
+    <path d={wedge(270)} />
+    <line x1={-ROSE} y1="0" x2={ROSE} y2="0" />
+  </g>
+  <text class="rd-room__side" data-rd-from x={fromL.x} y={fromL.y}>FROM</text>
+  <text class="rd-room__side" data-rd-to x={toL.x} y={toL.y}>TO</text>
+
+  <!-- Selected course through the station -->
+  <g class="rd-room__course" data-rd-course transform={`rotate(${pose.obs})`}>
+    <line x1="0" y1={ROSE} x2="0" y2={-ROSE + 6} />
+    <path d={`M0,${-ROSE - 2} l-7,14 h14 z`} />
+  </g>
+
+  <!-- Cone of confusion footprint at the phone's height -->
+  <circle class="rd-room__cone" data-rd-cone r={(CONE_FOOTPRINT_M * S).toFixed(1)} />
+
+  <!-- DME range circle through the aircraft (horizontal; the readout is slant) -->
+  <circle class="rd-room__dme" data-rd-dmering r={r.toFixed(1)} />
+
+  <!-- Radial from the station to the aircraft -->
+  <line class="rd-room__radial" data-rd-radial x1="0" y1="0" x2={x.toFixed(1)} y2={y.toFixed(1)} />
+
+  <!-- VOR/DME station, chart symbol: hexagon in a square -->
+  <g class="rd-room__station">
+    <rect x="-13" y="-11" width="26" height="22" />
+    <path d="M-10,0 L-5,-8.66 L5,-8.66 L10,0 L5,8.66 L-5,8.66 Z" />
+    <circle r="2.2" class="rd-room__dot" />
+  </g>
+
+  <!-- The aircraft: your phone -->
+  <g data-rd-plane transform={`translate(${x.toFixed(1)} ${y.toFixed(1)})`}>
+    <g data-rd-nose transform={`rotate(${pose.hdg.toFixed(1)})`}>
+      <path class="rd-room__plane" filter="url(#rd-glow)" d="M0,-17C1.8,-17 2.5,-13.5 2.5,-10L2.5,-3.5L17,0L17,3.4L2.5,2.3L1.8,10L6.8,12.8L6.8,15L0,14L-6.8,15L-6.8,12.8L-1.8,10L-2.5,2.3L-17,3.4L-17,0L-2.5,-3.5L-2.5,-10C-2.5,-13.5 -1.8,-17 0,-17Z" />
+    </g>
+    <g data-rd-tags text-anchor={west ? 'end' : 'start'}>
+    <text class="rd-room__tag" x={tagX} y="-14" data-rd-tag>{v.radial == null ? 'R ---' : `R ${formatCourse(v.radial)}`}</text>
+    <text class="rd-room__tag rd-room__tag--hdg" x="22" y="-2" data-rd-hdg>{`HDG ${formatCourse(pose.hdg)}`}</text>
+    </g>
+  </g>
+
+  <!-- Scale -->
+  <g class="rd-room__scale" transform="translate(-196 196)">
+    <line x1="0" y1="0" x2="100" y2="0" />
+    <line x1="0" y1="-4" x2="0" y2="4" /><line x1="100" y1="-4" x2="100" y2="4" />
+    <text x="50" y="-7">1 m</text>
+  </g>
+</svg>
