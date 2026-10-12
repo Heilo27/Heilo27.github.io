@@ -588,7 +588,7 @@ export const apps: App[] = [
         'This version keeps all of it and adds what the original never had: touch controls, modern clarity and your hero waiting on every device.',
       ],
     },
-    shots: [{ src: img('castle/title.png'), alt: 'Castle of the Winds title screen: A Question of Vengeance, with a New Game button', device: 'phone' }],
+    shots: [{ src: img('castle/title.png'), alt: 'Castle of the Winds title screen: A Question of Vengeance, with a New Game button', device: 'landscape' }],
     features: [
       { title: 'Every descent is different', text: 'Layouts, monsters and loot are generated fresh, so no two runs share a dungeon.' },
       { title: 'Foes from Norse legend', text: 'Trolls, giants and dragons, each with their own tactics. Learn them or fall to them.' },

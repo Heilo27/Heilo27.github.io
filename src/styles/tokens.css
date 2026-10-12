@@ -67,7 +67,7 @@
 [data-app='radial']      { --c-bg: #06080a; --c-fg: #e8ecef; --c-muted: #8e98a3; --c-line: rgb(232 236 239 / 0.14); --c-key: #5cd6f2; --c-key-ink: #04161c; --c-raise: #0f1317; --c-amber: #ffb020; --c-off: #ff5a4e; }
 [data-app='rightrudder'] { --c-bg: #edf2f7; --c-fg: #0a1a2b; --c-muted: #4f5f70; --c-line: rgb(10 26 43 / 0.12); --c-key: #0b63a8; --c-key-ink: #fff; --c-raise: #fff; }
 [data-app='stripes']     { --c-bg: #eef3eb; --c-fg: #0d1a0e; --c-muted: #4e5f4f; --c-line: rgb(13 26 14 / 0.12); --c-key: #2e7d32; --c-key-ink: #fff; --c-raise: #fff; }
-[data-app='stockup']     { --c-bg: #edf5f8; --c-fg: #0a1a22; --c-muted: #48606e; --c-line: rgb(10 26 34 / 0.12); --c-key: #137fb0; --c-key-ink: #fff; --c-raise: #fff; }
+[data-app='stockup']     { --c-bg: #edf5f8; --c-fg: #0a1a22; --c-muted: #48606e; --c-line: rgb(10 26 34 / 0.12); --c-key: #1177a6; --c-key-ink: #fff; --c-raise: #fff; }
 [data-app='grove']       { --c-bg: #eef2ec; --c-fg: #14201a; --c-muted: #55625a; --c-line: rgb(20 32 26 / 0.12); --c-key: #2f6b45; --c-key-ink: #fff; --c-raise: #fff; --c-root: #c98a1e; }
 [data-app='lodestone']   { --c-bg: #0e0d0b; --c-fg: #ede6d6; --c-muted: #a0978a; --c-line: rgb(237 230 214 / 0.14); --c-key: #d4ae52; --c-key-ink: #1a1408; --c-raise: #1a1814; }
 [data-app='dsmvideo']    { --c-bg: #0a0a0b; --c-fg: #f2f2f2; --c-muted: #9a9a9f; --c-line: rgb(242 242 242 / 0.14); --c-key: #e0262f; --c-key-ink: #fff; --c-raise: #161618; }
@@ -77,3 +77,14 @@
 [data-app='foreman']     { --c-bg: #f0f0ee; --c-fg: #16120e; --c-muted: #5c554d; --c-line: rgb(22 18 14 / 0.12); --c-key: #c4501a; --c-key-ink: #fff; --c-raise: #fff; }
 [data-app='radiowriter'] { --c-bg: #101214; --c-fg: #e9eaec; --c-muted: #9aa0a6; --c-line: rgb(233 234 236 / 0.14); --c-key: #f2c230; --c-key-ink: #1a1404; --c-raise: #181b1e; }
 [data-app='specterdc']   { --c-bg: #0b0b0a; --c-fg: #e9e4d8; --c-muted: #9c968a; --c-line: rgb(233 228 216 / 0.14); --c-key: #ffb000; --c-key-ink: #1a1100; --c-raise: #151513; }
+
+/* ---- Ink world: a dark section inside the studio (the home page's contact finale). The footer
+   that directly follows an ink section at the end of <main> wears it too. ---- */
+[data-world='ink'], main:has(> [data-world='ink']:last-child) + .footer {
+  --c-bg: #0b0c0e; --c-fg: #f2f3f5; --c-muted: #9aa1ab; --c-line: rgb(242 243 245 / 0.14);
+  --c-key: #f2f3f5; --c-key-ink: #0b0c0e; --c-raise: #15171a; --c-accent: #f2f3f5;
+  --c-field: rgb(242 243 245 / 0.42); --c-error: #ff9b91;
+  background: var(--c-bg);
+  color: var(--c-fg);
+  color-scheme: dark;
+}
