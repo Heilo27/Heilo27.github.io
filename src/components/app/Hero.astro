@@ -5,14 +5,20 @@ import AppIcon from '../AppIcon.astro';
 import Device from './Device.astro';
 import { statusLabel, type App } from '../../data/apps';
 import { isExternal } from '../../lib/links';
+import { ems } from './fit';
 
 interface Props { app: App }
 const { app } = Astro.props;
 const shot = app.shots[0];
 const long = app.name.length > 11;
 // The name is sized to fit its column: by its whole length on one line, or its longest word when it wraps.
-const len = long ? Math.max(...app.name.split(' ').map((w) => w.length)) : app.name.length;
+const len = (long ? Math.max(...app.name.split(' ').map(ems)) : ems(app.name)).toFixed(2);
 const ext = app.cta && isExternal(app.cta.href);
+// A service has no platforms or store status: its facts are what it is and what the first step costs.
+const service = app.status === 'service';
+const meta: [string, string][] = service
+  ? [['Service', app.category], ['Price', app.price]]
+  : [['Status', statusLabel[app.status]], ['Runs on', app.platforms.join(', ')], ['Price', app.price]];
 ---
 <section class:list={['ahero wrap', { 'ahero--poster': !shot, [`ahero--${shot?.device}`]: !!shot }]} aria-labelledby="app-name" data-hero>
   <div class="ahero__copy">
@@ -29,9 +35,7 @@ const ext = app.cta && isExternal(app.cta.href);
       </div>
     )}
     <dl class="ahero__meta" data-reveal="fade" data-intro data-delay="0.45">
-      <div><dt>Status</dt><dd>{statusLabel[app.status]}</dd></div>
-      <div><dt>{app.status === 'service' ? 'Offered as' : 'Runs on'}</dt><dd>{app.platforms.join(', ')}</dd></div>
-      <div><dt>Price</dt><dd>{app.price}</dd></div>
+      {meta.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
     </dl>
   </div>
 
@@ -45,7 +49,7 @@ const ext = app.cta && isExternal(app.cta.href);
     ) : (
       <div class="ahero__poster">
         <AppIcon app={app} size={360} eager hero decorative={false} class="ahero__bigicon" />
-        <p class="ahero__category" data-reveal="fade" data-intro data-delay="0.4">{app.category}</p>
+        {!service && <p class="ahero__category" data-reveal="fade" data-intro data-delay="0.4">{app.category}</p>}
       </div>
     )}
   </div>

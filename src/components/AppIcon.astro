@@ -10,16 +10,20 @@ interface Props {
   eager?: boolean;
   class?: string;
   hero?: boolean;            // the landing spot of the launch transition
-  decorative?: boolean;      // inside a link that already names the app
+  decorative?: boolean;      // inside a link or beside a heading that already names the app
 }
 const { app, size, eager = false, class: cls = '', hero = false, decorative = true } = Astro.props;
-const alt = decorative ? '' : `${app.name} app icon`;
+// A decorative icon is hidden from assistive tech on its wrapper, so the name is not read twice.
+// Its img still carries a true alt: the build minifies alt="" to a bare `alt`, and an image that
+// fails to load should still say what it was.
+const alt = `${app.name} app icon`;
 ---
 <span
   class:list={['icon', cls, { 'icon--mono': !app.icon }]}
   data-app={app.icon ? undefined : app.slug}
   data-icon
   data-hero-icon={hero ? '' : undefined}
+  aria-hidden={decorative ? 'true' : undefined}
   style={`--icon-size:${size}px`}
 >
   {app.icon ? (
@@ -36,6 +40,6 @@ const alt = decorative ? '' : `${app.name} app icon`;
       quality={90}
     />
   ) : (
-    <span class="icon__mono" aria-hidden={decorative ? 'true' : undefined} role={decorative ? undefined : 'img'} aria-label={decorative ? undefined : alt}>{app.monogram}</span>
+    <span class="icon__mono" role={decorative ? undefined : 'img'} aria-label={decorative ? undefined : alt}>{app.monogram}</span>
   )}
 </span>

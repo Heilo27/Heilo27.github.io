@@ -2,6 +2,7 @@
 // The site behaves like a Home Screen, so a missing page is an app that isn't installed.
 import Base from '../layouts/Base.astro';
 import { apps } from '../data/apps';
+import { appHref } from '../lib/links';
 const first = apps.filter((a) => a.status === 'live').slice(0, 3);
 ---
 <Base title="Page not found" description="This page isn't installed. Head home or open one of the apps.">
@@ -15,7 +16,7 @@ const first = apps.filter((a) => a.status === 'live').slice(0, 3);
       <a class="btn btn--line" href="/#apps">See the apps</a>
     </p>
     {first.length > 0 && (
-      <p class="label lost__try">Or open one: {first.map((a, i) => <>{i > 0 && ', '}<a class="link" href={`/${a.slug}/`}>{a.name}</a></>)}.</p>
+      <p class="label lost__try">Or open one: {first.map((a, i) => <>{i > 0 && ', '}<a class="link" href={appHref(a)} rel={a.external ? 'noopener' : undefined}>{a.name}</a></>)}.</p>
     )}
   </section>
 </Base>

@@ -145,6 +145,7 @@ body { font-stretch: 100%; font-weight: 420; font-feature-settings: 'kern', 'ss0
   left: 50%;
   top: 50%;
   width: calc(100% * 1206 / 2622);
+  height: calc(100% * 2622 / 1206);
   max-width: none;
   rotate: -90deg;
   translate: -50% -50%;

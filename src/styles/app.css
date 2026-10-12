@@ -18,15 +18,22 @@
 }
 .ahero__copy { grid-column: 1 / span 7; container-type: inline-size; display: grid; justify-items: start; }
 .ahero__stage { grid-column: 8 / -1; display: flex; justify-content: center; align-items: center; }
+/* The device centres in the first screen, not in the copy column: on short laptop screens the copy
+   runs past the fold, and a device centred on it would be cut off. */
+@media (min-width: 900px) {
+  .ahero__stage { align-self: start; height: calc(100svh - 6rem - env(safe-area-inset-top) - var(--u) * 5); }
+}
+/* The bottom-left status line repeats the hero's own facts and sits on them: app pages drop it. */
+:root:has([data-app-page]) .frame__bl { display: none; }
 .ahero--landscape .ahero__copy { grid-column: 1 / span 6; }
 .ahero--landscape .ahero__stage { grid-column: 7 / -1; }
 .ahero__icon { margin-bottom: calc(var(--u) * 2.5); }
 .ahero__name {
-  font-size: min(var(--t-mega), calc(160cqi / var(--len, 8)));
+  font-size: min(var(--t-mega), calc(160cqi / var(--len, 8)), 20svh);
   margin-left: -0.05em; /* optical: the cap's side bearing */
   white-space: nowrap;
 }
-.ahero__name--long { font-size: min(var(--t-xl) * 1.15, calc(160cqi / var(--len, 8))); white-space: normal; line-height: 0.94; }
+.ahero__name--long { font-size: min(var(--t-xl) * 1.15, calc(160cqi / var(--len, 8)), 15svh); white-space: normal; line-height: 0.94; }
 .ahero__line {
   margin-top: calc(var(--u) * 1.6);
   font-size: var(--t-l);
@@ -151,6 +158,7 @@
   .afeat__inline { display: flex; }
   .js .afeat__chapter:not([data-active]) .afeat__title { color: inherit; }
   .afeat--type .afeat__title { font-size: var(--t-l); }
+  .afeat--type .afeat__chapter { min-height: 0; }
 }
 html:not(.js) .afeat--shots .afeat__side { display: none; }
 html:not(.js) .afeat__inline { display: flex; }
@@ -311,6 +319,8 @@ html:not(.js) .afeat__chapters { grid-column: 1 / -1; }
 .ahelp__list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.25rem 2rem; }
 .ahelp__link { display: inline-flex; align-items: center; min-height: 2.75rem; font-weight: 560; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.25em; text-decoration-color: var(--c-line); transition: text-decoration-color 0.35s; }
 .ahelp__link:hover { text-decoration-color: currentColor; }
+.ahelp__arrow { margin-left: 0.3em; display: inline-block; transition: translate 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
+.ahelp__link:hover .ahelp__arrow { translate: 0.15em 0; }
 
 /* ── Next app: the next world, already open ────────────────────────────────────────────── */
 .anext { background: var(--c-bg); color: var(--c-fg); }
@@ -373,4 +383,15 @@ html:not(.js) .afeat__chapters { grid-column: 1 / -1; }
   .aproblem__text { grid-column: 5 / -1; }
   .afam__row { grid-template-columns: 72px minmax(0, 3fr) minmax(0, 5fr); }
   .afam__status { grid-column: 2 / -1; justify-self: start; }
+}
+
+/* Short laptop screens (1280x720 and the like): tighten the hero so the call to action is in view. */
+@media (min-width: 900px) and (max-height: 820px) {
+  .ahero { padding-top: calc(5rem + env(safe-area-inset-top)); }
+  .ahero__icon { --icon-size: 64px !important; margin-bottom: calc(var(--u) * 1.5); }
+  .ahero__line { margin-top: calc(var(--u) * 1.1); }
+  .ahero__pitch { margin-top: calc(var(--u) * 1.5); max-width: 40rem; }
+  .ahero__cta { margin-top: calc(var(--u) * 2); }
+  .ahero__meta { margin-top: calc(var(--u) * 2.5); }
+  .ahero__stage { height: calc(100svh - 5rem - env(safe-area-inset-top) - var(--u) * 5); }
 }

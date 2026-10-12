@@ -4,6 +4,7 @@
 import AppIcon from '../AppIcon.astro';
 import { nextApp, type App } from '../../data/apps';
 import { docHref, isExternal } from '../../lib/links';
+import { ems } from './fit';
 
 interface Props { app: App }
 const { app } = Astro.props;
@@ -34,7 +35,7 @@ const ext = app.cta && isExternal(app.cta.href);
   <h2 id="help-h" class="label">Help and documents</h2>
   <ul class="ahelp__list">
     {app.docs.map((d) => (
-      <li><a class="ahelp__link" href={docHref(d.href)} rel={isExternal(d.href) ? 'noopener' : undefined}>{d.label}<span aria-hidden="true">{isExternal(d.href) ? ' ↗' : ' →'}</span></a></li>
+      <li><a class="ahelp__link" href={docHref(d.href)} rel={isExternal(d.href) ? 'noopener' : undefined}>{d.label}<span class="ahelp__arrow" aria-hidden="true">{isExternal(d.href) ? '↗' : '→'}</span></a></li>
     ))}
     <li><a class="ahelp__link" href={`mailto:${app.support}?subject=${encodeURIComponent(app.name)}`}>Write to {app.support}</a></li>
   </ul>
@@ -44,7 +45,7 @@ const ext = app.cta && isExternal(app.cta.href);
   <a class="anext__link wrap" href={`/${next.slug}/`} data-launch data-cursor="Open">
     <span class="anext__label label">Next app</span>
     <AppIcon app={next} size={128} class="anext__icon" />
-    <span class="display anext__name" style={`--len:${next.name.length}`}>{next.name}</span>
+    <span class="display anext__name" style={`--len:${ems(next.name).toFixed(2)}`}>{next.name}</span>
     <span class="anext__line muted">{next.category}</span>
   </a>
 </nav>

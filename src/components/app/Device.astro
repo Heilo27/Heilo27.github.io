@@ -8,7 +8,7 @@ interface Props {
   shot: Shot;
   role: 'hero' | 'stage' | 'inline' | 'strip' | 'solo';
   eager?: boolean;
-  decorative?: boolean; // the same screen is described elsewhere (captions, an earlier copy)
+  decorative?: boolean; // the same screen is described elsewhere (captions, an earlier copy): hidden from AT
   class?: string;
 }
 const { shot, role, eager = false, decorative = false, class: cls = '' } = Astro.props;
@@ -34,11 +34,11 @@ const sizes: Record<string, string> = {
 };
 const widths = kind === 'ipad' ? [640, 1000, 1500] : [420, 700, 900];
 ---
-<div class:list={['device', `device--${kind}`, `device--${role}`, cls]}>
+<div class:list={['device', `device--${kind}`, `device--${role}`, cls]} aria-hidden={decorative ? 'true' : undefined}>
   <div class="device__screen">
     <Image
       src={shot.src}
-      alt={decorative ? '' : shot.alt}
+      alt={shot.alt}
       widths={widths}
       sizes={sizes[`${role}-${kind}`]}
       loading={eager ? 'eager' : 'lazy'}
