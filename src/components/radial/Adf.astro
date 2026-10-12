@@ -1,0 +1,55 @@
+---
+// The NDB lesson in one picture: the same spot north of a station, the phone turning in place,
+// and a fixed-card ADF whose needle (relative bearing, RB = MB - MH) swings with every degree of
+// heading. The mirror of chapter 2, where the VOR needle stayed still. Driven by src/motion/radial.ts.
+import { computeADF, formatCourse, formatRelative } from './vor';
+import { ADF_E, ADF_N } from './walk';
+
+interface Props { hdg: number }
+const { hdg } = Astro.props;
+const { mb, rb } = computeADF(ADF_E, ADF_N, hdg);
+const S = 62;
+const px = 120 + ADF_E * S;
+const py = 130 - ADF_N * S;
+const ticks = Array.from({ length: 36 }, (_, i) => i * 10);
+const labels = ['N', '3', '6', 'E', '12', '15', 'S', '21', '24', 'W', '30', '33'];
+---
+<figure class="rd-adf" data-rd-adf>
+  <svg viewBox="0 0 540 260" aria-hidden="true" focusable="false">
+    <!-- Room: NDB at the centre (chart symbol, a dotted ring), the phone 1.2 m north of it -->
+    <g class="rd-adf__room">
+      <circle cx="120" cy="130" r="112" class="rd-adf__floor" />
+      {Array.from({ length: 28 }, (_, i) => {
+        const a = (i / 28) * Math.PI * 2;
+        return <circle cx={(120 + Math.cos(a) * 15).toFixed(1)} cy={(130 + Math.sin(a) * 15).toFixed(1)} r="1.6" class="rd-adf__ndb" />;
+      })}
+      <circle cx="120" cy="130" r="3.2" class="rd-adf__ndb" />
+      <line x1={px} y1={py} x2="120" y2="130" class="rd-adf__bearing" />
+      <text x="120" y="32" class="rd-adf__n">N</text>
+      <g transform={`translate(${px} ${py})`}>
+        <g data-rd-adf-nose transform={`rotate(${hdg})`}>
+          <path class="rd-room__plane" d="M0,-17C1.8,-17 2.5,-13.5 2.5,-10L2.5,-3.5L17,0L17,3.4L2.5,2.3L1.8,10L6.8,12.8L6.8,15L0,14L-6.8,15L-6.8,12.8L-1.8,10L-2.5,2.3L-17,3.4L-17,0L-2.5,-3.5L-2.5,-10C-2.5,-13.5 -1.8,-17 0,-17Z" />
+        </g>
+      </g>
+    </g>
+
+    <!-- Fixed-card ADF: 0 is the nose -->
+    <g transform="translate(400 130)">
+      <circle r="116" class="rd-cdi__bezelc" />
+      <circle r="104" class="rd-cdi__face" />
+      {ticks.map((a) => <line x1="0" y1="-100" x2="0" y2={a % 30 === 0 ? -86 : -92} transform={`rotate(${a})`} class="rd-adf__tick" />)}
+      {labels.map((t, i) => <text transform={`translate(${(Math.sin((i * Math.PI) / 6) * 72).toFixed(1)} ${(-Math.cos((i * Math.PI) / 6) * 72 + 4.5).toFixed(1)})`} class="rd-adf__lab">{t}</text>)}
+      <path d="M0,-108 l-6,-8 h12 z" class="rd-adf__lubber" />
+      <path d="M-7,-14 l7,-12 l7,12" class="rd-adf__mini" />
+      <g data-rd-adf-needle transform={`rotate(${rb.toFixed(1)})`}>
+        <path class="rd-adf__needle" d="M0,-92 L7,-70 L2.2,-70 L2.2,78 L-2.2,78 L-2.2,-70 L-7,-70 Z" />
+      </g>
+      <circle r="6" class="rd-adf__hub" />
+    </g>
+  </svg>
+  <figcaption class="rd-adf__read">
+    <span>HDG <b data-rd-adf-hdg>{formatCourse(hdg)}</b></span>
+    <span>RB <b class="rd-amber" data-rd-adf-rb>{formatRelative(rb)}</b></span>
+    <span>MB <b data-rd-adf-mb>{formatCourse(mb)}</b></span>
+  </figcaption>
+</figure>
