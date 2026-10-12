@@ -1,0 +1,24 @@
+---
+// Asymmetric pairs: a large title on one side, the offer and its proof folder on the other,
+// alternating sides down the page.
+import { offers } from '../../data/site';
+import Folder from './Folder.astro';
+import { offersUi } from './copy';
+---
+<section id="services" class="offers wrap section--airy" aria-labelledby="offers-title">
+  <header class="offers__head">
+    <h2 id="offers-title" class="display h-xl" data-split="lines">{offersUi.heading}</h2>
+    <p class="offers__intro lede muted" data-reveal="fade">{offersUi.intro}</p>
+  </header>
+  <ul class="offers__list">
+    {offers.map((o) => (
+      <li class="offer">
+        <h3 class="offer__title display h-l" data-split="lines">{o.title}</h3>
+        <div class="offer__body" data-reveal="up">
+          <p class="offer__text">{o.text}</p>
+          <Folder slugs={o.proof} label={`${offersUi.proof}: ${o.title}`} />
+        </div>
+      </li>
+    ))}
+  </ul>
+</section>

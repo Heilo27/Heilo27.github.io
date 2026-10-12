@@ -1,0 +1,49 @@
+---
+// Split frame: the statement on the left, a Home Screen of the real apps on the right.
+// The grid ends in an empty slot, the one place on the page that is still free: "Your app".
+import { hero } from '../../data/site';
+import { showcase } from '../../data/apps';
+import { appHref, launches } from '../../lib/links';
+import AppIcon from '../AppIcon.astro';
+import { heroUi } from './copy';
+---
+<section class="hero wrap" aria-labelledby="hero-title" data-hero>
+  <div class="hero__copy">
+    <h1 id="hero-title" class="hero__title display" data-settle>
+      {hero.title.map((line) => <span class="hero__line">{line}</span>)}
+    </h1>
+    <p class="hero__intro lede" data-hero-fade>{hero.intro}</p>
+    <p class="hero__ctas" data-hero-fade>
+      <a class="btn" href="#contact">{heroUi.start}<span class="btn__arrow" aria-hidden="true">→</span></a>
+      <a class="btn btn--line" href="#apps">{heroUi.see}</a>
+    </p>
+  </div>
+
+  <nav class="hs" aria-label={heroUi.gridLabel}>
+    <ul class="hs__grid" data-springboard>
+      {showcase.map((a, i) => (
+        <li class="hs__item">
+          <a
+            class="hs__app"
+            href={appHref(a)}
+            data-launch={launches(a) ? '' : undefined}
+            rel={a.external ? 'noopener' : undefined}
+          >
+            <AppIcon app={a} size={84} eager={i < 8} />
+            <span class="hs__name">
+              {a.status === 'testflight' && <span class="hs__beta" aria-hidden="true"></span>}
+              {a.name}
+              {a.status === 'testflight' && <span class="sr-only">, in TestFlight</span>}
+            </span>
+          </a>
+        </li>
+      ))}
+      <li class="hs__item">
+        <a class="hs__app hs__app--slot" href="#contact">
+          <span class="hs__slot" aria-hidden="true"><span class="hs__plus"></span></span>
+          <span class="hs__name">{heroUi.slot}</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</section>

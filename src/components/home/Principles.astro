@@ -1,0 +1,13 @@
+---
+// Statement: the three principles read as one paragraph set large, titles in ink, reasons muted.
+import { principles } from '../../data/site';
+import { principlesUi } from './copy';
+---
+<section class="principles wrap section--airy" aria-labelledby="principles-title">
+  <h2 id="principles-title" class="principles__h label">{principlesUi.heading}</h2>
+  <div class="principles__text">
+    {principles.map((p) => (
+      <p data-split="lines"><strong>{p.title}.</strong> <span>{p.text}</span></p>
+    ))}
+  </div>
+</section>

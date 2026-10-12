@@ -1,4 +1,39 @@
 ---
+// Home: the studio's showcase and sales page. Sections in order, one layout family each:
+// split-frame hero, facts, index list, asymmetric pairs, sticky narrative, statement, finale.
 import Base from '../layouts/Base.astro';
+import Hero from '../components/home/Hero.astro';
+import Facts from '../components/home/Facts.astro';
+import AppsIndex from '../components/home/AppsIndex.astro';
+import Offers from '../components/home/Offers.astro';
+import Process from '../components/home/Process.astro';
+import Principles from '../components/home/Principles.astro';
+import Contact from '../components/home/Contact.astro';
+import { meta } from '../components/home/copy';
+import { site } from '../data/site';
+import '../styles/home.css';
+
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': `${site.url}/#ryan`,
+  name: site.person,
+  url: site.url,
+  jobTitle: 'Independent iOS and macOS developer',
+  email: `mailto:${site.email}`,
+  worksFor: { '@id': `${site.url}/#studio` },
+  sameAs: [site.appStoreDeveloper, site.github],
+};
 ---
-<Base><section class="wrap section"><h1 class="display h-xl">Ten apps shipped.</h1></section></Base>
+<Base title={meta.title} description={meta.description}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(person)} />
+  <div class="home" data-home>
+    <Hero />
+    <Facts />
+    <AppsIndex />
+    <Offers />
+    <Process />
+    <Principles />
+  </div>
+  <Contact />
+</Base>

@@ -5,6 +5,7 @@ import { setupFrame } from './frame';
 import { setupMenu } from './menu';
 import { setupSite } from './site';
 import { setupApp } from './app';
+import { setupHome } from './home';
 
 export function setupMotion() {
   setupLaunch();
@@ -12,4 +13,5 @@ export function setupMotion() {
   setupMenu();
   setupSite();
   setupApp();
+  setupHome();
 }
