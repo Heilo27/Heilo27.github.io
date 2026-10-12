@@ -77,14 +77,13 @@ function preview() {
   const calm = prefersReducedMotion();
   const x = gsap.quickTo(box, 'x', { duration: calm ? 0.01 : 0.6, ease: ease.soft });
   const y = gsap.quickTo(box, 'y', { duration: calm ? 0.01 : 0.6, ease: ease.soft });
-  const rot = gsap.quickTo(box, 'rotate', { duration: 0.8, ease: ease.soft });
-  let px = -999, py = -999, lastX = 0, on = false, current: HTMLElement | undefined;
+  let px = -999, py = -999, on = false, current: HTMLElement | undefined, fade: gsap.core.Tween | undefined;
 
+  // Beside the pointer, on whichever side has room for the device.
+  const beside = (cx: number) => { const w = box.offsetWidth; return cx + 24 + w < innerWidth ? cx + 24 : cx - 24 - w; };
   const move = (e: PointerEvent) => {
     px = e.clientX; py = e.clientY;
-    x(px); y(py);
-    if (!calm) rot(gsap.utils.clamp(-10, 10, (px - lastX) * 0.5));
-    lastX = px;
+    x(beside(px)); y(py);
   };
   const show = (e: Event) => {
     const slug = (e.currentTarget as HTMLElement).dataset.preview;
@@ -95,15 +94,15 @@ function preview() {
     current = shot;
     box.dataset.device = shot.dataset.device;
     if (!on) {
-      gsap.set(box, { x: px, y: py });
-      gsap.fromTo(box, { autoAlpha: 0, scale: 0.8 }, { autoAlpha: 1, scale: 1, duration: calm ? 0.2 : 0.55, ease: ease.out, overwrite: 'auto' });
+      gsap.set(box, { x: beside(px), y: py });
+      fade = gsap.fromTo(box, { autoAlpha: 0, scale: 0.8 }, { autoAlpha: 1, scale: 1, duration: calm ? 0.2 : 0.55, ease: ease.out, overwrite: 'auto' });
       on = true;
     }
   };
   function hide() {
     if (!on) return;
     on = false;
-    gsap.to(box, { autoAlpha: 0, scale: 0.85, duration: 0.35, ease: ease.out, overwrite: 'auto' });
+    fade = gsap.to(box, { autoAlpha: 0, scale: 0.85, duration: 0.35, ease: ease.out, overwrite: 'auto' });
   }
   const rows = [...list.querySelectorAll<HTMLAnchorElement>('.index__link')];
   rows.forEach((a) => a.addEventListener('pointerenter', show));
@@ -111,7 +110,8 @@ function preview() {
   addEventListener('pointermove', move, { passive: true });
   // pointerleave never fires when the page scrolls under a still pointer: check on scroll.
   const off = onScroll(() => { if (on && !list.contains(document.elementFromPoint(px, py))) hide(); });
-  const away = () => gsap.set(box, { autoAlpha: 0 }); // a launch starts: the icon is the star
+  // A launch starts: the icon is the star. Kill a fade-in still running from a quick hover-click.
+  const away = () => { on = false; fade?.kill(); gsap.set(box, { autoAlpha: 0 }); };
   document.addEventListener('astro:before-preparation', away);
   return () => {
     rows.forEach((a) => a.removeEventListener('pointerenter', show));
