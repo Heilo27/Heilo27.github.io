@@ -1,0 +1,41 @@
+---
+// An app's icon, Home Screen style. Apps without an icon get a monogram on their own key colour:
+// the wrapper carries data-app, so tokens.css paints it from that app's world (no hex here).
+import { Image } from 'astro:assets';
+import type { App } from '../data/apps';
+
+interface Props {
+  app: App;
+  size: number;              // rendered CSS size in px at the largest breakpoint
+  eager?: boolean;
+  class?: string;
+  hero?: boolean;            // the landing spot of the launch transition
+  decorative?: boolean;      // inside a link that already names the app
+}
+const { app, size, eager = false, class: cls = '', hero = false, decorative = true } = Astro.props;
+const alt = decorative ? '' : `${app.name} app icon`;
+---
+<span
+  class:list={['icon', cls, { 'icon--mono': !app.icon }]}
+  data-app={app.icon ? undefined : app.slug}
+  data-icon
+  data-hero-icon={hero ? '' : undefined}
+  style={`--icon-size:${size}px`}
+>
+  {app.icon ? (
+    <Image
+      src={app.icon}
+      alt={alt}
+      width={size}
+      height={size}
+      densities={[1, 2]}
+      loading={eager ? 'eager' : 'lazy'}
+      fetchpriority={eager && hero ? 'high' : undefined}
+      decoding="async"
+      format="webp"
+      quality={90}
+    />
+  ) : (
+    <span class="icon__mono" aria-hidden={decorative ? 'true' : undefined} role={decorative ? undefined : 'img'} aria-label={decorative ? undefined : alt}>{app.monogram}</span>
+  )}
+</span>

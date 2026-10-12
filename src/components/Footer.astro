@@ -1,0 +1,43 @@
+---
+// Site footer, in the current world's colours. On app pages it also names the app's support line.
+import { site } from '../data/site';
+import Mark from './Mark.astro';
+import type { App } from '../data/apps';
+
+interface Props { app?: App }
+const { app } = Astro.props;
+const year = 2026;
+---
+<footer class="footer" data-footer>
+  <div class="footer__grid wrap">
+    <div class="footer__id">
+      <a class="wordmark" href="/" aria-label={`${site.name}, home`}>
+        <Mark class="wordmark__mark" />
+        <span class="wordmark__text">HeiloProjects</span>
+      </a>
+      <p class="footer__line">Native apps for iPhone, iPad and Mac, designed and built by {site.person}.</p>
+    </div>
+    <div class="footer__col">
+      <h2 class="footer__h">{app ? `${app.name} support` : 'Write to me'}</h2>
+      <ul>
+        <li><a href={`mailto:${app?.support ?? site.email}`}>{app?.support ?? site.email}</a></li>
+        {app && <li><a href="/#contact">Have an app of your own to build?</a></li>}
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h2 class="footer__h">Elsewhere</h2>
+      <ul>
+        <li><a href={site.appStoreDeveloper} rel="noopener">App Store developer page</a></li>
+        <li><a href={site.github} rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h2 class="footer__h">Legal</h2>
+      <ul>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="/terms.html">Terms of service</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="footer__legal wrap"><small>© {year} {site.person}. HeiloProjects is the name I publish under.</small></p>
+</footer>

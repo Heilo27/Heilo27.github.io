@@ -1,0 +1,101 @@
+---
+// Four-corner frame. Top corners: identity and navigation (always reachable). Bottom corners
+// (wide screens, top of page only): real status lines. The frame steps aside on scroll down and
+// returns on scroll up (src/motion/frame.ts). Phones: a Menu button opens a full-screen sheet.
+import { site } from '../data/site';
+import Mark from './Mark.astro';
+import { showcase, statusLabel, nextApp, type App } from '../data/apps';
+import { appHref, ctaShort, launches } from '../lib/links';
+import AppIcon from './AppIcon.astro';
+
+interface Props { app?: App }
+const { app } = Astro.props;
+const path = Astro.url.pathname;
+const onApp = !!app && (path === `/${app.slug}/` || path === `/${app.slug}`);
+const short = app ? ctaShort(app) : null;
+const next = app && app.status !== 'service' ? nextApp(app.slug) : undefined;
+const studioNav = [
+  { label: 'Apps', href: '/#apps', id: 'apps' },
+  { label: 'Services', href: '/#services', id: 'services' },
+  { label: 'Contact', href: '/#contact', id: 'contact' },
+];
+---
+<header class="frame" data-frame>
+  <div class="frame__corner frame__tl">
+    <a class="wordmark" href="/" aria-label={`${site.name}, home`}>
+      <Mark class="wordmark__mark" />
+      <span class="wordmark__text">HeiloProjects</span>
+    </a>
+    {app && (
+      <>
+        <span class="frame__slash" aria-hidden="true">/</span>
+        <a class="frame__app" href={`/${app.slug}/`} aria-current={onApp ? 'page' : undefined}>{app.name}</a>
+      </>
+    )}
+  </div>
+
+  <nav class="frame__corner frame__tr" aria-label="Primary">
+    {app ? (
+      <ul class="nav">
+        <li class="nav__wide"><a class="nav__link" href="/#apps">All apps</a></li>
+        {short && app.cta && (
+          <li class="nav__wide"><a class="btn btn--key btn--s" href={app.cta.href}>{short}</a></li>
+        )}
+      </ul>
+    ) : (
+      <ul class="nav">
+        {studioNav.map((n) => (
+          <li class="nav__wide"><a class="nav__link" href={n.href} data-spy={n.id}>{n.label}</a></li>
+        ))}
+      </ul>
+    )}
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" data-menu-open>
+      <span class="menu-btn__label">Menu</span>
+      <span class="menu-btn__bars" aria-hidden="true"><i></i><i></i></span>
+    </button>
+  </nav>
+
+  <p class="frame__corner frame__bl" aria-hidden="true">
+    {app ? <>{app.name}. {statusLabel[app.status]}{app.price ? `, ${app.price.charAt(0).toLowerCase()}${app.price.slice(1)}` : ''}.</> : <>{site.person}. Native apps for iPhone, iPad and Mac.</>}
+  </p>
+  <p class="frame__corner frame__br">
+    {next ? (
+      <a class="nav__link" href={appHref(next)} data-launch={launches(next) ? '' : undefined}>Next app: {next.name}</a>
+    ) : (
+      <a class="nav__link" href="/#contact">Start a project</a>
+    )}
+  </p>
+</header>
+
+<div id="menu" class="menu" role="dialog" aria-modal="true" aria-label="Menu" hidden data-menu>
+  <div class="menu__inner">
+    <div class="menu__top">
+      <a class="wordmark" href="/" aria-label={`${site.name}, home`}>
+        <Mark class="wordmark__mark" />
+        <span class="wordmark__text">HeiloProjects</span>
+      </a>
+      <button class="menu-btn is-open" type="button" data-menu-close>
+        <span class="menu-btn__label">Close</span>
+        <span class="menu-btn__bars" aria-hidden="true"><i></i><i></i></span>
+      </button>
+    </div>
+    <nav aria-label="Menu">
+      <ul class="menu__links">
+        {app && short && app.cta && <li><a class="menu__link menu__link--key" href={app.cta.href}><span>{short}</span></a></li>}
+        <li><a class="menu__link" href="/"><span>Home</span></a></li>
+        {studioNav.map((n) => <li><a class="menu__link" href={n.href}><span>{n.label}</span></a></li>)}
+      </ul>
+    </nav>
+    <ul class="menu__dock" aria-label="Apps">
+      {showcase.map((a) => (
+        <li>
+          <a href={appHref(a)} data-launch={launches(a) ? '' : undefined} rel={a.external ? 'noopener' : undefined} aria-current={app?.slug === a.slug ? 'page' : undefined}>
+            <AppIcon app={a} size={52} />
+            <span class="menu__dock-name">{a.name}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <p class="menu__mail"><a href={`mailto:${site.email}`}>{site.email}</a></p>
+  </div>
+</div>

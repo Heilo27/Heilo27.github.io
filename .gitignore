@@ -1,1 +1,6 @@
 .claude/epic/
+node_modules/
+dist/
+.astro/
+.shots*/
+.DS_Store
