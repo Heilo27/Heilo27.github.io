@@ -6,7 +6,7 @@ export const site = {
   role: 'Native iPhone, iPad and Mac apps by Ryan Primeau',
   url: 'https://heiloprojects.com',
   description:
-    'Ryan Primeau designs and builds native iPhone, iPad and Mac apps under the HeiloProjects name. Ten are on the App Store. Yours could be next.',
+    'Ryan Primeau designs and builds native iPhone, iPad and Mac apps under the HeiloProjects name. Ten have shipped to the App Store. Yours could be next.',
   email: 'heiloprojects@icloud.com',
   appStoreDeveloper: 'https://apps.apple.com/us/developer/ryan-primeau/id1844103663',
   github: 'https://github.com/Heilo27',
@@ -20,7 +20,7 @@ export const hero = {
 
 // Only true numbers. Each one is checkable on the App Store or in the apps below.
 export const facts = [
-  { value: '10', label: 'apps live on the App Store under my name' },
+  { value: '10', label: 'apps shipped to the App Store under my name' },
   { value: '4', label: 'Apple platforms shipped: iPhone, iPad, Mac and Apple TV' },
   { value: '1', label: 'person from the first spec to App Store review' },
 ];
@@ -29,7 +29,7 @@ export const offers = [
   {
     title: 'Operations apps for crews in the field',
     text: 'Dispatch boards, schedules, time that tracks itself with geofences, invoices that land in QuickBooks. Built for the owner on an iPad and the crew on their phones.',
-    proof: ['stripes', 'greenarc', 'skylog', 'foreman'],
+    proof: ['stripes', 'greenarc', 'foreman'],
   },
   {
     title: 'Training and reference tools',

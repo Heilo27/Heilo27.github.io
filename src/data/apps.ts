@@ -219,52 +219,6 @@ export const apps: App[] = [
     support: 'heiloprojects@icloud.com',
   },
 
-  // ───────────────────────────────── Skylog
-  {
-    slug: 'skylog',
-    name: 'Skylog',
-    category: 'Aircraft booking and Hobbs billing for flying clubs',
-    line: 'Your flying club, finally organized.',
-    pitch:
-      'Members book aircraft from their phones. Hobbs and tach go in at check-out and check-in, and Skylog works out the time and the cost. Admins see the whole fleet on one calendar and block aircraft for maintenance.',
-    description:
-      'Skylog is flight club scheduling: book aircraft, log Hobbs and tach, track pilot currency, block maintenance and send PDF invoices. Free on iPhone and iPad.',
-    icon: img('skylog/icon.png'),
-    status: 'live',
-    platforms: ['iPhone', 'iPad'],
-    price: 'Free',
-    cta: { label: APPSTORE, href: 'https://apps.apple.com/us/app/skylog-flight-scheduler/id6761441516' },
-    ctaNote: 'Free to download. No in-app purchases, no per-seat fees.',
-    problem: {
-      heading: 'A shared spreadsheet is not a scheduling system.',
-      text: [
-        'Most clubs book by text, keep Hobbs times in a binder and invoice from a sheet that is three months behind. Aircraft get double-booked and admins chase members for their numbers.',
-        'Skylog puts the club’s whole operation in one app, so members can get back to flying.',
-      ],
-    },
-    shots: [
-      { src: img('skylog/phone-1.jpg'), alt: 'Skylog schedule for River City Freedom Flyers with an aircraft picker and a week strip', device: 'phone' },
-      { src: img('skylog/phone-2.jpg'), alt: 'My Bookings with upcoming and past tabs', device: 'phone' },
-      { src: img('skylog/phone-4.jpg'), alt: 'Pilot profile with notifications and account settings', device: 'phone' },
-      { src: img('skylog/ipad-1.jpg'), alt: 'Skylog on iPad showing two confirmed reservations on the club schedule', device: 'ipad' },
-    ],
-    features: [
-      { title: 'One calendar for the fleet', text: 'Members book directly. Admins see every reservation across every aircraft, so double-bookings and mystery gaps disappear.', shot: 3 },
-      { title: 'Hobbs and tach, without the binder', text: 'Pilots enter readings at check-out and check-in. Skylog does the subtraction, multiplies by the aircraft’s rate and puts the cost on the booking.', shot: 3 },
-      { title: 'Invoices in seconds', text: 'Turn any completed flight into a PDF invoice and send it from the share sheet. No billing service required.', shot: 3 },
-      { title: 'Currency and maintenance', text: 'Admins see each member’s certificate, ratings and currency. Maintenance blocks take an aircraft off the calendar until it is back.', shot: 2 },
-      { title: 'Every club stays separate', text: 'Members join with a club code and see only their club. A pilot in two clubs sees both, and the data never crosses.', shot: 2 },
-    ],
-    gallery: [],
-    faq: [
-      { q: 'How does a club get started?', a: 'An admin creates the club, adds aircraft with hourly rates and shares the club code. Members download Skylog, tap Join a Club and enter it. Setup takes about ten minutes.' },
-      { q: 'Does it need internet?', a: 'Booking and live sync need a connection. Existing bookings stay viewable offline.' },
-      { q: 'Is it really free?', a: 'Yes. No in-app purchases, no subscriptions, no per-seat fees.' },
-    ],
-    docs: [{ label: 'Privacy policy', href: '/privacy' }],
-    support: 'heiloprojects@icloud.com',
-  },
-
   // ───────────────────────────────── StockUp
   {
     slug: 'stockup',

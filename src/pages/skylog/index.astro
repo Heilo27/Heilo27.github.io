@@ -1,0 +1,18 @@
+---
+// Skylog was retired on 2026-10-12; Green Arc covers flying clubs. A designed redirect for old links.
+import Base from '../../layouts/Base.astro';
+---
+<Base title="Skylog is now Green Arc" description="Skylog has been retired. Flying clubs can book aircraft, log Hobbs and tach and keep the fleet airworthy with Green Arc.">
+  <meta slot="head" http-equiv="refresh" content="0; url=https://greenarc.app" />
+  <link slot="head" rel="canonical" href="https://greenarc.app" />
+  <section class="moved wrap">
+    <p class="label">Retired</p>
+    <h1 class="display moved__title"><a href="https://greenarc.app">Skylog is now Green Arc</a></h1>
+    <p class="lede">Flying clubs book aircraft, log Hobbs and tach and keep the fleet airworthy in Green Arc. Taking you there now.</p>
+    <p><a class="btn btn--key" href="https://greenarc.app">Open Green Arc <span class="btn__arrow" aria-hidden="true">→</span></a></p>
+  </section>
+</Base>
+<style>
+  .moved { min-height: 60dvh; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 1.1rem; padding-block: calc(var(--u) * 10); }
+  .moved__title { font-size: var(--t-xl); max-width: 14ch; }
+</style>

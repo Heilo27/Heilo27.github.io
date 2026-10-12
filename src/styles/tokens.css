@@ -71,7 +71,6 @@
 [data-app='grove']       { --c-bg: #eef2ec; --c-fg: #14201a; --c-muted: #55625a; --c-line: rgb(20 32 26 / 0.12); --c-key: #2f6b45; --c-key-ink: #fff; --c-raise: #fff; --c-root: #c98a1e; }
 [data-app='lodestone']   { --c-bg: #0e0d0b; --c-fg: #ede6d6; --c-muted: #a0978a; --c-line: rgb(237 230 214 / 0.14); --c-key: #d4ae52; --c-key-ink: #1a1408; --c-raise: #1a1814; }
 [data-app='dsmvideo']    { --c-bg: #0a0a0b; --c-fg: #f2f2f2; --c-muted: #9a9a9f; --c-line: rgb(242 242 242 / 0.14); --c-key: #e0262f; --c-key-ink: #fff; --c-raise: #161618; }
-[data-app='skylog']      { --c-bg: #ecf4fb; --c-fg: #0a1826; --c-muted: #4c6072; --c-line: rgb(10 24 38 / 0.12); --c-key: #1b78cc; --c-key-ink: #fff; --c-raise: #fff; }
 [data-app='capwingman']  { --c-bg: #eff1f7; --c-fg: #0a1240; --c-muted: #4c5578; --c-line: rgb(10 18 64 / 0.12); --c-key: #0b2a8f; --c-key-ink: #fff; --c-raise: #fff; --c-red: #c8202a; }
 [data-app='castleofthewinds'] { --c-bg: #110e1d; --c-fg: #eee8f5; --c-muted: #a39bb8; --c-line: rgb(238 232 245 / 0.14); --c-key: #f2a93b; --c-key-ink: #1d1206; --c-raise: #1b1730; }
 [data-app='foreman']     { --c-bg: #f0f0ee; --c-fg: #16120e; --c-muted: #5c554d; --c-line: rgb(22 18 14 / 0.12); --c-key: #c4501a; --c-key-ink: #fff; --c-raise: #fff; }
