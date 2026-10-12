@@ -1,0 +1,47 @@
+---
+// The phone menu sheet (opened from the Header's Menu button; src/motion/menu.ts). It renders at
+// the end of <body>, after all page content, so its links never come first in document order, and
+// it stays `hidden` (display: none, out of the tab order and the accessibility tree) until opened.
+import { site } from '../data/site';
+import Mark from './Mark.astro';
+import { showcase, type App } from '../data/apps';
+import { appHref, ctaShort, launches } from '../lib/links';
+import { studioNav } from '../data/nav';
+import AppIcon from './AppIcon.astro';
+
+interface Props { app?: App }
+const { app } = Astro.props;
+const short = app ? ctaShort(app) : null;
+---
+<div id="menu" class="menu" role="dialog" aria-modal="true" aria-label="Menu" hidden data-menu>
+  <div class="menu__inner">
+    <div class="menu__top">
+      <a class="wordmark" href="/" aria-label={`${site.name}, home`}>
+        <Mark class="wordmark__mark" />
+        <span class="wordmark__text">HeiloProjects</span>
+      </a>
+      <button class="menu-btn is-open" type="button" data-menu-close>
+        <span class="menu-btn__label">Close</span>
+        <span class="menu-btn__bars" aria-hidden="true"><i></i><i></i></span>
+      </button>
+    </div>
+    <nav aria-label="Menu">
+      <ul class="menu__links">
+        {app && short && app.cta && <li><a class="menu__link menu__link--key" href={app.cta.href}><span>{short}</span></a></li>}
+        <li><a class="menu__link" href="/"><span>Home</span></a></li>
+        {studioNav.map((n) => <li><a class="menu__link" href={n.href}><span>{n.label}</span></a></li>)}
+      </ul>
+    </nav>
+    <ul class="menu__dock" aria-label="Apps">
+      {showcase.map((a) => (
+        <li>
+          <a href={appHref(a)} data-launch={launches(a) ? '' : undefined} rel={a.external ? 'noopener' : undefined} aria-current={app?.slug === a.slug ? 'page' : undefined}>
+            <AppIcon app={a} size={52} />
+            <span class="menu__dock-name">{a.name}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <p class="menu__mail"><a href={`mailto:${site.email}`}>{site.email}</a></p>
+  </div>
+</div>

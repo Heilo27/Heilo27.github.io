@@ -2,7 +2,8 @@
 //
 //   launch  A link carrying an app icon ([data-launch] containing [data-icon]) is followed.
 //           A ghost of the icon grows from its exact rect to fill the screen, filled with the
-//           destination app's ground. The icon glyph drifts to the centre. After the swap the
+//           destination app's ground, casting a soft shadow while the page behind dims and
+//           zooms in a touch (as the Home Screen does). The icon glyph drifts to the centre. After the swap the
 //           glyph flies to the new page's [data-hero-icon] rect (FLIP) while the ground fades.
 //   close   Any other same-site link. The page shrinks to 0.92 with rounded corners over the
 //           destination ground, the ground takes over, and on enter it lifts off the new page.
@@ -20,6 +21,8 @@ let probeHost: HTMLElement | null = null;
 let probe: HTMLElement | null = null;
 let glyph: HTMLElement | null = null;
 let ghost: HTMLElement | null = null;
+let lift: HTMLElement | null = null; // the ghost's shadow-casting wrapper
+let dim: HTMLElement | null = null;
 
 /** The ground colour of the world a URL lives in (app pages and their docs wear the app). */
 export function groundFor(url: URL): string {
@@ -39,9 +42,10 @@ const panel = (c: HTMLElement) => c.querySelector<HTMLElement>('.curtain__panel'
 const page = () => document.querySelector<HTMLElement>('[data-page]');
 
 function clearGhosts() {
-  ghost?.remove();
+  lift?.remove();
+  dim?.remove();
   glyph?.remove();
-  ghost = glyph = null;
+  ghost = glyph = lift = dim = null;
 }
 
 /** Called before leave(): decide what kind of navigation this is. */
@@ -69,18 +73,38 @@ function leaveLaunch(c: HTMLElement, n: Nav) {
   ghost = document.createElement('div');
   ghost.className = 'launch';
   ghost.style.background = n.bg;
+  // Depth: the page behind dims and zooms in slightly about the icon while the ghost, lifted on
+  // a soft shadow (a filter on a wrapper, since the ghost's own clip-path would cut a box-shadow),
+  // grows over it. Same 0.9 s as the growth, so the launch is no slower.
+  dim = document.createElement('div');
+  dim.className = 'launch-dim';
+  lift = document.createElement('div');
+  lift.className = 'launch-lift';
+  lift.append(ghost);
   glyph = n.icon!.cloneNode(true) as HTMLElement;
   glyph.removeAttribute('data-hero-icon');
   glyph.classList.add('launch__icon');
   glyph.style.setProperty('--icon-size', `${r.width}px`);
-  c.append(ghost, glyph);
+  c.append(dim, lift, glyph);
   gsap.set(panel(c), { autoAlpha: 0 });
   gsap.set(c, { autoAlpha: 1 });
   gsap.set(glyph, { x: r.left, y: r.top, scale: 1, transformOrigin: '0 0' });
   n.icon!.style.visibility = 'hidden'; // the icon has left its slot
 
   const size = gsap.utils.clamp(88, 148, Math.min(W, H) * 0.2);
-  return gsap.timeline()
+  const tl = gsap.timeline();
+  const p = page();
+  if (p) {
+    // The fixed frame lives inside the page; under a transform it would jump to the document top.
+    const frame = document.querySelector<HTMLElement>('[data-frame]');
+    if (frame) frame.style.top = `${scrollY}px`;
+    tl.fromTo(p, { scale: 1 }, {
+      scale: 1.06, transformOrigin: `${r.left + r.width / 2}px ${scrollY + r.top + r.height / 2}px`,
+      duration: 0.9, ease: ease.inOut,
+    }, 0);
+  }
+  tl.fromTo(dim, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6, ease: 'power2.out' }, 0);
+  return tl
     .fromTo(ghost,
       { clipPath: `inset(${r.top}px ${W - r.right}px ${H - r.bottom}px ${r.left}px round ${radius}px)` },
       { clipPath: `inset(0px 0px 0px 0px round 0px)`, duration: 0.9, ease: ease.inOut }, 0)
@@ -91,6 +115,10 @@ function enterLaunch(c: HTMLElement) {
   const g = glyph;
   const target = document.querySelector<HTMLElement>('[data-hero-icon]');
   const tl = gsap.timeline({ onComplete: () => { clearGhosts(); gsap.set(c, { autoAlpha: 0 }); gsap.set(panel(c), { autoAlpha: 1 }); } });
+  if (dim) gsap.set(dim, { autoAlpha: 0 }); // it dimmed the old page; the new one arrives at full light
+  // The ghost now fills the screen, so its shadow has no edge to cast; as the ghost fades it would
+  // show through it as a grey cast over the new page.
+  if (lift) lift.style.filter = 'none';
   if (g && target) {
     const base = parseFloat(g.style.getPropertyValue('--icon-size')) || 1;
     const t = target.getBoundingClientRect();
@@ -132,8 +160,9 @@ function enterLift(c: HTMLElement) {
   document.documentElement.style.backgroundColor = '';
   const p = page();
   const tl = gsap.timeline({ onComplete: () => { gsap.set(c, { autoAlpha: 0 }); gsap.set(panel(c), { yPercent: 0 }); } });
-  tl.to(panel(c), { yPercent: -100, duration: 0.85, ease: ease.inOut }, 0);
-  if (p) tl.from(p, { y: 90, duration: 1, ease: ease.out, clearProps: 'transform' }, 0.25);
+  // Whole enter inside 1 s (budget: <= 1 s each way); the intro is released at 0.45 s.
+  tl.to(panel(c), { yPercent: -100, duration: 0.8, ease: ease.inOut }, 0);
+  if (p) tl.from(p, { y: 90, duration: 0.8, ease: ease.out, clearProps: 'transform' }, 0.2);
   return new Promise<void>((resolve) => { tl.call(resolve, [], 0.45); });
 }
 

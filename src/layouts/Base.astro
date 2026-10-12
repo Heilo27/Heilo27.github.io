@@ -11,6 +11,7 @@ import { appBySlug } from '../data/apps';
 import { themeVar, hasTheme } from '../lib/themes';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Menu from '../components/Menu.astro';
 import '../styles/tokens.css';
 import '../styles/engine.css';
 import '../styles/site.css';
@@ -87,6 +88,7 @@ const jsonLd = {
       </main>
       <Footer app={appEntry} />
     </div>
+    <Menu app={appEntry} />
     <script>
       import { start } from '../engine/astro';
       import { setupMotion } from '../motion/setup';

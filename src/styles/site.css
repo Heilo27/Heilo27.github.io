@@ -167,25 +167,29 @@ body { font-stretch: 100%; font-weight: 420; font-feature-settings: 'kern', 'ss0
   font-size: var(--t-s);
 }
 .frame::before {
-  /* the bar that appears behind the top corners once the page has scrolled */
+  /* Once the page has scrolled, a ground-coloured scroll-edge scrim sits behind the top corners:
+     solid under the type, then fading (with a soft blur) into the content, no hard bar or rule. */
   content: '';
   position: absolute;
   inset: 0 0 auto 0;
-  height: calc(4.25rem + env(safe-area-inset-top));
-  background: color-mix(in srgb, var(--c-bg) 84%, transparent);
-  backdrop-filter: saturate(1.6) blur(14px);
-  -webkit-backdrop-filter: saturate(1.6) blur(14px);
-  border-bottom: 1px solid var(--c-line);
+  height: calc(6rem + env(safe-area-inset-top));
+  background: linear-gradient(var(--c-bg) 0 calc(100% - 2.5rem), color-mix(in srgb, var(--c-bg) 70%, transparent) calc(100% - 1.25rem), transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  mask-image: linear-gradient(#000 0 calc(100% - 1.5rem), transparent);
+  -webkit-mask-image: linear-gradient(#000 0 calc(100% - 1.5rem), transparent);
   opacity: 0;
   translate: 0 0;
   transition: opacity 0.4s, translate 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .frame-scrolled .frame::before { opacity: 1; }
+/* Corners sit on the content column's edges (.wrap), so on very wide windows they align with the grid. */
+.frame { --edge: max(var(--gutter), (100vw - var(--max)) / 2 + var(--gutter)); }
 .frame__corner { position: absolute; pointer-events: auto; transition: translate 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s; }
-.frame__tl { left: var(--gutter); top: calc(0.75rem + env(safe-area-inset-top)); display: flex; align-items: center; gap: 0.6em; }
-.frame__tr { right: var(--gutter); top: calc(0.75rem + env(safe-area-inset-top)); display: flex; align-items: center; gap: 1.5rem; }
-.frame__bl { left: var(--gutter); bottom: var(--gutter); color: var(--c-muted); max-width: 26rem; }
-.frame__br { right: var(--gutter); bottom: var(--gutter); }
+.frame__tl { left: var(--edge); top: calc(0.75rem + env(safe-area-inset-top)); display: flex; align-items: center; gap: 0.6em; }
+.frame__tr { right: var(--edge); top: calc(0.75rem + env(safe-area-inset-top)); display: flex; align-items: center; gap: 1.5rem; }
+.frame__bl { left: var(--edge); bottom: var(--gutter); color: var(--c-muted); max-width: 26rem; }
+.frame__br { right: var(--edge); bottom: var(--gutter); }
 .frame__slash { color: var(--c-muted); font-size: 1.02rem; }
 .frame__app { font-weight: 600; font-stretch: 108%; font-size: 1.02rem; letter-spacing: -0.02em; min-height: 2.75rem; display: inline-flex; align-items: center; }
 .frame-away .frame__tl, .frame-away .frame__tr, .frame-away .frame::before { translate: 0 -160%; }
@@ -277,4 +281,6 @@ html:not(.js) .frame__bl, html:not(.js) .frame__br { display: none; }
 
 /* ── Launch transition layers (inside the persisted #curtain) ─────────────────────────── */
 .launch { position: absolute; inset: 0; will-change: clip-path; }
+.launch-lift { position: absolute; inset: 0; filter: drop-shadow(0 1.5rem 3rem rgb(0 0 0 / 0.3)) drop-shadow(0 0.15rem 0.5rem rgb(0 0 0 / 0.14)); }
+.launch-dim { position: absolute; inset: 0; background: rgb(0 0 0 / 0.26); }
 .launch__icon { position: absolute; left: 0; top: 0; box-shadow: 0 20px 60px -20px rgb(0 0 0 / 0.5); will-change: transform; }

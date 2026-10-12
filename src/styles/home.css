@@ -413,3 +413,15 @@
   .form { grid-template-columns: 1fr; }
   .form__send .btn { width: 100%; justify-content: center; }
 }
+
+/* ── Large screens (1600px and up) ────────────────────────────────────────────────────────
+   The home composition is drawn for ~1440. Wider windows scale the whole page (every rem, so
+   type, board, rhythm and frame together) instead of floating a 1440 layout in empty margins:
+   1920 → 19.2px root, 2560 and up → 22px, with a measure that grows in step. Media queries
+   are unaffected (they read the initial font size), so 1440 / 1280 / phones do not change. */
+@media (min-width: 1600px) {
+  html:has([data-home]) {
+    font-size: clamp(100%, 100% + (100vw - 1600px) / 100, 137.5%);
+    --max: 94rem;
+  }
+}

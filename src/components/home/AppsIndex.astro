@@ -1,7 +1,8 @@
 ---
 // Index list. Every row launches its app (the row's icon is the launch source).
 // Fine pointers: a device follows the cursor showing the app's first screen (src/motion/home.ts).
-// Touch: the same screen sits inline at the end of the row.
+// Touch: the same screen sits inline at the end of the row. Both are decorative (wrappers are
+// aria-hidden) but keep the shot's true alt, as the app pages do, for no-CSS and image search.
 import { Image } from 'astro:assets';
 import { showcase, statusLabel, type App } from '../../data/apps';
 import { appHref, launches } from '../../lib/links';
@@ -42,7 +43,7 @@ const previews = showcase.map((a) => ({ app: a, shot: previewOf(a) })).filter((p
             <span class={`index__status index__status--${a.status}`}>{statusLabel[a.status]}</span>
             {shot && (
               <span class="index__thumb" aria-hidden="true">
-                <Image src={shot.src} alt="" width={84} densities={[1, 2]} loading="lazy" decoding="async" format="webp" quality={70} />
+                <Image src={shot.src} alt={shot.alt} width={84} densities={[1, 2]} loading="lazy" decoding="async" format="webp" quality={70} />
               </span>
             )}
           </a>
@@ -59,7 +60,7 @@ const previews = showcase.map((a) => ({ app: a, shot: previewOf(a) })).filter((p
           data-shot={app.slug}
           data-device={shot!.device}
           src={shot!.src}
-          alt=""
+          alt={shot!.alt}
           width={shot!.device === 'ipad' ? 360 : 240}
           densities={[1, 2]}
           loading="lazy"
