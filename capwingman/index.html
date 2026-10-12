@@ -87,8 +87,10 @@
                                 <line x1="16" y1="17" x2="8" y2="17"></line>
                             </svg>
                         </div>
-                        <h3>Every Form, Ready to Fill</h3>
-                        <p>All the CAP forms you need—mission paperwork, training records, activity reports—fillable right in the app. Save completed forms for quick reuse. Export to PDF for submission or printing. <strong>Stop hunting for forms. Stop printing blanks.</strong></p>
+                        <div class="feature-card-body">
+                            <h3>Every Form, Ready to Fill</h3>
+                            <p>All the CAP forms you need—mission paperwork, training records, activity reports—fillable right in the app. Save completed forms for quick reuse. Export to PDF for submission or printing. <strong>Stop hunting for forms. Stop printing blanks.</strong></p>
+                        </div>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon feature-icon-orange">
@@ -97,8 +99,10 @@
                                 <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
                             </svg>
                         </div>
-                        <h3>Regulations & Manuals, Searchable</h3>
-                        <p>CAPR 60-1, CAPP 60-33, operations manuals, and more. Search across all documents to find what you need fast. Bookmark frequently referenced sections. All available offline. <strong>Know the answer. Even without cell service.</strong></p>
+                        <div class="feature-card-body">
+                            <h3>Regulations & Manuals, Searchable</h3>
+                            <p>CAPR 60-1, CAPP 60-33, operations manuals, and more. Search across all documents to find what you need fast. Bookmark frequently referenced sections. All available offline. <strong>Know the answer. Even without cell service.</strong></p>
+                        </div>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon feature-icon-orange">
@@ -107,8 +111,10 @@
                                 <polyline points="22 4 12 14.01 9 11.01"></polyline>
                             </svg>
                         </div>
-                        <h3>Track Your Progress</h3>
-                        <p>Log completed training modules, certifications, and upcoming requirements. See what you need for your next promotion or mission qualification. Set reminders for expiring certs. <strong>Stay current. Stay qualified.</strong></p>
+                        <div class="feature-card-body">
+                            <h3>Track Your Progress</h3>
+                            <p>Log completed training modules, certifications, and upcoming requirements. See what you need for your next promotion or mission qualification. Set reminders for expiring certs. <strong>Stay current. Stay qualified.</strong></p>
+                        </div>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon feature-icon-orange">
@@ -116,8 +122,10 @@
                                 <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
                             </svg>
                         </div>
-                        <h3>No Service? No Problem.</h3>
-                        <p>Download everything you need before heading to a remote sortie or rural squadron meeting. Forms, regs, training materials—all accessible without internet. Syncs when you're back online. <strong>Mission-ready, anywhere.</strong></p>
+                        <div class="feature-card-body">
+                            <h3>No Service? No Problem.</h3>
+                            <p>Download everything you need before heading to a remote sortie or rural squadron meeting. Forms, regs, training materials—all accessible without internet. Syncs when you're back online. <strong>Mission-ready, anywhere.</strong></p>
+                        </div>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon feature-icon-orange">
@@ -130,8 +138,10 @@
                                 <line x1="3" y1="18" x2="3.01" y2="18"></line>
                             </svg>
                         </div>
-                        <h3>Field Guides & Checklists</h3>
-                        <p>Mission checklists, radio procedures, airfield diagrams, phonetic alphabet—quick references for the field. Pin your most-used guides to the home screen. <strong>Less fumbling. More focus.</strong></p>
+                        <div class="feature-card-body">
+                            <h3>Field Guides & Checklists</h3>
+                            <p>Mission checklists, radio procedures, airfield diagrams, phonetic alphabet—quick references for the field. Pin your most-used guides to the home screen. <strong>Less fumbling. More focus.</strong></p>
+                        </div>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon feature-icon-orange">
@@ -140,8 +150,10 @@
                                 <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
                             </svg>
                         </div>
-                        <h3>All Your Devices, Your Data</h3>
-                        <p>Use on iPhone during missions, iPad at squadron meetings, Mac for training prep. Everything syncs via iCloud. Your training records stay private—no tracking, no data collection. <strong>One app. One purchase. Complete privacy.</strong></p>
+                        <div class="feature-card-body">
+                            <h3>All Your Devices, Your Data</h3>
+                            <p>Use on iPhone during missions, iPad at squadron meetings, Mac for training prep. Everything syncs via iCloud. Your training records stay private—no tracking, no data collection. <strong>One app. One purchase. Complete privacy.</strong></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -407,12 +419,69 @@
             padding: 100px 0;
             background: var(--bg-alt);
         }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+        .feature-card {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            background: var(--bg);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 28px 24px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .feature-card:hover {
+            border-color: rgba(245, 158, 11, 0.4);
+            box-shadow: 0 8px 32px rgba(245, 158, 11, 0.08);
+        }
+        .feature-icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+        .feature-icon svg {
+            width: 22px;
+            height: 22px;
+        }
+        .feature-card-body {
+            flex: 1;
+            min-width: 0;
+        }
+        .feature-card h3 {
+            font-size: 1.0625rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        .feature-card p {
+            font-size: 0.9375rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+            margin: 0;
+        }
         .feature-icon-orange {
             background: linear-gradient(135deg, #f59e0b, #d97706);
         }
         .feature-card p strong {
             color: #f59e0b;
             font-weight: 600;
+        }
+        @media (max-width: 680px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
         }
         .screenshots-section {
             padding: 100px 0;
