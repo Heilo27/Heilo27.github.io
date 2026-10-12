@@ -1,0 +1,52 @@
+---
+// Split frame: the launched icon lands top left, the app's first screen stands on the right.
+// Apps with no screens yet make the icon itself the poster (it is still the landing spot).
+import AppIcon from '../AppIcon.astro';
+import Device from './Device.astro';
+import { statusLabel, type App } from '../../data/apps';
+import { isExternal } from '../../lib/links';
+
+interface Props { app: App }
+const { app } = Astro.props;
+const shot = app.shots[0];
+const long = app.name.length > 11;
+// The name is sized to fit its column: by its whole length on one line, or its longest word when it wraps.
+const len = long ? Math.max(...app.name.split(' ').map((w) => w.length)) : app.name.length;
+const ext = app.cta && isExternal(app.cta.href);
+---
+<section class:list={['ahero wrap', { 'ahero--poster': !shot, [`ahero--${shot?.device}`]: !!shot }]} aria-labelledby="app-name" data-hero>
+  <div class="ahero__copy">
+    {shot && <AppIcon app={app} size={88} eager hero class="ahero__icon" />}
+    <h1 id="app-name" class:list={['display ahero__name', { 'ahero__name--long': long }]} style={`--len:${len}`} data-split="lines" data-intro>{app.name}</h1>
+    <p class="ahero__line" data-split="lines" data-intro data-delay="0.12">{app.line}</p>
+    <p class="ahero__pitch body muted" data-reveal="up" data-intro data-delay="0.25">{app.pitch}</p>
+    {app.cta && (
+      <div class="ahero__cta" data-reveal="up" data-intro data-delay="0.35">
+        <a class="btn btn--key" href={app.cta.href} rel={ext ? 'noopener' : undefined}>
+          {app.cta.label} <span class="btn__arrow" aria-hidden="true">→</span>
+        </a>
+        {app.ctaNote && <p class="ahero__note">{app.ctaNote}</p>}
+      </div>
+    )}
+    <dl class="ahero__meta" data-reveal="fade" data-intro data-delay="0.45">
+      <div><dt>Status</dt><dd>{statusLabel[app.status]}</dd></div>
+      <div><dt>{app.status === 'service' ? 'Offered as' : 'Runs on'}</dt><dd>{app.platforms.join(', ')}</dd></div>
+      <div><dt>Price</dt><dd>{app.price}</dd></div>
+    </dl>
+  </div>
+
+  <div class="ahero__stage">
+    {shot ? (
+      <div class="ahero__tilt" data-tilt>
+        <div data-reveal="up" data-intro data-delay="0.15">
+          <Device shot={shot} role="hero" eager />
+        </div>
+      </div>
+    ) : (
+      <div class="ahero__poster">
+        <AppIcon app={app} size={360} eager hero decorative={false} class="ahero__bigicon" />
+        <p class="ahero__category" data-reveal="fade" data-intro data-delay="0.4">{app.category}</p>
+      </div>
+    )}
+  </div>
+</section>

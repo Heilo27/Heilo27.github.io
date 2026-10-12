@@ -1,0 +1,62 @@
+---
+// Sticky narrative. With screens: a device holds still while the chapters scroll past, and its
+// screen follows the chapter (src/motion/app.ts). Without screens: the sticky side is the index of
+// chapters itself, set large, and it marks the one being read. Phones (and no-JS) show each
+// chapter's screen inline instead of the sticky device.
+import Device from './Device.astro';
+import type { App } from '../../data/apps';
+
+interface Props { app: App }
+const { app } = Astro.props;
+const withShots = app.features.some((f) => f.shot !== undefined);
+
+// Each chapter shows its own screen, or keeps the one before it.
+// Inline (phone) copies appear once per screen: a repeat would be the same picture twice.
+let carry = app.features.find((f) => f.shot !== undefined)?.shot ?? 0;
+const seen = new Set<number>();
+const chapters = app.features.map((f) => {
+  if (f.shot !== undefined) carry = f.shot;
+  const own = f.shot !== undefined && !seen.has(f.shot);
+  if (own) seen.add(carry);
+  return { ...f, show: carry, own };
+});
+const layers = [...new Set(chapters.map((c) => c.show))];
+---
+<section class:list={['afeat', withShots ? 'afeat--shots' : 'afeat--type']} aria-labelledby="feat-h" data-features>
+  <div class="afeat__grid wrap">
+    <h2 id="feat-h" class="afeat__h label">Inside {app.name}</h2>
+
+    <div class="afeat__side">
+      {withShots ? (
+        <div class="afeat__stage" data-stage>
+          {layers.map((s, i) => (
+            <div class="afeat__layer" data-layer={s} data-active={i === 0 ? '' : undefined}>
+              <Device shot={app.shots[s]} role="stage" />
+            </div>
+          ))}
+          <ol class="afeat__ticks" aria-hidden="true">
+            {chapters.map((_, i) => <li data-tick={i} data-active={i === 0 ? '' : undefined}></li>)}
+          </ol>
+        </div>
+      ) : (
+        <ul class="afeat__index" aria-hidden="true">
+          {chapters.map((c, i) => <li data-tick={i} data-active={i === 0 ? '' : undefined}>{c.title}</li>)}
+        </ul>
+      )}
+    </div>
+
+    <div class="afeat__chapters">
+      {chapters.map((c, i) => (
+        <article class="afeat__chapter" data-chapter={i} data-show={c.show} data-active={i === 0 ? '' : undefined}>
+          <h3 class="display afeat__title">{c.title}</h3>
+          <p class="afeat__text body">{c.text}</p>
+          {withShots && c.own && (
+            <div class="afeat__inline">
+              <Device shot={app.shots[c.show]} role="inline" />
+            </div>
+          )}
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

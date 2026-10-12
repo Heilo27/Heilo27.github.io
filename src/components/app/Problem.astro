@@ -1,0 +1,16 @@
+---
+// The problem, set large: one statement, then the short answer.
+import type { App } from '../../data/apps';
+
+interface Props { problem: NonNullable<App['problem']> }
+const { problem } = Astro.props;
+const body = problem.text.slice(0, -1);
+const answer = problem.text.at(-1);
+---
+<section class="aproblem wrap section--airy" aria-labelledby="problem-h">
+  <h2 id="problem-h" class="display aproblem__h" data-split="lines">{problem.heading}</h2>
+  <div class="aproblem__text">
+    {body.map((p) => <p class="body muted" data-reveal="up">{p}</p>)}
+    {answer && <p class="aproblem__answer" data-split="lines" data-delay="0.1">{answer}</p>}
+  </div>
+</section>

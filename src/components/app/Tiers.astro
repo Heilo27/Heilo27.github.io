@@ -1,0 +1,27 @@
+---
+// Pricing. The featured tier is drawn in the app's key colour; the rest stay on the ground.
+import type { App } from '../../data/apps';
+
+interface Props { app: App }
+const { app } = Astro.props;
+const tiers = app.tiers ?? [];
+---
+<section class:list={['atiers wrap section', `atiers--${tiers.length}`]} aria-labelledby="tiers-h">
+  <h2 id="tiers-h" class="display atiers__h" data-split="lines">{app.status === 'development' ? 'Planned pricing' : 'Pricing'}</h2>
+  <ul class="atiers__list">
+    {tiers.map((t, i) => (
+      <li class:list={['atier', { 'atier--featured': t.featured }]} data-reveal="up" data-delay={String(i * 0.06)}>
+        <div class="atier__top">
+          <h3 class="atier__name">{t.name}</h3>
+          {t.featured && <span class="atier__flag">Recommended</span>}
+        </div>
+        <p class="atier__price"><span class="atier__amount num">{t.price}</span>{t.period && <span class="atier__period"> {t.period}</span>}</p>
+        {t.note && <p class="atier__note">{t.note}</p>}
+        <ul class="atier__items">
+          {t.items.map((it) => <li>{it}</li>)}
+        </ul>
+      </li>
+    ))}
+  </ul>
+  {app.tiersNote && <p class="atiers__note muted" data-reveal="fade">{app.tiersNote}</p>}
+</section>

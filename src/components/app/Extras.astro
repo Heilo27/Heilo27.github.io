@@ -1,0 +1,93 @@
+---
+// The sections only some apps have: quotes, the product family, a setup or engagement sequence,
+// and lists (supported radios, languages). Each renders only when its data exists.
+import AppIcon from '../AppIcon.astro';
+import type { App } from '../../data/apps';
+import { isExternal } from '../../lib/links';
+
+interface Props { app: App; part: 'quotes' | 'family' | 'steps' | 'columns' }
+const { app, part } = Astro.props;
+const { quote, family, steps, columns } = app;
+---
+{part === 'quotes' && quote?.length && (
+  <section class="aquote wrap section" aria-labelledby="quote-h">
+    <h2 id="quote-h" class="sr-only">What {app.name} users say</h2>
+    {quote.map((q, i) => (
+      <figure class:list={['aquote__item', { 'aquote__item--lead': i === 0 }]} data-reveal="up" data-delay={String(i * 0.08)}>
+        <blockquote class="aquote__text"><p><span class="aquote__mark" aria-hidden="true">“</span>{q.text}”</p></blockquote>
+        <figcaption class="aquote__who"><span class="aquote__name">{q.name}</span> <span class="muted">{q.role}</span></figcaption>
+      </figure>
+    ))}
+  </section>
+)}
+
+{part === 'family' && family && (
+  <section class="afam wrap section" aria-labelledby="fam-h">
+    <div class="afam__head">
+      <h2 id="fam-h" class="display afam__h" data-split="lines">{family.heading}</h2>
+      <p class="body muted" data-reveal="up">{family.intro}</p>
+    </div>
+    <ul class="afam__list">
+      {family.items.map((f) => {
+        const Tag = f.href ? 'a' : 'div';
+        return (
+          <li data-reveal="up">
+            <Tag class:list={['afam__row', { 'afam__row--link': !!f.href }]} href={f.href} rel={f.href && isExternal(f.href) ? 'noopener' : undefined}>
+              {/* family entries with an icon are this app itself (Lodestone PF1) */}
+              {f.icon ? <AppIcon app={app} size={72} class="afam__icon" /> : <span class="afam__slot" aria-hidden="true"></span>}
+              <span class="afam__name">
+                <span class="h-m">{f.name}</span>
+                <span class="muted">{f.edition}</span>
+              </span>
+              <span class="afam__text">{f.text}</span>
+              <span class:list={['afam__status', { 'afam__status--live': !!f.href }]}>{f.status}{f.href && <span aria-hidden="true"> ↗</span>}</span>
+            </Tag>
+          </li>
+        );
+      })}
+    </ul>
+  </section>
+)}
+
+{part === 'steps' && steps && (
+  <section class="asteps wrap section" aria-labelledby="steps-h">
+    <div class="asteps__head">
+      <h2 id="steps-h" class="display asteps__h" data-split="lines">{steps.heading}</h2>
+      {steps.intro && <p class="body muted" data-reveal="up">{steps.intro}</p>}
+      {steps.link && (
+        <div class="asteps__dl" data-reveal="up">
+          <a class="btn btn--key" href={steps.link.href} rel="noopener" download>{steps.link.label} <span class="btn__arrow" aria-hidden="true">↓</span></a>
+          {steps.note && <p class="asteps__note">{steps.note}</p>}
+        </div>
+      )}
+    </div>
+    <ol class="asteps__list">
+      {steps.items.map((s, i) => (
+        <li class="asteps__item" data-reveal="up" data-delay={String(i * 0.05)}>
+          <span class="asteps__n num" aria-hidden="true">{i + 1}</span>
+          <h3 class="h-m">{s.title}</h3>
+          <p class="muted">{s.text}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+)}
+
+{part === 'columns' && columns && (
+  <section class:list={['acols wrap section', { 'acols--one': columns.groups.length === 1 }]} aria-labelledby="cols-h">
+    <div class="acols__head">
+      <h2 id="cols-h" class="display acols__h" data-split="lines">{columns.heading}</h2>
+      {columns.intro && <p class="body muted" data-reveal="up">{columns.intro}</p>}
+    </div>
+    <div class="acols__groups">
+      {columns.groups.map((g) => (
+        <div class="acols__group" data-reveal="up">
+          <h3 class="label">{g.title}</h3>
+          <ul class="acols__items">
+            {g.items.map((it) => <li>{it}</li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+)}
