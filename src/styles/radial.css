@@ -41,17 +41,27 @@
   padding-top: calc(var(--u) * 3);
   padding-bottom: max(6rem, 16svh);
 }
+/* base CTA before the height variants below, so their margins win */
+.rd-cta { margin-top: calc(var(--u) * 3.5); display: grid; gap: 0.9rem; justify-items: start; }
+.rd-cta__note { font-size: var(--t-s); max-width: 32ch; }
 /* The bottom corners rest at the top of the page (frame.ts, >= 1100 px): icon to CTA must end above
-   them, so short viewports tighten the stack instead of letting the corner sit on the button. */
-@media (min-width: 900px) and (max-height: 820px) {
+   them (1536×864 and 1600×900 are the common laptops that need it),
+   so short viewports tighten the stack instead of letting the corner sit on the button. */
+@media (min-width: 900px) and (max-height: 920px) {
   .rd-hero { padding-top: 5.5rem; }
   .rd-hero .icon { --icon-size: 64px !important; }
   .rd-hero__body { padding-top: calc(var(--u) * 2); }
   .rd-hero__body .lede { font-size: 1.2rem; line-height: 1.4; }
   .rd-cta { margin-top: calc(var(--u) * 2.5); }
 }
-.rd-cta { margin-top: calc(var(--u) * 3.5); display: grid; gap: 0.9rem; justify-items: start; }
-.rd-cta__note { font-size: var(--t-s); max-width: 32ch; }
+/* Laptop heights (1280×720, 1100×700): the status corner sits ~50 px from the bottom, so the title
+   scales with the height as well as the width and the stack closes up. */
+@media (min-width: 900px) and (max-height: 760px) {
+  .rd-hero { padding-top: 5rem; }
+  .rd-hero__title { font-size: clamp(3.6rem, min(1rem + 6.4vw, 11svh), 8.4rem); margin-top: calc(var(--u) * 0.5); }
+  .rd-hero__body { padding-top: calc(var(--u) * 1.5); }
+  .rd-cta { margin-top: calc(var(--u) * 1.75); gap: 0.6rem; }
+}
 
 .rd-ch {
   min-height: 135svh;
@@ -87,14 +97,16 @@
   position: absolute;
   right: 0;
   bottom: max(1.5rem, 4cqh);
-  width: clamp(13rem, 33cqw, 20rem);
+  /* floor = the DME, chip and CRS row at its widest ('ABEAM'): narrower and the row spills past the gutter.
+     The dial keeps the narrower size (.rd-cdi), so on small stages the readouts sit wider than it, as in the app. */
+  width: clamp(16.5rem, 33cqw, 20rem);
   /* the instrument sits on the floor plan: the plan dissolves under it instead of peeking between the boxes */
   background: var(--c-bg);
   box-shadow: 0 0 2.5rem 1.25rem var(--c-bg);
   border-radius: 24px;
 }
 @media (min-width: 1100px) {
-  .rd-stage__rx { bottom: calc(var(--gutter) + 2.75rem); } /* above the "Next app" corner */
+  .rd-stage__rx { bottom: calc(var(--gutter) + 4.25rem); } /* clear of the "Next app" corner, not touching it */
 }
 
 /* Room */
@@ -115,9 +127,6 @@
 .rd-room__radial { stroke: rgb(232 236 239 / 0.5); stroke-width: 1; }
 .rd-room__station rect, .rd-room__station path { fill: none; stroke: var(--c-fg); stroke-width: 1.4; }
 .rd-room__station .rd-room__dot { fill: var(--c-fg); }
-.rd-room__pulse { fill: none; stroke: var(--c-key); stroke-width: 1; opacity: 0; transform-box: fill-box; transform-origin: center; }
-.motion .rd-room__pulse { animation: rd-pulse 3.2s cubic-bezier(0.16, 1, 0.3, 1) infinite; }
-@keyframes rd-pulse { 0% { scale: 1; opacity: 0.7; } 100% { scale: 5; opacity: 0; } }
 .rd-room__plane { fill: var(--c-fg); }
 .rd-room__tag { fill: var(--c-fg); font: 700 11px var(--f-mono); letter-spacing: 0.04em; paint-order: stroke; stroke: var(--c-bg); stroke-width: 4px; stroke-linejoin: round; }
 .rd-room__tag--hdg { fill: var(--c-muted); font-weight: 400; }
@@ -147,7 +156,7 @@
   color: var(--rd-amber); border: 1px solid var(--rd-amber); border-radius: 3px; padding: 0.2rem 0.35rem;
 }
 .rd-rx__chip[hidden] { display: inline-block; visibility: hidden; } /* keeps the row from shifting */
-.rd-cdi { width: 100%; height: auto; display: block; }
+.rd-cdi { width: 100%; max-width: clamp(13rem, 33cqw, 20rem); justify-self: center; height: auto; display: block; }
 .rd-cdi__bezel { fill: var(--c-raise); stroke: var(--c-line); }
 .rd-cdi__bezelc { fill: var(--c-raise); stroke: var(--c-line); }
 .rd-cdi__face { fill: #0a0d10; }
