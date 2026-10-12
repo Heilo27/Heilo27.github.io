@@ -29,11 +29,13 @@
 .ahero--landscape .ahero__stage { grid-column: 7 / -1; }
 .ahero__icon { margin-bottom: calc(var(--u) * 2.5); }
 .ahero__name {
-  font-size: min(var(--t-mega), calc(160cqi / var(--len, 8)), 20svh);
+  /* --fit is measured by src/motion/app.ts; the --len estimate (fit.ts) is the size without JS. */
+  font-size: min(var(--t-mega), var(--fit, calc(160cqi / var(--len, 8))), 20svh);
+  justify-self: stretch; /* the column, not the text, is what gets measured */
   margin-left: -0.05em; /* optical: the cap's side bearing */
   white-space: nowrap;
 }
-.ahero__name--long { font-size: min(var(--t-xl) * 1.15, calc(160cqi / var(--len, 8)), 15svh); white-space: normal; line-height: 0.94; }
+.ahero__name--long { font-size: min(var(--t-xl) * 1.15, var(--fit, calc(160cqi / var(--len, 8))), 15svh); white-space: normal; line-height: 0.94; }
 .ahero__line {
   margin-top: calc(var(--u) * 1.6);
   font-size: var(--t-l);
@@ -337,7 +339,8 @@ html:not(.js) .afeat__chapters { grid-column: 1 / -1; }
 .anext__label { grid-area: label; margin-bottom: calc(var(--u) * 3); }
 .anext__icon { grid-area: icon; align-self: center; width: clamp(72px, 9vw, 128px); transition: scale 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
 .anext__icon .icon__mono { font-size: clamp(40px, 5vw, 72px); }
-.anext__name { grid-area: name; align-self: end; font-size: min(var(--t-mega), calc(130cqi / var(--len, 8))); white-space: nowrap; transition: translate 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.anext__name { grid-area: name; align-self: end; font-size: min(var(--t-mega), var(--fit, calc(130cqi / var(--len, 8)))); white-space: nowrap; transition: translate 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.anext__name--long { font-size: min(var(--t-xl) * 1.15, var(--fit, calc(130cqi / var(--len, 8)))); white-space: normal; line-height: 0.94; }
 .anext__line { grid-area: line; align-self: start; }
 .anext__link:hover .anext__icon { scale: 1.08; }
 .anext__link:hover .anext__name { translate: 0.08em 0; }
@@ -349,7 +352,9 @@ html:not(.js) .afeat__chapters { grid-column: 1 / -1; }
   .ahero { grid-template-columns: minmax(0, 1fr); min-height: 0; padding-top: calc(5.5rem + env(safe-area-inset-top)); row-gap: calc(var(--u) * 7); }
   .ahero__copy, .ahero__stage, .ahero--landscape .ahero__copy, .ahero--landscape .ahero__stage { grid-column: 1 / -1; }
   .ahero__icon { --icon-size: 72px !important; }
-  .ahero__name--long { font-size: min(var(--t-xl), calc(150cqi / var(--len, 8))); }
+  /* On a phone the name spans the column: the desktop caps would leave it at a third of it. */
+  .ahero__name { font-size: min(var(--fit, calc(160cqi / var(--len, 8))), 30vw, 20svh); }
+  .ahero__name--long { font-size: min(var(--fit, calc(150cqi / var(--len, 8))), 22vw, 15svh); }
   .device--hero.device--phone { --device-w: min(64vw, 290px); }
   .device--hero.device--ipad { --device-w: min(84vw, 440px); }
   .device--hero.device--landscape { --device-w: min(92vw, 520px); }
@@ -377,7 +382,8 @@ html:not(.js) .afeat__chapters { grid-column: 1 / -1; }
   .atiers__list, .atiers--3 .atiers__list { grid-template-columns: minmax(0, 1fr); }
   .acta { padding-block: calc(var(--u) * 12) calc(var(--u) * 6); }
   .anext__link { grid-template-areas: 'label label' 'icon icon' 'name name' 'line line'; row-gap: 1rem; }
-  .anext__name { font-size: min(var(--t-xl), calc(150cqi / var(--len, 8))); }
+  .anext__name { font-size: min(var(--fit, calc(150cqi / var(--len, 8))), 30vw); }
+  .anext__name--long { font-size: min(var(--fit, calc(150cqi / var(--len, 8))), 18vw); }
 }
 @media (min-width: 900px) and (max-width: 1199px) {
   .aproblem__text { grid-column: 5 / -1; }

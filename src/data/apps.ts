@@ -197,9 +197,9 @@ export const apps: App[] = [
     features: [
       { title: 'Dispatch in seconds', text: 'Drag customers onto the day, set the order and send it to every crew in one tap. No phone calls, no group texts.', shot: 0 },
       { title: 'Route order that saves fuel', text: 'Stripes works out the most efficient driving order for each crew’s day. Fewer miles, more jobs, and you can still drag a stop wherever you want it.', shot: 1 },
-      { title: 'Time that tracks itself', text: 'When a crew arrives at a property the job timer starts. When they leave it stops. Your labor costs become exact without anyone touching a clock.', shot: 3 },
+      { title: 'Time that tracks itself', text: 'When a crew arrives at a property the job timer starts. When they leave it stops. Your labor costs become exact without anyone touching a clock.', shot: 4 },
       { title: 'Invoices, then QuickBooks', text: 'A finished job becomes an invoice waiting for your review. Approve it and it goes to QuickBooks. No double entry.', shot: 1 },
-      { title: 'A crew app in English and Spanish', text: 'Job details, navigation, the timer and notes are fully translated, so you can hire the best crew regardless of language.', shot: 3 },
+      { title: 'A crew app in English and Spanish', text: 'Job details, navigation, the timer and notes are fully translated, so you can hire the best crew regardless of language.', shot: 0 },
     ],
     gallery: [4, 5],
     // confirm: names and prices from the in-app plan sheet on the App Store (Starter $35, Pro $79.99);
@@ -249,13 +249,13 @@ export const apps: App[] = [
       { src: img('skylog/ipad-1.jpg'), alt: 'Skylog on iPad showing two confirmed reservations on the club schedule', device: 'ipad' },
     ],
     features: [
-      { title: 'One calendar for the fleet', text: 'Members book directly. Admins see every reservation across every aircraft, so double-bookings and mystery gaps disappear.', shot: 0 },
-      { title: 'Hobbs and tach, without the binder', text: 'Pilots enter readings at check-out and check-in. Skylog does the subtraction, multiplies by the aircraft’s rate and puts the cost on the booking.', shot: 1 },
-      { title: 'Invoices in seconds', text: 'Turn any completed flight into a PDF invoice and send it from the share sheet. No billing service required.', shot: 1 },
+      { title: 'One calendar for the fleet', text: 'Members book directly. Admins see every reservation across every aircraft, so double-bookings and mystery gaps disappear.', shot: 3 },
+      { title: 'Hobbs and tach, without the binder', text: 'Pilots enter readings at check-out and check-in. Skylog does the subtraction, multiplies by the aircraft’s rate and puts the cost on the booking.', shot: 3 },
+      { title: 'Invoices in seconds', text: 'Turn any completed flight into a PDF invoice and send it from the share sheet. No billing service required.', shot: 3 },
       { title: 'Currency and maintenance', text: 'Admins see each member’s certificate, ratings and currency. Maintenance blocks take an aircraft off the calendar until it is back.', shot: 2 },
       { title: 'Every club stays separate', text: 'Members join with a club code and see only their club. A pilot in two clubs sees both, and the data never crosses.', shot: 2 },
     ],
-    gallery: [3],
+    gallery: [],
     faq: [
       { q: 'How does a club get started?', a: 'An admin creates the club, adds aircraft with hourly rates and shares the club code. Members download Skylog, tap Join a Club and enter it. Setup takes about ten minutes.' },
       { q: 'Does it need internet?', a: 'Booking and live sync need a connection. Existing bookings stay viewable offline.' },

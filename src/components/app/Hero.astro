@@ -5,14 +5,12 @@ import AppIcon from '../AppIcon.astro';
 import Device from './Device.astro';
 import { statusLabel, type App } from '../../data/apps';
 import { isExternal } from '../../lib/links';
-import { ems } from './fit';
+import { isLong, lenOf } from './fit';
 
 interface Props { app: App }
 const { app } = Astro.props;
 const shot = app.shots[0];
-const long = app.name.length > 11;
-// The name is sized to fit its column: by its whole length on one line, or its longest word when it wraps.
-const len = (long ? Math.max(...app.name.split(' ').map(ems)) : ems(app.name)).toFixed(2);
+const long = isLong(app.name);
 const ext = app.cta && isExternal(app.cta.href);
 // A service has no platforms or store status: its facts are what it is and what the first step costs.
 const service = app.status === 'service';
@@ -23,7 +21,7 @@ const meta: [string, string][] = service
 <section class:list={['ahero wrap', { 'ahero--poster': !shot, [`ahero--${shot?.device}`]: !!shot }]} aria-labelledby="app-name" data-hero>
   <div class="ahero__copy">
     {shot && <AppIcon app={app} size={88} eager hero class="ahero__icon" />}
-    <h1 id="app-name" class:list={['display ahero__name', { 'ahero__name--long': long }]} style={`--len:${len}`} data-split="lines" data-intro>{app.name}</h1>
+    <h1 id="app-name" class:list={['display ahero__name', { 'ahero__name--long': long }]} style={`--len:${lenOf(app.name)}`} data-fit data-split="lines" data-intro>{app.name}</h1>
     <p class="ahero__line" data-split="lines" data-intro data-delay="0.12">{app.line}</p>
     <p class="ahero__pitch body muted" data-reveal="up" data-intro data-delay="0.25">{app.pitch}</p>
     {app.cta && (

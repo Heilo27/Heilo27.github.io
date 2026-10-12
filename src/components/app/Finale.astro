@@ -4,7 +4,7 @@
 import AppIcon from '../AppIcon.astro';
 import { nextApp, type App } from '../../data/apps';
 import { docHref, isExternal } from '../../lib/links';
-import { ems } from './fit';
+import { isLong, lenOf } from './fit';
 
 interface Props { app: App }
 const { app } = Astro.props;
@@ -45,7 +45,7 @@ const ext = app.cta && isExternal(app.cta.href);
   <a class="anext__link wrap" href={`/${next.slug}/`} data-launch data-cursor="Open">
     <span class="anext__label label">Next app</span>
     <AppIcon app={next} size={128} class="anext__icon" />
-    <span class="display anext__name" style={`--len:${ems(next.name).toFixed(2)}`}>{next.name}</span>
+    <span class:list={['display anext__name', { 'anext__name--long': isLong(next.name) }]} style={`--len:${lenOf(next.name)}`} data-fit>{next.name}</span>
     <span class="anext__line muted">{next.category}</span>
   </a>
 </nav>
