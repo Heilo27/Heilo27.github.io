@@ -1,0 +1,225 @@
+---
+// Radial AR. The one custom app page: an instrument stage driven by a scripted walk round a
+// virtual VOR (src/components/radial/walk.ts → vor.ts), the same math the app runs.
+// Static HTML renders every chapter's text and the hero state; src/motion/radial.ts moves the
+// stage from the scroll position. Under reduced motion the stage jumps to each chapter's key frame.
+import Base from '../../layouts/Base.astro';
+import AppIcon from '../../components/AppIcon.astro';
+import Room from '../../components/radial/Room.astro';
+import Receiver from '../../components/radial/Receiver.astro';
+import Adf from '../../components/radial/Adf.astro';
+import Phone from '../../components/radial/Phone.astro';
+import { appBySlug, nextApp, type Shot } from '../../data/apps';
+import { appHref, launches } from '../../lib/links';
+import { poseAt } from '../../components/radial/walk';
+import placement from '../../assets/apps/radial/AR-03-placement.png';
+import offCone from '../../assets/apps/radial/AR-05-off-cone.png';
+import ktFeedback from '../../assets/apps/radial/KT-03-typeA1-feedback-incorrect.png';
+import '../../styles/radial.css';
+
+const app = appBySlug('radial')!;
+const next = nextApp('radial');
+const shot = (file: string): Shot => {
+  const s = app.shots.find((x) => x.src.src.includes(file));
+  if (!s) throw new Error(`radial: no screenshot ${file}`);
+  return s;
+};
+const own = (src: ImageMetadata, alt: string): Shot => ({ src, alt, device: 'phone' });
+
+const hero = poseAt(0);
+const ils = [
+  { shot: shot('03-ils-approach'), cap: 'Final approach on a table, mile markers on the centreline' },
+  { shot: shot('05-ils-short-final'), cap: 'Short final, needles centred' },
+  { shot: shot('06-hud'), cap: 'The head-up display, over the same room' },
+];
+const kt = [
+  { shot: shot('KT-02'), cap: 'Which indication does this aircraft see?' },
+  { shot: shot('KT-06'), cap: 'Which aircraft could be yours?' },
+  { shot: own(ktFeedback, 'A knowledge test answer marked wrong, with the explanation: the aircraft is on the 135 radial, 45 degrees from the course, so the flag reads FROM and the needle sits full scale left'), cap: 'A wrong answer, and why' },
+];
+---
+<Base app="radial" title="Radial AR: the room is the sky" description={app.description}>
+  <div class="rd" data-rd>
+    <!-- Hero and lessons 1 to 4 share one grid: text on the left, the stage sticky on the right. -->
+    <div class="rd-walk wrap" data-rd-walk>
+      <section class="rd-hero" aria-labelledby="rd-title">
+        <AppIcon app={app} size={88} eager hero class="rd-hero__icon" />
+        <h1 id="rd-title" class="display rd-hero__title" data-split="chars" data-intro>Radial AR</h1>
+        <p class="display rd-hero__line" data-split="words" data-intro data-delay="0.25">{app.line}</p>
+      </section>
+
+      <div class="rd-stage" data-rd-stage data-flag="TO">
+        <div class="rd-stage__room"><Room pose={hero} /></div>
+        <div class="rd-stage__rx"><Receiver pose={hero} /></div>
+        <p class="sr-only" aria-live="polite" data-rd-live></p>
+      </div>
+
+      <div class="rd-hero__body">
+        <p class="lede" data-reveal="up" data-intro data-delay="0.45">{app.pitch}</p>
+        {app.cta && (
+          <div class="rd-cta" data-reveal="up" data-intro data-delay="0.55">
+            <a class="btn btn--key" href={app.cta.href}>{app.cta.label} <span class="btn__arrow" aria-hidden="true">→</span></a>
+            <p class="rd-cta__note muted">{app.ctaNote}</p>
+          </div>
+        )}
+      </div>
+
+      <article class="rd-ch" data-rd-ch="1" aria-labelledby="rd-ch1">
+        <p class="label">Lesson 1</p>
+        <h2 id="rd-ch1" class="display h-l" data-split="lines">Your phone is the aircraft</h2>
+        <div class="body">
+          <p>Place the station on the floor and step back. Wherever you stand is where the aircraft is, and the receiver reads that exact spot: radial, needle, flag and distance.</p>
+          <p>Walk the arc from the 050 radial to the 030. The needle sweeps from right to left. You crossed radials, and the needle followed you.</p>
+        </div>
+        <Phone shot={own(placement, 'Placing the station in Radial AR: a living room floor with the prompt face your chosen north, then tap Place')} width={210} caption="Placing the station. Face your chosen north, then tap Place." class="rd-inset" />
+      </article>
+
+      <article class="rd-ch" data-rd-ch="2" aria-labelledby="rd-ch2">
+        <p class="label">Lesson 2</p>
+        <h2 id="rd-ch2" class="display h-l" data-split="lines">Turn in place. Nothing moves.</h2>
+        <div class="body">
+          <p>Spin a full circle on the spot. The heading runs all the way round, and the needle, the flag and the DME hold still.</p>
+          <p>A VOR tells you where you are, never which way you point. On paper that is a rule to memorise. Standing in the room, you watch it happen.</p>
+        </div>
+      </article>
+
+      <article class="rd-ch" data-rd-ch="3" aria-labelledby="rd-ch3">
+        <p class="label">Lesson 3</p>
+        <h2 id="rd-ch3" class="display h-l" data-split="lines">Turn the knob, or walk to the course</h2>
+        <div class="body">
+          <p>Set the OBS to 180 and the needle pegs right: the 360 radial lies off to your right. Walk over to it and the needle slides home to the centre, flag TO.</p>
+          <p>One needle, two ways to move it. Change the course you ask for, or change where you stand.</p>
+        </div>
+      </article>
+
+      <article class="rd-ch" data-rd-ch="4" aria-labelledby="rd-ch4">
+        <p class="label">Lesson 4</p>
+        <h2 id="rd-ch4" class="display h-l" data-split="lines">Overhead, the needle gives up</h2>
+        <div class="body">
+          <p>Walk inbound. Close to the station you enter the cone of confusion and the flag drops to OFF. Keep going and you come out on the 180 radial, flag FROM.</p>
+          <p>The DME never reaches zero. It measures slant range, so overhead it reads your phone’s height above the antenna: 3.6 feet when you hold it at chest height.</p>
+        </div>
+        <Phone shot={own(offCone, 'Radial AR overhead the station: the receiver shows CONE, the flag OFF and DME 3.7 feet, with a note that DME is slant range')} width={210} caption="In the app, overhead. CONE, flag OFF, DME 3.7 feet." class="rd-inset" />
+      </article>
+    </div>
+
+    <!-- Lesson 5: other stations. The ADF heading follows this section's own scroll. -->
+    <section class="rd-more section" aria-labelledby="rd-ch5">
+      <div class="wrap">
+        <div class="rd-more__head">
+          <p class="label">Lesson 5</p>
+          <h2 id="rd-ch5" class="display h-xl" data-split="lines">Beyond the VOR</h2>
+        </div>
+
+        <div class="rd-adfrow" data-rd-adfsec>
+          <div class="rd-adfrow__text body">
+            <h3 class="h-m">An NDB teaches the opposite</h3>
+            <p>Stand still north of the beacon and turn. The ADF needle swings with every degree, because it shows where the station is relative to your nose. Add the heading and you get the bearing to the station.</p>
+            <p class="muted rd-motion-only">Scroll to turn the phone. The bearing to the station stays 180.</p>
+          </div>
+          <div class="rd-adfrow__fig"><Adf hdg={45} /></div>
+        </div>
+
+        <div class="rd-ils">
+          <div class="rd-ils__text body">
+            <h3 class="h-m">An ILS on your table</h3>
+            <p>Set a runway on the kitchen table and fly the approach with the phone. Localizer and glideslope, mile markers along the centreline, an HSI with distance, and a head-up display when you want to look outside.</p>
+          </div>
+          <ul class="rd-ils__shots" role="list">
+            {ils.map((s) => <li><Phone shot={s.shot} width={240} caption={s.cap} /></li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lesson 6: the knowledge test, from the same math. -->
+    <section class="rd-kt section" aria-labelledby="rd-ch6">
+      <div class="wrap rd-kt__grid">
+        <div class="rd-kt__text">
+          <p class="label">Lesson 6</p>
+          <h2 id="rd-ch6" class="display h-l" data-split="lines">Then sit the written test</h2>
+          <div class="body">
+            <p>The classic VOR questions from the written test, practised until they are easy. An aircraft on a map: which indication does it see? An indication: which aircraft could be yours?</p>
+            <p>Every answer is computed by the code that drives the receiver in the room, and every wrong answer says why. No floor space needed.</p>
+          </div>
+        </div>
+        <ul class="rd-kt__shots" role="list">
+          {kt.map((s) => <li><Phone shot={s.shot} width={230} caption={s.cap} class="rd-phone--tall" /></li>)}
+        </ul>
+      </div>
+    </section>
+
+    <!-- What it is, plainly, and what you need. -->
+    <section class="rd-plain section" aria-labelledby="rd-plain">
+      <div class="wrap grid">
+        <h2 id="rd-plain" class="display h-l rd-plain__h">What it is, and what it isn’t</h2>
+        <ul class="rd-plain__list" role="list">
+          <li>
+            <h3 class="h-m">A trainer for the picture in your head</h3>
+            <p>No flight dynamics, no airplane to fly. Position and pointing are the whole model, which is all a VOR, an NDB or an ILS ever knows about you.</p>
+          </li>
+          <li>
+            <h3 class="h-m">Not an approved training device</h3>
+            <p>Use it before the lesson and before the written test. It doesn’t replace either, and it logs no time.</p>
+          </li>
+          <li>
+            <h3 class="h-m">Nothing leaves the phone</h3>
+            <p>There is no sign-in, no tracking and no server. Your room stays your room.</p>
+          </li>
+        </ul>
+      </div>
+
+      <div class="wrap grid rd-need">
+        <div class="rd-need__shot"><Phone shot={shot('01-vor-room')} width={260} /></div>
+        <div class="rd-need__text">
+          <h2 class="display h-l">What you need</h2>
+          <dl class="rd-need__list">
+            <div><dt>Device</dt><dd>iPhone or iPad with iOS 17 or later</dd></div>
+            <div><dt>Floor</dt><dd>Roughly 3 × 3 m, well lit, with some texture: a rug or wood boards</dd></div>
+            <div><dt>Table</dt><dd>Any table, for the ILS</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="rd-faq section" aria-labelledby="rd-faq">
+      <div class="wrap grid">
+        <h2 id="rd-faq" class="display h-l rd-faq__h">Questions</h2>
+        <div class="rd-faq__list">
+          {app.faq.map((f) => (
+            <details class="rd-faq__item">
+              <summary><span>{f.q}</span><span class="rd-faq__mark" aria-hidden="true"></span></summary>
+              <p>{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="rd-end section--airy" aria-labelledby="rd-end">
+      <div class="wrap grid">
+        <h2 id="rd-end" class="display h-xl rd-end__h" data-split="lines">Walk the radials yourself</h2>
+        {app.cta && (
+          <div class="rd-end__cta">
+            <a class="btn btn--key" href={app.cta.href}>{app.cta.label} <span class="btn__arrow" aria-hidden="true">→</span></a>
+            <p class="muted">One email asks for an invite to the beta.</p>
+          </div>
+        )}
+      </div>
+    </section>
+
+    <nav class="rd-next" aria-label="Next app">
+      <a class="wrap rd-next__link" href={appHref(next)} data-launch={launches(next) ? '' : undefined}>
+        <span class="label">Next app</span>
+        <AppIcon app={next} size={96} />
+        <span class="display h-l rd-next__name">{next.name}</span>
+        <span class="rd-next__line muted">{next.line}</span>
+      </a>
+    </nav>
+  </div>
+</Base>
+
+<script>
+  import { setupRadial } from '../../motion/radial';
+  setupRadial();
+</script>

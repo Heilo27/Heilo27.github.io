@@ -29,7 +29,7 @@ const lbl = (bearing: number, dist: number) => ({
 const fromL = lbl(pose.obs + 24, 118);
 const toL = lbl(pose.obs + 204, 118);
 ---
-<svg class="rd-room" viewBox="-210 -210 420 420" aria-hidden="true" focusable="false">
+<svg class="rd-room" viewBox="-210 -210 420 420" role="img" aria-label="The room from above: the VOR station at the centre, the selected course in cyan, and your phone as the aircraft" focusable="false">
   <defs>
     <pattern id="rd-grid" width="50" height="50" patternUnits="userSpaceOnUse" x="-25" y="-25">
       <path d="M50 0H0V50" fill="none" stroke="currentColor" stroke-width="0.6" />

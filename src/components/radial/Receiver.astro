@@ -2,7 +2,7 @@
 // The VOR receiver, drawn after the app's own: DME (amber) and CRS (cyan) readouts in B612 Mono,
 // a status chip, and the CDI: an OBS card that turns so the selected course sits under the top
 // index, five dots each side (2° a dot, ±10° full scale), the needle, and the TO/FROM/OFF window.
-import { computeVOR, dmeFeet, dotsOf, formatCourse } from './vor';
+import { computeVOR, describe, dmeFeet, dotsOf, formatCourse } from './vor';
 import { U, type Pose } from './walk';
 
 interface Props { pose: Pose }
@@ -13,7 +13,7 @@ const ticks = Array.from({ length: 72 }, (_, i) => i * 5);
 const labels = ['N', '3', '6', 'E', '12', '15', 'S', '21', '24', 'W', '30', '33'];
 const chip = v.off === 'cone' ? 'CONE' : v.off === 'abeam' ? 'ABEAM' : '';
 ---
-<div class="rd-rx" data-rd-rx>
+<div class="rd-rx" data-rd-rx role="img" aria-label={`VOR receiver. ${describe(v, pose.obs)}`}>
   <div class="rd-rx__row">
     <p class="rd-rx__box">
       <span class="rd-rx__k">DME</span>
