@@ -15,7 +15,7 @@
 
 .rd-hero {
   grid-row: 1;
-  padding-top: max(7rem, 20svh);
+  padding-top: max(5.5rem, 11svh);
   display: grid;
   gap: calc(var(--u) * 1.5);
   justify-items: start;
@@ -39,9 +39,17 @@
 .rd-hero__body {
   grid-row: 2;
   padding-top: calc(var(--u) * 3);
-  padding-bottom: max(6rem, 16svh); /* the bottom-left status corner rests here at the top */
+  padding-bottom: max(6rem, 16svh);
 }
-.rd-hero__body .lede { max-width: 30ch; }
+/* The bottom corners rest at the top of the page (frame.ts, >= 1100 px): icon to CTA must end above
+   them, so short viewports tighten the stack instead of letting the corner sit on the button. */
+@media (min-width: 900px) and (max-height: 820px) {
+  .rd-hero { padding-top: 5.5rem; }
+  .rd-hero .icon { --icon-size: 64px !important; }
+  .rd-hero__body { padding-top: calc(var(--u) * 2); }
+  .rd-hero__body .lede { font-size: 1.2rem; line-height: 1.4; }
+  .rd-cta { margin-top: calc(var(--u) * 2.5); }
+}
 .rd-cta { margin-top: calc(var(--u) * 3.5); display: grid; gap: 0.9rem; justify-items: start; }
 .rd-cta__note { font-size: var(--t-s); max-width: 32ch; }
 
@@ -80,6 +88,13 @@
   right: 0;
   bottom: max(1.5rem, 4cqh);
   width: clamp(13rem, 33cqw, 20rem);
+  /* the instrument sits on the floor plan: the plan dissolves under it instead of peeking between the boxes */
+  background: var(--c-bg);
+  box-shadow: 0 0 2.5rem 1.25rem var(--c-bg);
+  border-radius: 24px;
+}
+@media (min-width: 1100px) {
+  .rd-stage__rx { bottom: calc(var(--gutter) + 2.75rem); } /* above the "Next app" corner */
 }
 
 /* Room */
@@ -104,7 +119,7 @@
 .motion .rd-room__pulse { animation: rd-pulse 3.2s cubic-bezier(0.16, 1, 0.3, 1) infinite; }
 @keyframes rd-pulse { 0% { scale: 1; opacity: 0.7; } 100% { scale: 5; opacity: 0; } }
 .rd-room__plane { fill: var(--c-fg); }
-.rd-room__tag { fill: var(--c-fg); font: 700 11px var(--f-mono); letter-spacing: 0.04em; }
+.rd-room__tag { fill: var(--c-fg); font: 700 11px var(--f-mono); letter-spacing: 0.04em; paint-order: stroke; stroke: var(--c-bg); stroke-width: 4px; stroke-linejoin: round; }
 .rd-room__tag--hdg { fill: var(--c-muted); font-weight: 400; }
 .rd-room__scale line { stroke: var(--c-muted); stroke-width: 1; }
 .rd-room__scale text { fill: var(--c-muted); font: 400 10px var(--f-mono); text-anchor: middle; }
@@ -122,10 +137,11 @@
 }
 .rd-rx__box--crs { justify-content: flex-end; }
 .rd-rx__k { font-size: 0.66rem; color: var(--c-muted); letter-spacing: 0.06em; }
-.rd-rx__v { font-size: clamp(1.05rem, 0.8rem + 1.1cqw, 1.5rem); font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1; }
+.rd-rx__v { white-space: nowrap; font-size: clamp(1.05rem, 0.8rem + 1.1cqw, 1.5rem); font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1; }
 .rd-rx__v--dme { color: var(--rd-amber); }
 .rd-rx__v--crs { color: var(--c-key); }
 .rd-rx__u { font-size: 0.66rem; color: var(--rd-amber); }
+.rd-rx__dp { display: inline-block; width: 0.42em; text-align: center; }
 .rd-rx__chip {
   font: 700 0.66rem var(--f-mono); letter-spacing: 0.06em;
   color: var(--rd-amber); border: 1px solid var(--rd-amber); border-radius: 3px; padding: 0.2rem 0.35rem;
@@ -165,7 +181,7 @@
   row-gap: calc(var(--u) * 4);
   align-items: center;
 }
-.rd-adfrow { min-height: 120svh; align-content: center; }
+.rd-adfrow { padding-block: calc(var(--u) * 4); }
 .rd-adfrow__text { grid-column: 1 / span 4; }
 .rd-adfrow__fig { grid-column: 6 / -1; }
 .rd-adfrow__fig svg { width: 100%; height: auto; display: block; }
@@ -295,7 +311,8 @@ html:not(.motion) .rd-motion-only { display: none; }
 
   .rd-stage {
     position: sticky; top: 0; z-index: 2;
-    height: 52svh;
+    /* as tall as the plan and the receiver need, never more than half the screen: the rest is for reading */
+    height: min(52svh, calc(4.1rem + 60vw));
     margin-inline: calc(var(--gutter) * -1);
     background: var(--c-bg);
   }
@@ -303,11 +320,18 @@ html:not(.motion) .rd-motion-only { display: none; }
     content: ''; position: absolute; left: 0; right: 0; top: 100%; height: 2.5rem;
     background: linear-gradient(var(--c-bg), transparent); pointer-events: none;
   }
-  .rd-stage__room { inset: 3.6rem 38% 0.5rem 0; }
-  .rd-stage__rx { right: var(--gutter); bottom: 0.75rem; width: 40%; }
-  .rd-rx__row { grid-template-columns: 1fr 1fr; }
-  .rd-rx__chip { position: absolute; top: -1.4rem; right: 0; }
-  .rd-rx { position: relative; }
+  .rd-stage__room { inset: 3.6rem 41% 0.5rem 0; }
+  /* Receiver column: DME over CRS over the CDI, centred beside the floor plan. */
+  .rd-stage__rx {
+    top: 3.6rem; bottom: 0.5rem; right: var(--gutter); width: 41%;
+    display: grid; align-content: center;
+    background: none; box-shadow: none;
+  }
+  .rd-rx { position: relative; gap: 0.45rem; }
+  .rd-rx__row { grid-template-columns: minmax(0, 1fr); gap: 0.35rem; }
+  .rd-rx__box { padding: 0.35rem 0.5rem; }
+  .rd-rx__box--crs { justify-content: flex-start; }
+  .rd-rx__chip { position: absolute; top: 0.4rem; right: 0.45rem; } /* inside the DME box, as the app pairs them */
   .rd-room__rose text { font-size: 18px; }
   .rd-room__rose text.is-cardinal { font-size: 20px; }
   .rd-room__tag { font-size: 17px; }
@@ -315,9 +339,8 @@ html:not(.motion) .rd-motion-only { display: none; }
   .rd-room__scale { display: none; }
 
   .rd-hero__body { padding-top: 2.5rem; padding-bottom: 4rem; }
-  .rd-ch { min-height: 105svh; padding-block: 3rem 6rem; }
-  .rd-ch:nth-of-type(3) { min-height: 130svh; }
-  .rd-ch:nth-of-type(4) { min-height: 140svh; }
+  /* The text is the scroll track: the stage plays while its own words pass beneath it. */
+  .rd-ch, .rd-ch:nth-of-type(3), .rd-ch:nth-of-type(4) { min-height: 0; padding-block: 2.5rem 7rem; }
   .rd-inset { width: min(60%, 210px); }
 
   .rd-adfrow { min-height: 0; }
@@ -328,12 +351,13 @@ html:not(.motion) .rd-motion-only { display: none; }
   .rd-ils__shots, .rd-kt__shots {
     display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 1rem;
     margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); padding-bottom: 0.5rem;
+    scroll-padding-inline: var(--gutter); /* snap to the gutter, not the screen edge */
   }
   .rd-ils__shots li, .rd-kt__shots li { flex: 0 0 62%; scroll-snap-align: start; margin-top: 0 !important; }
   .rd-kt__text { position: static; grid-row: auto; }
   .rd-kt__shots { grid-row: auto; }
   .rd-need__shot { max-width: 60%; }
-  .rd-need { margin-top: calc(var(--u) * 10); }
+  .rd-need { margin-top: calc(var(--u) * 10); row-gap: calc(var(--u) * 6); }
   .rd-plain__h, .rd-faq__h { margin-bottom: calc(var(--u) * 3); }
   .rd-end__cta { margin-top: calc(var(--u) * 4); }
 }

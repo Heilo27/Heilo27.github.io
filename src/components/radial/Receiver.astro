@@ -11,13 +11,15 @@ const v = computeVOR(pose.e, pose.n, U, pose.obs);
 const DOT = 12; // units per dot on the face
 const ticks = Array.from({ length: 72 }, (_, i) => i * 5);
 const labels = ['N', '3', '6', 'E', '12', '15', 'S', '21', '24', 'W', '30', '33'];
+// The decimal point gets its own narrow cell: in a monospace face a full-width '.' reads '6. 0'.
+const dme = dmeFeet(v.slantM).split('.');
 const chip = v.off === 'cone' ? 'CONE' : v.off === 'abeam' ? 'ABEAM' : '';
 ---
 <div class="rd-rx" data-rd-rx role="img" aria-label={`VOR receiver. ${describe(v, pose.obs)}`}>
   <div class="rd-rx__row">
     <p class="rd-rx__box">
       <span class="rd-rx__k">DME</span>
-      <span class="rd-rx__v rd-rx__v--dme" data-rd-dme>{dmeFeet(v.slantM)}</span>
+      <span class="rd-rx__v rd-rx__v--dme"><span data-rd-dme-i>{dme[0]}</span><span class="rd-rx__dp">.</span><span data-rd-dme-f>{dme[1]}</span></span>
       <span class="rd-rx__u">FT</span>
     </p>
     <span class="rd-rx__chip" data-rd-chip hidden={!chip}>{chip || 'CONE'}</span>

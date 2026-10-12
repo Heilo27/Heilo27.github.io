@@ -19,6 +19,10 @@ export const CHAPTERS = 4;
 export const ADF_E = 0;
 export const ADF_N = 1.2;
 
+/** East of this (meters), the aircraft's R/HDG tag sits on its west side, so it never runs off the
+ *  floor plan or under the receiver that overlaps the room's east edge. Room.astro and radial.ts. */
+export const TAG_FLIP_E = 0.6;
+
 export type Pose = { e: number; n: number; hdg: number; obs: number };
 
 const clamp01 = (t: number) => Math.min(Math.max(t, 0), 1);

@@ -12,7 +12,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { isTouch, onPage, prefersReducedMotion, scrollState } from '../engine';
 import { computeADF, computeVOR, describe, dmeFeet, dotsOf, formatCourse, formatRelative, wrap360, rad, type VORReading } from '../components/radial/vor';
-import { ADF_E, ADF_N, KEY_C, U, poseAt } from '../components/radial/walk';
+import { ADF_E, ADF_N, KEY_C, TAG_FLIP_E, U, poseAt } from '../components/radial/walk';
 
 const S = 100; // Room.astro: 1 m = 100 units
 const DOT = 12; // Receiver.astro: units per dot
@@ -37,10 +37,10 @@ function initStage() {
 
   // ── Elements ────────────────────────────────────────────────────────────────────────────
   const el = {
-    plane: q('[data-rd-plane]'), nose: q('[data-rd-nose]'), tag: q('[data-rd-tag]'), hdg: q('[data-rd-hdg]'),
+    plane: q('[data-rd-plane]'), nose: q('[data-rd-nose]'), tag: q('[data-rd-tag]'), tags: q('[data-rd-tags]'), hdg: q('[data-rd-hdg]'),
     radial: q('[data-rd-radial]'), ring: q('[data-rd-dmering]'), cone: q('[data-rd-cone]'),
     abeam: q('[data-rd-abeam]'), course: q('[data-rd-course]'), from: q('[data-rd-from]'), to: q('[data-rd-to]'),
-    dme: q<HTMLElement>('[data-rd-dme]'), crs: q<HTMLElement>('[data-rd-crs]'), chip: q<HTMLElement>('[data-rd-chip]'),
+    dmeI: q<HTMLElement>('[data-rd-dme-i]'), dmeF: q<HTMLElement>('[data-rd-dme-f]'), crs: q<HTMLElement>('[data-rd-crs]'), chip: q<HTMLElement>('[data-rd-chip]'),
     card: q('[data-rd-card]'), needle: q('[data-rd-needle]'), rx: q<HTMLElement>('[data-rd-rx]'),
     live: q<HTMLElement>('[data-rd-live]'),
     flags: { TO: q('[data-rd-flag="TO"]'), FROM: q('[data-rd-flag="FROM"]'), OFF: q('[data-rd-flag="OFF"]') },
@@ -131,6 +131,10 @@ function initStage() {
     put('nose', el.nose, 'transform', `rotate(${pose.hdg.toFixed(1)})`);
     put('tag', el.tag, 'text', v.radial == null ? 'R ---' : `R ${formatCourse(v.radial)}`);
     put('hdg', el.hdg, 'text', `HDG ${formatCourse(pose.hdg)}`);
+    const west = pose.e > TAG_FLIP_E;
+    put('tagAnchor', el.tags, 'text-anchor', west ? 'end' : 'start');
+    put('tagX', el.tag, 'x', west ? '-22' : '22');
+    put('hdgX', el.hdg, 'x', west ? '-22' : '22');
     put('rx2', el.radial, 'x2', x.toFixed(1));
     put('ry2', el.radial, 'y2', y.toFixed(1));
     put('ring', el.ring, 'r', (v.r * S).toFixed(1));
@@ -145,7 +149,9 @@ function initStage() {
     put('tx', el.to, 'x', tx); put('ty', el.to, 'y', ty);
 
     // Receiver
-    put('dme', el.dme, 'text', dmeFeet(v.slantM));
+    const [dmeI, dmeF] = dmeFeet(v.slantM).split('.');
+    put('dmeI', el.dmeI, 'text', dmeI);
+    put('dmeF', el.dmeF, 'text', dmeF);
     put('crs', el.crs, 'text', formatCourse(pose.obs));
     put('card', el.card, 'transform', `rotate(${-pose.obs})`);
     const chip = v.off === 'cone' ? 'CONE' : v.off === 'abeam' ? 'ABEAM' : '';

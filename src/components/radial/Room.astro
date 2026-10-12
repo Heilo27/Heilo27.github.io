@@ -4,7 +4,7 @@
 // the DME range circle and the aircraft (your phone). 1 m = 100 units, north up.
 // Rendered at build time in its first state; src/motion/radial.ts moves it from then on.
 import { computeVOR, formatCourse } from './vor';
-import { U, CONE_FOOTPRINT_M, type Pose } from './walk';
+import { U, CONE_FOOTPRINT_M, TAG_FLIP_E, type Pose } from './walk';
 
 interface Props { pose: Pose }
 const { pose } = Astro.props;
@@ -14,6 +14,8 @@ const v = computeVOR(pose.e, pose.n, U, pose.obs);
 const x = pose.e * S;
 const y = -pose.n * S;
 const r = Math.hypot(x, y);
+const west = pose.e > TAG_FLIP_E;
+const tagX = west ? -22 : 22;
 
 const ticks = Array.from({ length: 72 }, (_, i) => i * 5);
 const labels = ['N', '3', '6', 'E', '12', '15', 'S', '21', '24', 'W', '30', '33'];
@@ -96,8 +98,10 @@ const toL = lbl(pose.obs + 204, 118);
     <g data-rd-nose transform={`rotate(${pose.hdg.toFixed(1)})`}>
       <path class="rd-room__plane" filter="url(#rd-glow)" d="M0,-17C1.8,-17 2.5,-13.5 2.5,-10L2.5,-3.5L17,0L17,3.4L2.5,2.3L1.8,10L6.8,12.8L6.8,15L0,14L-6.8,15L-6.8,12.8L-1.8,10L-2.5,2.3L-17,3.4L-17,0L-2.5,-3.5L-2.5,-10C-2.5,-13.5 -1.8,-17 0,-17Z" />
     </g>
-    <text class="rd-room__tag" x="22" y="-14" data-rd-tag>{v.radial == null ? 'R ---' : `R ${formatCourse(v.radial)}`}</text>
+    <g data-rd-tags text-anchor={west ? 'end' : 'start'}>
+    <text class="rd-room__tag" x={tagX} y="-14" data-rd-tag>{v.radial == null ? 'R ---' : `R ${formatCourse(v.radial)}`}</text>
     <text class="rd-room__tag rd-room__tag--hdg" x="22" y="-2" data-rd-hdg>{`HDG ${formatCourse(pose.hdg)}`}</text>
+    </g>
   </g>
 
   <!-- Scale -->
