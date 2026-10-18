@@ -9,6 +9,12 @@ const img = (p: string) => {
   return m.default;
 };
 
+// The DSVideoServer release the site points at. ONE home: bump DSVIDEO_SERVER_BUILD and every
+// link, label and note below follows (the release tag is `v<build>`, the asset `DSVideoServer-<build>-x64.spk`).
+const DSVIDEO_SERVER_BUILD = '0.3.9-0002';
+const DSVIDEO_SERVER_VERSION = DSVIDEO_SERVER_BUILD.split('-')[0];
+const DSVIDEO_SERVER_SPK = `https://github.com/Heilo27/DSM-video/releases/download/v${DSVIDEO_SERVER_BUILD}/DSVideoServer-${DSVIDEO_SERVER_BUILD}-x64.spk`;
+
 export type Device = 'phone' | 'ipad' | 'landscape';
 export type Shot = { src: ImageMetadata; alt: string; device: Device };
 export type Feature = { title: string; text: string; shot?: number };
@@ -412,8 +418,8 @@ export const apps: App[] = [
         { title: 'Point it at your videos', text: 'In DSVideoServer’s settings, set the paths to your video folders.' },
         { title: 'Connect the app', text: 'Open DSM Video, enter your NAS address or QuickConnect ID and sign in.' },
       ],
-      link: { label: 'Download DSVideoServer v0.3.9', href: 'https://github.com/Heilo27/DSM-video/releases/download/v0.3.9-0001/DSVideoServer-0.3.9-0001-x64.spk' },
-      note: 'v0.3.9-0001. Needs DSM 7.2 Update 3 or later on an Intel or AMD (x86_64) NAS.',
+      link: { label: `Download DSVideoServer v${DSVIDEO_SERVER_VERSION}`, href: DSVIDEO_SERVER_SPK },
+      note: `v${DSVIDEO_SERVER_BUILD}. Needs DSM 7.2 Update 3 or later on an Intel or AMD (x86_64) NAS.`,
     },
     faq: [
       { q: 'What do I need?', a: 'A Synology NAS and the free DSVideoServer package. Video Station is not required.' },
