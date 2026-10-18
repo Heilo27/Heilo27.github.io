@@ -412,8 +412,8 @@ export const apps: App[] = [
         { title: 'Point it at your videos', text: 'In DSVideoServer’s settings, set the paths to your video folders.' },
         { title: 'Connect the app', text: 'Open DSM Video, enter your NAS address or QuickConnect ID and sign in.' },
       ],
-      link: { label: 'Download DSVideoServer v0.3.8', href: 'https://github.com/Heilo27/DSM-video/releases/download/v0.3.8-0001/DSVideoServer-0.3.8-0001-x64.spk' },
-      note: 'v0.3.8-0001. Needs DSM 7.2 Update 3 or later on an Intel or AMD (x86_64) NAS.',
+      link: { label: 'Download DSVideoServer v0.3.9', href: 'https://github.com/Heilo27/DSM-video/releases/download/v0.3.9-0001/DSVideoServer-0.3.9-0001-x64.spk' },
+      note: 'v0.3.9-0001. Needs DSM 7.2 Update 3 or later on an Intel or AMD (x86_64) NAS.',
     },
     faq: [
       { q: 'What do I need?', a: 'A Synology NAS and the free DSVideoServer package. Video Station is not required.' },
