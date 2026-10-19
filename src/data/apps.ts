@@ -11,7 +11,7 @@ const img = (p: string) => {
 
 // The DSVideoServer release the site points at. ONE home: bump DSVIDEO_SERVER_BUILD and every
 // link, label and note below follows (the release tag is `v<build>`, the asset `DSVideoServer-<build>-x64.spk`).
-const DSVIDEO_SERVER_BUILD = '0.3.9-0004';
+const DSVIDEO_SERVER_BUILD = '0.3.9-0005';
 const DSVIDEO_SERVER_VERSION = DSVIDEO_SERVER_BUILD.split('-')[0];
 const DSVIDEO_SERVER_SPK = `https://github.com/Heilo27/DSM-video/releases/download/v${DSVIDEO_SERVER_BUILD}/DSVideoServer-${DSVIDEO_SERVER_BUILD}-x64.spk`;
 
