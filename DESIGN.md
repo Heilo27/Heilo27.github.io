@@ -5,7 +5,7 @@
 - **Subject:** Ryan Primeau, an independent developer of native iPhone, iPad, Mac and Apple TV apps, publishing as HeiloProjects.
 - **Audience:** (1) businesses and founders deciding who should build their app; (2) people deciding whether to download one of Ryan's apps.
 - **Jobs:** the home page sells app development, with the shipped apps as proof. Each app has its own sales page that shows the app working and sends visitors to the App Store.
-- **Facts used:** App Store listings, checked through the iTunes lookup API on 2026-10-12. Ten apps are live under Ryan Primeau: Right Rudder, Right Rudder Student, Stripes, StockUp, Grove, Skylog, Lodestone PF1, DSM Video, CAP Wingman and Green Arc. Not on the App Store: Radial AR (in TestFlight), Foreman (no store ID), Castle of the Winds (no store ID). RadioWriter is a free Mac app on GitHub. SpecterDC is a service.
+- **Facts used:** App Store listings, checked through the iTunes lookup API on 2026-10-12. Ten apps are live under Ryan Primeau: Right Rudder, Right Rudder Student, Stripes, StockUp, Grove, Skylog, Lodestone PF1, DSM Video, CAP Wingman and Green Arc. Radial AR went live 2026-11-03 (id6819074229, $14.99). Not on the App Store: Foreman (no store ID), Castle of the Winds (no store ID). RadioWriter is a free Mac app on GitHub. SpecterDC is a service.
 - **Stack:** Astro 7, static output, deployed to GitHub Pages through Actions. GSAP, SplitText and Lenis on one clock. No WebGL: the work is screenshots, and the signature moment is a DOM shared-element transition.
 
 ## Concept (picked from three)

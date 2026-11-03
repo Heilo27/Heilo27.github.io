@@ -65,11 +65,11 @@ export const apps: App[] = [
     description:
       'Radial AR puts a virtual VOR, NDB or ILS in your room. Walk around it with your iPhone or iPad and the instruments read exactly as a real receiver would.',
     icon: img('radial/icon.png'),
-    status: 'testflight',
+    status: 'live',
     platforms: ['iPhone', 'iPad'],
-    price: 'Coming soon',
-    cta: { label: 'Ask to join the TestFlight', href: 'mailto:heiloprojects@icloud.com?subject=Radial%20AR%20TestFlight' },
-    ctaNote: 'In TestFlight now. Coming to the App Store for iPhone and iPad, iOS 17 or later.',
+    price: '$14.99 once',
+    cta: { label: APPSTORE, href: 'https://apps.apple.com/us/app/radial-ar-radio-nav/id6819074229' },
+    ctaNote: 'One purchase, every future update. iPhone and iPad, iOS 17 or later.',
     shots: [
       { src: img('radial/APP_IPHONE_67_01-vor-room.png'), alt: 'A virtual VOR station on a wooden floor with a compass rose, a small aircraft marker, and the VOR receiver below reading course 360, TO, DME 4.9 feet', device: 'phone' },
       { src: img('radial/APP_IPHONE_67_02-vor-track.png'), alt: 'Tracking a radial toward the station in the AR trainer', device: 'phone' },
