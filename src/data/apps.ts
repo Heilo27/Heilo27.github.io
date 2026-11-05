@@ -332,7 +332,7 @@ export const apps: App[] = [
     icon: img('lodestone/icon.png'),
     status: 'live',
     platforms: ['iPhone', 'iPad'],
-    price: 'Free, premium $2.99 a month',
+    price: 'Free, premium $1.99 a month or $15.99 a year',
     cta: { label: APPSTORE, href: 'https://apps.apple.com/us/app/lodestone-pf1/id6761501375' },
     ctaNote: 'Core Rulebook free forever. Premium unlocks the expanded ruleset.',
     problem: {
@@ -357,18 +357,18 @@ export const apps: App[] = [
       { title: 'Your table, your bookmarks', text: 'Bookmark any entry into folders: your character’s spells, tonight’s monsters, the rules you reach for every session.', shot: 3 },
     ],
     family: {
-      heading: 'Three systems. One subscription.',
-      intro: 'One premium subscription unlocks the expanded content across every Lodestone app.',
+      heading: 'Three systems. One way to use them.',
+      intro: 'Each Lodestone app works the same way, so moving between systems takes no relearning.',
       items: [
-        { name: 'Lodestone PF1', edition: 'Pathfinder 1st Edition', status: 'On the App Store', text: 'Core classes, races, 300+ feats and 500+ spells free. Premium adds 2,000+ feats, 4,000+ monsters, prestige classes, Unchained, Occult, Mythic and magic items.', icon: img('lodestone/icon.png'), href: 'https://apps.apple.com/us/app/lodestone-pf1/id6761501375' },
+        { name: 'Lodestone PF1', edition: 'Pathfinder 1st Edition', status: 'On the App Store', text: 'Core classes, races, 170+ feats and 500+ spells free. Premium adds 2,000+ feats, 3,100+ monsters, Unchained, Occult, Mythic and magic items.', icon: img('lodestone/icon.png'), href: 'https://apps.apple.com/us/app/lodestone-pf1/id6761501375' },
         { name: 'Lodestone PF2', edition: 'Pathfinder 2nd Edition', status: 'In development', text: 'Ancestries and heritages, class and archetype feats, the three-action system and the full bestiary.' },
         { name: 'Lodestone SF1', edition: 'Starfinder 1st Edition', status: 'In development', text: 'Species and themes, tech and hybrid equipment, starship rules and the Alien Archive.' },
       ],
     },
     faq: [
-      { q: 'What is free and what is premium?', a: 'The Core Rulebook is free forever. Premium ($2.99 a month) unlocks every supplement, prestige classes, the complete bestiary, magic items and the advanced systems.' },
+      { q: 'What is free and what is premium?', a: 'The Core Rulebook is free forever. Premium ($1.99 a month or $15.99 a year) unlocks the supplements, the bestiary, magic items and the advanced systems.' },
       { q: 'Does it work offline?', a: 'Yes. Everything is stored on your device after the first download.' },
-      { q: 'Does premium cover PF2 and SF1?', a: 'Yes. One subscription unlocks premium across all three apps as they launch.' },
+      { q: 'Does premium cover PF2 and SF1?', a: 'No. The PF1 subscription unlocks Lodestone PF1. PF2 and SF1 are still in development.' },
       { q: 'Is my data private?', a: 'Yes. No analytics and no tracking. Favorites and settings stay on your device.' },
     ],
     docs: [{ label: 'Privacy policy', href: '/lodestone/privacy' }, { label: 'Support', href: '/lodestone/support' }],
