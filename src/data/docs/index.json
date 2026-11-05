@@ -89,10 +89,10 @@
  },
  {
   "route": "lodestone/privacy",
-  "file": "privacy.html",
+  "file": "lodestone__privacy.html",
   "title": "Privacy Policy",
   "metaTitle": "Privacy Policy - Lodestone | HeiloProjects",
-  "description": "Lodestone privacy policy. The HeiloProjects policy: no tracking, no ads, no data collection.",
+  "description": "Lodestone privacy policy. No data collection, no tracking, no ads. Subscriptions are handled by Apple.",
   "app": "lodestone"
  }
 ]
