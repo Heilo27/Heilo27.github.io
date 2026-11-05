@@ -371,7 +371,7 @@ export const apps: App[] = [
       { q: 'Does premium cover PF2 and SF1?', a: 'Yes. One subscription unlocks premium across all three apps as they launch.' },
       { q: 'Is my data private?', a: 'Yes. No analytics and no tracking. Favorites and settings stay on your device.' },
     ],
-    docs: [{ label: 'Privacy policy', href: '/privacy' }],
+    docs: [{ label: 'Privacy policy', href: '/lodestone/privacy' }, { label: 'Support', href: '/lodestone/support' }],
     support: 'heiloprojects@icloud.com',
   },
 

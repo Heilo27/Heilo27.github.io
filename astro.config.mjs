@@ -10,4 +10,6 @@ export default defineConfig({
   // 'preserve' keeps the URLs the App Store already links to: /stripes/privacy.html, /stripes/support.html.
   build: { format: 'preserve', inlineStylesheets: 'auto' },
   trailingSlash: 'ignore',
+  // The studio-level /support had no page; the only support page for now is Lodestone's.
+  redirects: { '/support': '/lodestone/support' },
 });

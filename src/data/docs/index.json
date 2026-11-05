@@ -78,5 +78,21 @@
   "metaTitle": "Foreman Support | HeiloProjects",
   "description": "Get help with Foreman: Field Service. Contact support, manage your subscription, and find answers to common questions.",
   "app": "foreman"
+ },
+ {
+  "route": "lodestone/support",
+  "file": "lodestone__support.html",
+  "title": "Lodestone Support",
+  "metaTitle": "Support - Lodestone | HeiloProjects",
+  "description": "Lodestone support for PF1, PF2 and SF1: restore purchases, manage your subscription, content sources and contact.",
+  "app": "lodestone"
+ },
+ {
+  "route": "lodestone/privacy",
+  "file": "privacy.html",
+  "title": "Privacy Policy",
+  "metaTitle": "Privacy Policy - Lodestone | HeiloProjects",
+  "description": "Lodestone privacy policy. The HeiloProjects policy: no tracking, no ads, no data collection.",
+  "app": "lodestone"
  }
 ]
